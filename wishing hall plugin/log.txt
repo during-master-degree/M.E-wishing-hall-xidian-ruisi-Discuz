@@ -8,4 +8,34 @@
 
 
 
+心情顺序：
 
+佛
+kx	聆听教诲mb_qb1
+ng	跪拜	mb_qb2
+ym	上香	mb_qb3
+wl	献花	mb_qb4
+nu	摩提	mb_qb5
+ch	敬酒	mb_qb6
+yl	巧克力	mb_qb8
+shuai	修庙	mb_qb9
+
+爱神
+kx_ai		聆听教诲 mb_qb1
+ng_ai		跪拜	mb_qb2
+ym_ai		上香	mb_qb3
+wl_ai		献花	mb_qb4
+nu_ai		摩提	mb_qb5
+ch_ai		敬酒	mb_qb6
+yl_ai		巧克力	mb_qb8
+shuai_ai	修庙	mb_qb9
+
+考神
+kx_kao		求自习     mb_qb10
+ng_kao		求美女同桌	mb_qb11
+ym_kao		代占座	mb_qb12
+wl_kao		求真题	mb_qb13
+nu_kao		求保过	mb_qb14
+ch_kao		免挂牌	mb_qb15
+yl_kao		学霸模式mb_qb16
+shuai_kao	修庙	mb_qb9

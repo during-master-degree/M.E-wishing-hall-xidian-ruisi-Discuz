@@ -198,7 +198,7 @@ function Icon_selected(sId) {
 </script>
 <div id="pt" class="bm cl">
 	<div class="z">
-		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="plugin.php?id=wishing_hall:sign">{lang wishing_hall:name}</a>
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="plugin.php?id=wishing_hall:ai">{lang wishing_hall:name}</a>
 	</div> 
 </div>
 
@@ -254,19 +254,19 @@ $firstvister
 <div id="ifocus_l2_pic">
   <div id="ifocus_l2_piclist" style="left:0; top:0;">
    <ul>
-    <li><img src="source/plugin/wishing_hall/img/images/1.png" alt="" /></li>
-    <li><img src="source/plugin/wishing_hall/img/images/2.png" alt="" /></li>
-    <li><img src="source/plugin/wishing_hall/img/images/3.png" alt="" /></li>
-    <li><img src="source/plugin/wishing_hall/img/images/4.png" alt="" /></li>
+    <li><img src="source/plugin/wishing_hall/img/images_ai/1.png" alt="" /></li>
+    <li><img src="source/plugin/wishing_hall/img/images_ai/2.png" alt="" /></li>
+    <li><img src="source/plugin/wishing_hall/img/images_ai/3.png" alt="" /></li>
+    <li><img src="source/plugin/wishing_hall/img/images_ai/4.png" alt="" /></li>
    </ul>
   </div>
   <div id="ifocus_l2_opdiv"></div>
   <div id="ifocus_l2_tx">
    <ul>
-    <li class="current">青山几度变黄山，世事纷飞总不干。眼内有沉三界窄，心头无事一床宽</li>
-    <li class="normal">行也安然，坐也安然；穷也安然，富也安然；宠辱不惊，看庭前花开花落；得失无意，看天际云卷云舒</li>
-    <li class="normal">人一旦失去了安详，同时便会褪去了生命的华彩，是女孩子，不会再容光照人，是男孩子，就面目可憎</li>
-    <li class="normal">美玉藏顽石，莲花出淤泥，须生烦恼出，悟得即菩提</li>
+    <li class="current">两个人不在一起了，会不会彼此遗忘?</li>
+    <li class="normal">前女友就好象是亲生的，后女友就像是领养的</li>
+    <li class="normal">我们感动过，吵过闹过，疯狂过，却从未后悔过</li>
+    <li class="normal">爱情很简单：一个人，一辈子，一心一意</li>
    </ul>
   </div>
  </div>
@@ -320,7 +320,7 @@ function getCustomerInfo() {
   createmyXmlHttp();
   // Do something with the myXmlHttp variable
   var data ="sid="+Math.random();
-  var url = "source/plugin/wishing_hall/ajax.php";
+  var url = "source/plugin/wishing_hall/ajax_ai.php";
   myXmlHttp.open("POST", url, true);
   myXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   myXmlHttp.onreadystatechange = updatePage;
@@ -383,9 +383,9 @@ setInterval("getCustomerInfo()",2000);
          
 			<h3>{lang wishing_hall:mb_xz}</h3>            
 				<!--{if $var['qdajax']}-->
-					<form id="qiandao" method="post" action="plugin.php?id=wishing_hall:sign&operation=qiandao&infloat=1" onkeydown="if(event.keyCode==13){showWindow('qwindow', 'qiandao', 'post', '0');return false}">
+					<form id="qiandao" method="post" action="plugin.php?id=wishing_hall:ai&operation=qiandao&infloat=1" onkeydown="if(event.keyCode==13){showWindow('qwindow', 'qiandao', 'post', '0');return false}">
 				<!--{else}-->
-					<form name="qiandao" method="post" action="plugin.php?id=wishing_hall:sign&operation=qiandao&infloat=0&inajax=0">
+					<form name="qiandao" method="post" action="plugin.php?id=wishing_hall:ai&operation=qiandao&infloat=0&inajax=0">
 				<!--{/if}-->
 				<input type="hidden" name="formhash" value="{FORMHASH}">
 				<table width="100%" cellpadding="0" cellspacing="0" align="center">
@@ -393,7 +393,7 @@ setInterval("getCustomerInfo()",2000);
 						<td class="tr3 tac">
 							<ul class="qdsmile" >
 							<!--{loop $emots $key $value}-->
-								<input id="{$key}_s" type="radio" name="qdxq" value="{$key}" style="display:none"><li id="{$key}" onclick="Icon_selected(this.id)" onmouseover="showMenu({'ctrlid':this.id, 'pos':'21'});"><center><img src="source/plugin/wishing_hall/img/emot/{$key}.gif" /><br /></center></li>
+								<input id="{$key}_s" type="radio" name="qdxq" value="{$key}" style="display:none"><li id="{$key}" onclick="Icon_selected(this.id)" onmouseover="showMenu({'ctrlid':this.id, 'pos':'21'});"><center><img src="source/plugin/wishing_hall/img/emot/{$key}_ai.gif" /><br /></center></li>
 							<!--{/loop}-->
 							</ul>
 						</td>
@@ -464,7 +464,7 @@ setInterval("getCustomerInfo()",2000);
 								<td><span id="{$mrc['xy_id']}"><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>
 
 $mrc[qdxq]:$mrc[todaysay]</span>
-<!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=wishing_hall:sign&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang wishing_hall:ban_04}"><font color=red>[{lang wishing_hall:ban_05}]</font></a><!--{/if}--></td>
+<!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=wishing_hall:ai&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang wishing_hall:ban_04}"><font color=red>[{lang wishing_hall:ban_05}]</font></a><!--{/if}--></td>
 							</tr>
 
 							<tr class="colplural">

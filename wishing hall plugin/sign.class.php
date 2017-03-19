@@ -1,6 +1,6 @@
 <?php
 /*
-	wishing_hall Echo By bikai[RS Team] 2013-02-10
+	wishing_hall By bikai[RS Team] 2013-02-15
 */
 !defined('IN_DISCUZ') && exit('Access Denied');
 class plugin_wishing_hall{
@@ -18,27 +18,27 @@ class plugin_wishing_hall{
 					if($allowmem && $var['mcacheopen']) memory('set', 'dsu_pualsign_'.$_G['uid'], $qiandaodb['time'], 86400);
 					if($qiandaodb['time'] < $tdtime){
 						if($var['timeopen']) {
-							if(!($htime < $var['stime']) && !($htime > $var['ftime'])) return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:sign&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
+							if(!($htime < $var['stime']) && !($htime > $var['ftime'])) return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:god_list&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
 						}else{
-							return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:sign&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
+							return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:god_list&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
 						}
 					}
 				}else{
 					$ttps = DB::fetch_first("SELECT posts FROM ".DB::table('common_member_count')." WHERE uid='$_G[uid]'");
 					if($var['mintdpost'] <= $ttps['posts']){
 						if($var['timeopen']) {
-							if(!($htime < $var['stime']) && !($htime > $var['ftime'])) return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:sign&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
+							if(!($htime < $var['stime']) && !($htime > $var['ftime'])) return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:god_list&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
 						}else{
-							return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:sign&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
+							return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:god_list&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
 						}
 					}
 				}
 			}else{
 				if($signtime < $tdtime){
 					if($var['timeopen']) {
-						if(!($htime < $var['stime']) && !($htime > $var['ftime'])) return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:sign&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
+						if(!($htime < $var['stime']) && !($htime > $var['ftime'])) return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:god_list&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
 					}else{
-						return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:sign&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
+						return '<span class="pipe">|</span><a href="javascript:;" onclick="showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:god_list&'.FORMHASH.'\')"><font color="red">'.lang('plugin/wishing_hall','encore_01').'</font></a> ';
 					}
 				}
 			}
@@ -55,12 +55,12 @@ class plugin_wishing_hall{
 				if(in_array($_G['groupid'], unserialize($_G['cache']['plugin']['wishing_hall']['autosign_ug']))){
 					$nfastreplytext =str_replace(array("\r\n", "\n", "\r"), '/hhf/', $_G['cache']['plugin']['wishing_hall']['fastreplytext']);
 					$fastreplytexts = explode("/hhf/", $nfastreplytext);
-					return '<script type="text/javascript">showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:sign&operation=qiandao&formhash='.FORMHASH.'&qdmode=2&fastreply='.array_rand($fastreplytexts,'1').'&qdxq='.array_rand(unserialize($_G['setting']['paulsign_emot']),'1').'\');</script>';
+					return '<script type="text/javascript">showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:fo&operation=qiandao&formhash='.FORMHASH.'&qdmode=2&fastreply='.array_rand($fastreplytexts,'1').'&qdxq='.array_rand(unserialize($_G['setting']['paulsign_emot']),'1').'\');</script>';
 				}else{
 					if($_G['cache']['plugin']['wishing_hall']['ajax_sign']){
-						return '<script type="text/javascript">showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:sign&'.FORMHASH.'\');</script>';
+						return '<script type="text/javascript">showWindow(\'wishing_hall\', \'plugin.php?id=wishing_hall:fo&'.FORMHASH.'\');</script>';
 					}else{
-						dheader('Location: plugin.php?id=wishing_hall:sign');
+						dheader('Location: plugin.php?id=wishing_hall:fo');
 					}
 				}
 			}

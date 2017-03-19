@@ -20,7 +20,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
 <item>'.$wishing_items.'</item>
 ';
 		for($i=1;$i<=$wishing_items;$i++){
-				$wishes_buf=$redis->lgetrange("wishes".$i,0,-1);
+				$wishes_buf=$redis->lgetrange("wishes_kao".$i,0,-1);
 $result.="<wishing>
 	<username>".$wishes_buf[0]."</username>
 	<uid>".$wishes_buf[1]."</uid>
@@ -43,7 +43,7 @@ $result.="<wishing>
      mysql_select_db("ruisi",$conn);   
      mysql_query("set names utf8");    
  //查询
-     $res = mysql_query("SELECT q.uid,q.time,q.qdxq,q.todaysay,q.godsay,m.username FROM wishing_hall_wish q,common_member m where q.uid=m.uid order by q.time desc limit 0,10");  
+     $res = mysql_query("SELECT q.uid,q.time,q.qdxq,q.todaysay,q.godsay,m.username FROM wishing_hall_wish_kao q,common_member m where q.uid=m.uid order by q.time desc limit 0,10");  
 $redis->set('items',mysql_num_rows($res));
 echo '<?xml version="1.0" encoding="utf-8"?>
 <root>
@@ -55,14 +55,14 @@ echo '<?xml version="1.0" encoding="utf-8"?>
 //	print_r(mysql_fetch_array($res));
  	while($row=mysql_fetch_array($res)){
 //		foreach($row as $key=>$val){$result.="$val";}
-		if($row['qdxq']=="kx"){$row['qdxq']="虔诚的想要听取神的教诲，并说";
-		}elseif($row['qdxq']=="ng"){$row['qdxq']="给神磕了个大大的响头，并说";
-		}elseif($row['qdxq']=="ym"){$row['qdxq']="给神上了一炷香，并说";
-		}elseif($row['qdxq']=="wl"){$row['qdxq']="给神献上鲜花，并说";
-		}elseif($row['qdxq']=="nu"){$row['qdxq']="给神敬上一个摩提，并说";
-		}elseif($row['qdxq']=="ch"){$row['qdxq']="给神敬上一杯酒，并说";
-		}elseif($row['qdxq']=="yl"){$row['qdxq']="给神献上巧克力，并说";
-		}elseif($row['qdxq']=="shuai"){$row['qdxq']="要给佛祖修庙建祠堂，并说";
+		if($row['qdxq']=="kx_kao"){$row['qdxq']="虔诚的想上自习，并说";
+		}elseif($row['qdxq']=="ng_kao"){$row['qdxq']="小声的对神说想要与美女同桌，并说";
+		}elseif($row['qdxq']=="ym_kao"){$row['qdxq']="想找人给占个座位，并说";
+		}elseif($row['qdxq']=="wl_kao"){$row['qdxq']="想要一份考试真题，并说";
+		}elseif($row['qdxq']=="nu_kao"){$row['qdxq']="求考神保佑一定要及格，并说";
+		}elseif($row['qdxq']=="ch_kao"){$row['qdxq']="向神祈求一个免挂金牌，并说";
+		}elseif($row['qdxq']=="yl_kao"){$row['qdxq']="请求速速打通考霸模式，并说";
+		}elseif($row['qdxq']=="shuai_kao"){$row['qdxq']="要给考神修庙建祠堂，并说";
 		}
 			
 $result.="<wishing>
@@ -75,13 +75,13 @@ $result.="<wishing>
 </wishing>
 ";	
 //将许愿缓存到redis中
-	$redis->delete("wishes".$index);
-	$redis->rpush("wishes".$index,$row['username']);
-	$redis->rpush("wishes".$index,$row['uid']);	
-	$redis->rpush("wishes".$index,gmdate('Y-m-d H:i',$row["time"]+ 3600 * 8));	
-	$redis->rpush("wishes".$index,$row['qdxq']);	
-	$redis->rpush("wishes".$index,$row['todaysay']);	
-	$redis->rpush("wishes".$index,$row['godsay']);	
+	$redis->delete("wishes_kao".$index);
+	$redis->rpush("wishes_kao".$index,$row['username']);
+	$redis->rpush("wishes_kao".$index,$row['uid']);	
+	$redis->rpush("wishes_kao".$index,gmdate('Y-m-d H:i',$row["time"]+ 3600 * 8));	
+	$redis->rpush("wishes_kao".$index,$row['qdxq']);	
+	$redis->rpush("wishes_kao".$index,$row['todaysay']);	
+	$redis->rpush("wishes_kao".$index,$row['godsay']);	
 	$index++;	
 	}
 echo $result."</root>"; 

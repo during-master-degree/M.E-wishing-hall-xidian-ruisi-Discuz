@@ -1,6 +1,6 @@
 <?php
 /*
-	wishing_hall Import By bikai[RS Team] 2013-02-10
+	wishing_hall bikai[RS Team] 2013-02-15
 */
 !defined('IN_DISCUZ') && exit('Access Denied');
 !defined('IN_ADMINCP') && exit('Access Denied');
