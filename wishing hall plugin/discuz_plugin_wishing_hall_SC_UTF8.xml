@@ -3,7 +3,6 @@
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
 	<item id="Version"><![CDATA[X2.5]]></item>
 	<item id="Time"><![CDATA[2013-02-25 09:36]]></item>
-	<item id="From"><![CDATA[Discuz! Board (http://localhost/2.5/)]]></item>
 	<item id="Data">
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
@@ -14,10 +13,10 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[wishing_hall/]]></item>
 			<item id="copyright"><![CDATA[bikai @ RS Team]]></item>
-			<item id="version"><![CDATA[1.0]]></item>
+			<item id="version"><![CDATA[1.1]]></item>
 			<item id="__modules">
 				<item id="0">
-					<item id="name"><![CDATA[sign]]></item>
+					<item id="name"><![CDATA[wishing_hall]]></item>
 					<item id="menu"><![CDATA[]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[11]]></item>
@@ -41,7 +40,7 @@
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
 				<item id="2">
-					<item id="name"><![CDATA[sign_crash]]></item>
+					<item id="name"><![CDATA[wishing_hall_crash]]></item>
 					<item id="menu"><![CDATA[冗余数据清理]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
@@ -53,7 +52,7 @@
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
 				<item id="3">
-					<item id="name"><![CDATA[sign_custom]]></item>
+					<item id="name"><![CDATA[wishing_hall_custom]]></item>
 					<item id="menu"><![CDATA[自定义贡品]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
@@ -673,7 +672,7 @@
 				<item id="custom_15"><![CDATA[贡品价格]]></item>
 				<item id="custom_16"><![CDATA[神的编号不能为空]]></item>
 				<item id="ts_illegaltext"><![CDATA[您的心愿中包含敏感词,请修改后重新提交]]></item>
-				<item id="fromsign"><![CDATA[<span class="xg1"><font size="1px"><a href="plugin.php?id=wishing_hall:sign"><img src="source/plugin/wishing_hall/img/paulsign.png" alt="(来自许愿堂)"></a></font></span>]]></item>
+				<item id="fromsign"><![CDATA[<span class="xg1"><font size="1px"><a href="plugin.php?id=wishing_hall:god_list"><img src="source/plugin/wishing_hall/img/paulsign.png" alt="(来自许愿堂)"></a></font></span>]]></item>
 				<item id="another_vip"><![CDATA[外加额外的 {rewarddays} 天VIP体验权和 {growupnum} 点成长值!]]></item>
 				<item id="mb_qb1"><![CDATA[聆听教诲 ￥0]]></item>
 				<item id="mb_qb2"><![CDATA[跪拜 ￥20]]></item>

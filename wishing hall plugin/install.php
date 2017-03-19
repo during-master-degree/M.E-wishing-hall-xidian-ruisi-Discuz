@@ -158,6 +158,16 @@ while($cacheechokao = DB::fetch($queryc)) {
 
 }
 C::t('common_setting')->update('paulsign_emot_kao', $cacheechoskao);
+
+$cacheechosall = array();
+$cacheechoallkeys = array();
+$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." ORDER BY displayorder");
+while($cacheechoall = DB::fetch($queryc)) {
+	$cacheechosall[$cacheechoall['qdxq']] = $cacheechoall;
+	$cacheechoallkeys[] = $cacheechoall['qdxq'];
+
+}
+C::t('common_setting')->update('paulsign_emot_all', $cacheechosall);
 updatecache('setting');
 $finish = TRUE;
 ?>

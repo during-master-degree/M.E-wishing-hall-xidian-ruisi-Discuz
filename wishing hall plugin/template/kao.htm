@@ -348,10 +348,11 @@ function updatePage() {
 		 for(var j=parseInt(item_num)+1;j<=10;j++){
 			 	document.getElementById("xy_id"+j+"_tr").style.display="none";//visibility="hidden";
 				document.getElementById("god_id"+j+"_tr").style.display="none";//visibility="hidden";
-			 }	 
+			 }
+		if(!parseInt(item_num)){document.getElementById("nobody_xy").style.display="";}	
+		else document.getElementById("nobody_xy").style.display="none";	 
 //  	 document.getElementById("xy_id1").innerHTML =xmlDoc.getElementsByTagName("todaysay")[2].childNodes[0].nodeValue;
 //      document.getElementById("todaysay").value = response[0];
-
        } else if (myXmlHttp.status == 404) {
          alert ("Requested URL is not found.");
        } else if (myXmlHttp.status == 403) {
@@ -477,7 +478,7 @@ $mrc[qdxq]:$mrc[todaysay]</span>
 							</tr>
 <!--{/loop}-->
 						<!--{if !empty($multipage)}--><tr><td colspan="8"><div class="pages_btns">$multipage</div></td></tr><!--{/if}-->
-					<!--{if !$has_items}--><tr><td colspan="9">{lang wishing_hall:mb_wrq}</td></tr><!--{/if}-->
+					<tr id="nobody_xy" <!--{if $has_items}-->style="display:none;"<!--{/if}-->><td colspan="9">{lang wishing_hall:mb_wrq}</td></tr>
 					<!--{/if}-->
 				</table>
 			</div>	

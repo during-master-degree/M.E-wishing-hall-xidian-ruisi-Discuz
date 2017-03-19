@@ -54,7 +54,7 @@ em {font-style: italic;}
 h1 {margin: 10px 0 0; font-size: 24px; font-size: 300;}/* color: #fff;*/
 h1 strong {font-weight: 600;}
 h2 {color: #565656; line-height: 37px; font-weight: 300;}
-h2 a {color: #565656; border-bottom: 1px dashed #ccc; white-space: nowrap;}
+h2 a {color: #565656; white-space: nowrap;}
 h2 a:hover {background: #f5f5f5;}
 h3 {margin: 0 0 10px; color: #565656; font-size: 23px; font-weight: 600; font-family: "proxima-nova",sans-serif;}
 a {text-decoration: none;}

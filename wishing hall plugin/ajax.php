@@ -6,7 +6,7 @@ require_once('rsmysqlDB.php');
 header("Content-Type:text/xml;charset=utf-8");
 header("Cache-Control:no-cache");
 
-//if($_SERVER['REQUEST_METHOD']=='GET'){exit("Access Denied!");}
+if($_SERVER['REQUEST_METHOD']=='GET'){exit("Access Denied!");}
 
 // if($_GET['action'] == 'checkusername') {
 $redis = new redis();
