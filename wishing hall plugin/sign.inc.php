@@ -175,10 +175,9 @@ $query = DB::query($sql_rank);
 		}elseif($mrc['qdxq']=="ng"){$mrc['qdxq']="给神磕了个大大的响头，并说";
 		}elseif($mrc['qdxq']=="ym"){$mrc['qdxq']="给神上了一炷香，并说";
 		}elseif($mrc['qdxq']=="wl"){$mrc['qdxq']="给神献上鲜花，并说";
-		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="给神敬上玉饼，并说";
+		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="给神敬上一个摩提，并说";
 		}elseif($mrc['qdxq']=="ch"){$mrc['qdxq']="给神敬上一杯酒，并说";
-		}elseif($mrc['qdxq']=="fd"){$mrc['qdxq']="暂无，并说";
-		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="暂无，并说";
+		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="给神献上巧克力，并说";
 		}elseif($mrc['qdxq']=="shuai"){$mrc['qdxq']="要给神修庙建祠堂，并说";
 		}
 		
@@ -505,8 +504,7 @@ $q['if']= $qiandaodb['time']<$tdtime ? "<span class=gray>".$lang['tdno']."</span
 $qtime = dgmdate($qiandaodb['time'], 'Y-m-d H:i');
 $navigation = $lang['name'];
 $navtitle = "$navigation";
-$signBuild = 'Ver 1.0 For X2.5!<br>&copy; <a href="http://scl.xidian.edu.cn/">毕凯</a><br>';
-$signadd = 'http://rs.xidian.edu.cn/';
+$signBuild = 'Ver 1.0 For X2.5!<br>&copy; <a href="http://scl.xidian.edu.cn/" target="_blank">毕凯</a><br>';
 if($_G['inajax']){
 	include template('wishing_hall:ajaxsign');
 }else{

@@ -30,9 +30,9 @@
 				</item>
 				<item id="1">
 					<item id="name"><![CDATA[sign]]></item>
-					<item id="menu"><![CDATA[许愿堂]]></item>
+					<item id="menu"><![CDATA[许愿堂佛祖]]></item>
 					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[5]]></item>
+					<item id="type"><![CDATA[3]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
 					<item id="displayorder"><![CDATA[0]]></item>
 					<item id="navtitle"><![CDATA[]]></item>
@@ -57,6 +57,18 @@
 					<item id="menu"><![CDATA[自定义贡品]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="4">
+					<item id="name"><![CDATA[god_list]]></item>
+					<item id="menu"><![CDATA[神之列表页-许愿堂]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[5]]></item>
 					<item id="adminid"><![CDATA[0]]></item>
 					<item id="displayorder"><![CDATA[0]]></item>
 					<item id="navtitle"><![CDATA[]]></item>
@@ -236,7 +248,7 @@
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[sync_follow]]></item>
 				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[0]]></item>
+				<item id="value"><![CDATA[1]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="16">
@@ -349,7 +361,7 @@
 			</item>
 			<item id="26">
 				<item id="displayorder"><![CDATA[27]]></item>
-				<item id="title"><![CDATA[是否开启“今日最想说”选填]]></item>
+				<item id="title"><![CDATA[是否开启“是否许愿”选择项]]></item>
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[todaysayxt]]></item>
 				<item id="type"><![CDATA[radio]]></item>
@@ -358,31 +370,35 @@
 			</item>
 			<item id="27">
 				<item id="displayorder"><![CDATA[29]]></item>
-				<item id="title"><![CDATA[神仙回复语句]]></item>
+				<item id="title"><![CDATA[佛回复语句]]></item>
 				<item id="description"><![CDATA[每行一个.]]></item>
 				<item id="variable"><![CDATA[fastreplytext]]></item>
 				<item id="type"><![CDATA[textarea]]></item>
-				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”1
-大神撇了撇嘴，说，“生男生女一样好。”2
-大神微微睁开双目瞅了瞅，道：“爱卿平身。”3
-天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，大哥之风，山高水长。4
-春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳。5
-天边飘来一句悠远雄浑的话，哥生一，一生二，二生三，三生万物。6
-天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。7
-天边飘来一句悠远雄浑的话，傻子加入了我变成了神，是一条最容易突出的游鱼；因为他凭恃才高学广，看不见自己的缺点。8
-天边飘来一句悠远雄浑的话，春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳。9
-天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信春哥。10
-天边飘来一句悠远雄浑的话，信耶稣者、死后成神；信如来者、死后成佛；信春哥者，死后满状态原地复活。11
-大神微微笑道，“酒后乱性～。”12]]></item>
+				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
+大神撇了撇嘴，说，“生男生女一样好。”
+大神微微睁开双目瞅了瞅，道：“爱卿平身。”
+天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，大哥之风，山高水长。
+春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳。
+天边飘来一句悠远雄浑的话，哥生一，一生二，二生三，三生万物。
+天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。
+天边飘来一句悠远雄浑的话，傻子加入了我变成了神，是一条最容易突出的游鱼；因为他凭恃才高学广，看不见自己的缺点。
+天边飘来一句悠远雄浑的话，哥讨厌脑残，任何一个脑残，都会被哥的爷们之光刺瞎双眼双耳。
+天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信哥。
+天边飘来一句悠远雄浑的话，信耶稣者、死后成神；信如来者、死后成佛；信春哥者，死后满状态原地复活。
+大神微微笑道，“酒后乱性～。”
+任何人，即使再爷们，也不能成为纯爷们，因为我是纯爷们。
+天边飘来一句悠远雄浑的话，犯哥者，虽远必爆。
+幸福属于膜拜哥的人们。
+佛的光芒，照耀着每一个信徒；我给予你们启迪，让你们拥有力量。]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="28">
 				<item id="displayorder"><![CDATA[42]]></item>
-				<item id="title"><![CDATA[是否将最想说同步到记录]]></item>
+				<item id="title"><![CDATA[是否将许愿同步到记录]]></item>
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[sync_say]]></item>
 				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[0]]></item>
+				<item id="value"><![CDATA[1]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="29">
@@ -397,12 +413,12 @@
 2=详细模式]]></item>
 			</item>
 			<item id="30">
-				<item id="displayorder"><![CDATA[44]]></item>
-				<item id="title"><![CDATA[是否开启手机许愿模式?]]></item>
-				<item id="description"><![CDATA[]]></item>
-				<item id="variable"><![CDATA[wap_sign]]></item>
+				<item id="displayorder"><![CDATA[49]]></item>
+				<item id="title"><![CDATA[是否关闭许愿]]></item>
+				<item id="description"><![CDATA[通过此项目可彻底关闭.]]></item>
+				<item id="variable"><![CDATA[sayclose]]></item>
 				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[1]]></item>
+				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="31">
@@ -425,11 +441,11 @@
 			</item>
 			<item id="33">
 				<item id="displayorder"><![CDATA[47]]></item>
-				<item id="title"><![CDATA[每日最想说是否同步到签名]]></item>
+				<item id="title"><![CDATA[许愿是否同步到签名]]></item>
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[sync_sign]]></item>
 				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[0]]></item>
+				<item id="value"><![CDATA[1]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="34">
@@ -442,14 +458,77 @@
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="35">
-				<item id="displayorder"><![CDATA[49]]></item>
-				<item id="title"><![CDATA[是否关闭每日最想说]]></item>
-				<item id="description"><![CDATA[通过此项目可彻底关闭每日最想说.]]></item>
-				<item id="variable"><![CDATA[sayclose]]></item>
-				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[0]]></item>
+				<item id="displayorder"><![CDATA[29]]></item>
+				<item id="title"><![CDATA[爱神回复语句]]></item>
+				<item id="description"><![CDATA[每行一个.]]></item>
+				<item id="variable"><![CDATA[fastreplytext_ai]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
+大神撇了撇嘴，说，“生男生女一样好。”
+大神微微睁开双目瞅了瞅，道：“爱卿平身。”
+天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，大哥之风，山高水长。
+春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳。
+天边飘来一句悠远雄浑的话，哥生一，一生二，二生三，三生万物。
+天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。
+天边飘来一句悠远雄浑的话，傻子加入了我变成了神，是一条最容易突出的游鱼；因为他凭恃才高学广，看不见自己的缺点。
+天边飘来一句悠远雄浑的话，哥讨厌脑残，任何一个脑残，都会被哥的爷们之光刺瞎双眼双耳。
+天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信哥。
+天边飘来一句悠远雄浑的话，信耶稣者、死后成神；信如来者、死后成佛；信春哥者，死后满状态原地复活。
+大神微微笑道，“酒后乱性～。”
+任何人，即使再爷们，也不能成为纯爷们，因为我是纯爷们。
+天边飘来一句悠远雄浑的话，犯哥者，虽远必爆。
+幸福属于膜拜哥的人们。
+佛的光芒，照耀着每一个信徒；我给予你们启迪，让你们拥有力量。]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
+			<item id="36">
+				<item id="displayorder"><![CDATA[29]]></item>
+				<item id="title"><![CDATA[考神回复语句]]></item>
+				<item id="description"><![CDATA[每行一个.]]></item>
+				<item id="variable"><![CDATA[fastreplytext_kao]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
+大神撇了撇嘴，说，“生男生女一样好。”
+大神微微睁开双目瞅了瞅，道：“爱卿平身。”
+天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，大哥之风，山高水长。
+春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳。
+天边飘来一句悠远雄浑的话，哥生一，一生二，二生三，三生万物。
+天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。
+天边飘来一句悠远雄浑的话，傻子加入了我变成了神，是一条最容易突出的游鱼；因为他凭恃才高学广，看不见自己的缺点。
+天边飘来一句悠远雄浑的话，哥讨厌脑残，任何一个脑残，都会被哥的爷们之光刺瞎双眼双耳。
+天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信哥。
+天边飘来一句悠远雄浑的话，信耶稣者、死后成神；信如来者、死后成佛；信春哥者，死后满状态原地复活。
+大神微微笑道，“酒后乱性～。”
+任何人，即使再爷们，也不能成为纯爷们，因为我是纯爷们。
+天边飘来一句悠远雄浑的话，犯哥者，虽远必爆。
+幸福属于膜拜哥的人们。
+佛的光芒，照耀着每一个信徒；我给予你们启迪，让你们拥有力量。]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="37">
+				<item id="displayorder"><![CDATA[29]]></item>
+				<item id="title"><![CDATA[新神回复语句]]></item>
+				<item id="description"><![CDATA[每行一个.]]></item>
+				<item id="variable"><![CDATA[fastreplytext_xin]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
+大神撇了撇嘴，说，“生男生女一样好。”
+大神微微睁开双目瞅了瞅，道：“爱卿平身。”
+天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，大哥之风，山高水长。
+春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳。
+天边飘来一句悠远雄浑的话，哥生一，一生二，二生三，三生万物。
+天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。
+天边飘来一句悠远雄浑的话，傻子加入了我变成了神，是一条最容易突出的游鱼；因为他凭恃才高学广，看不见自己的缺点。
+天边飘来一句悠远雄浑的话，哥讨厌脑残，任何一个脑残，都会被哥的爷们之光刺瞎双眼双耳。
+天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信哥。
+天边飘来一句悠远雄浑的话，信耶稣者、死后成神；信如来者、死后成佛；信春哥者，死后满状态原地复活。
+大神微微笑道，“酒后乱性～。”
+任何人，即使再爷们，也不能成为纯爷们，因为我是纯爷们。
+天边飘来一句悠远雄浑的话，犯哥者，虽远必爆。
+幸福属于膜拜哥的人们。
+佛的光芒，照耀着每一个信徒；我给予你们启迪，让你们拥有力量。]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>			
 		</item>
 		<item id="language">
 			<item id="scriptlang">
@@ -461,7 +540,7 @@
 				<item id="level2"><![CDATA[ , Tips: 您只需再许愿]]></item>
 				<item id="level3"><![CDATA[次就可以提升到下一个等级:]]></item>
 				<item id="ts_notallow"><![CDATA[对不起，您所在的用户组未被加入允许许愿的行列.]]></item>
-				<item id="ts_saywater"><![CDATA[对不起，您所发布的今日最想说内容为纯数字,纯符号或者纯字母，请发布有意义的内容后再次进行许愿，谢谢合作!]]></item>
+				<item id="ts_saywater"><![CDATA[对不起，您所发布的许愿内容为纯数字,纯符号或者纯字母，请发布有意义的内容后再次进行许愿，谢谢合作!]]></item>
 				<item id="ts_black"><![CDATA[对不起，您已被列入黑名单中.<br>请通知管理员解封后再许愿,谢谢合作!]]></item>
 				<item id="ts_minpost1"><![CDATA[总帖子数没有达到]]></item>
 				<item id="ts_minpost2"><![CDATA[帖的会员无法许愿！]]></item>
@@ -650,10 +729,10 @@
 				<item id="mb_rayst"><![CDATA[【wishing_hall】]]></item>
 				<item id="mb_verxq"><![CDATA[【wishing_hall】许愿堂 作者:毕凯]]></item>
 				<item id="xsqb"><![CDATA[显示全部]]></item>
-				<item id="ban_04"><![CDATA[点击将屏蔽该今日最想说内容]]></item>
+				<item id="ban_04"><![CDATA[点击将屏蔽该许愿内容]]></item>
 				<item id="ban_05"><![CDATA[屏蔽]]></item>
 				<item id="lvmsg"><![CDATA[许愿等级说明]]></item>
-				<item id="lvmsg1"><![CDATA[<table class=list cellspacing=0 cellpadding=0><thead><tr width=50%><td>许愿等级</td><td class=time width=50%>许愿次数要求</td></tr></thead><tr><td>[LV.1]{$lv1name}</td><td class=time>≥10 次</td></tr><tr><td>[LV.2]{$lv2name}</td><td class=time>≥30 次</td></tr><tr><td>[LV.3]{$lv3name}</td><td class=time>≥70 次</td></tr><tr><td>[LV.4]{$lv4name}</td><td class=time>≥150 次</td></tr><tr><td>[LV.5]{$lv5name}</td><td class=time>≥300 次</td></tr><tr><td>[LV.6]{$lv6name}</td><td class=time>≥600 次</td></tr><tr><td>[LV.7]{$lv7name}</td><td class=time>≥1000 次</td></tr><tr><td>[LV.8]{$lv8name}</td><td class=time>≥2000 次</td></tr><tr><td>[LV.9]{$lv9name}</td><td class=time>≥3650 次</td></tr><tr><td>[LV.10]{$lv10name}</td><td class=time>≥7500 次</td></tr><tr><td>[LV.Master]{$lvmastername}</td><td class=time>≥15000 次</td></tr></table>]]></item>
+				<item id="lvmsg1"><![CDATA[<table class=list cellspacing=0 cellpadding=0><thead><tr width=50%><td>许愿等级</td><td class=time width=50%>许愿次数要求</td></tr></thead><tr><td>[LV.1]{$lv1name}</td><td class=time>≥1 次</td></tr><tr><td>[LV.2]{$lv2name}</td><td class=time>≥30 次</td></tr><tr><td>[LV.3]{$lv3name}</td><td class=time>≥70 次</td></tr><tr><td>[LV.4]{$lv4name}</td><td class=time>≥150 次</td></tr><tr><td>[LV.5]{$lv5name}</td><td class=time>≥300 次</td></tr><tr><td>[LV.6]{$lv6name}</td><td class=time>≥600 次</td></tr><tr><td>[LV.7]{$lv7name}</td><td class=time>≥1000 次</td></tr><tr><td>[LV.8]{$lv8name}</td><td class=time>≥2000 次</td></tr><tr><td>[LV.9]{$lv9name}</td><td class=time>≥3650 次</td></tr><tr><td>[LV.10]{$lv10name}</td><td class=time>≥7500 次</td></tr><tr><td>[LV.Master]{$lvmastername}</td><td class=time>≥15000 次</td></tr></table>]]></item>
 				<item id="tj_01"><![CDATA[许愿统计]]></item>
 				<item id="tj_02"><![CDATA[历史最高数]]></item>
 				<item id="tj_03"><![CDATA[次]]></item>

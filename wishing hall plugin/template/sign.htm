@@ -263,10 +263,10 @@ $firstvister
   <div id="ifocus_l2_opdiv"></div>
   <div id="ifocus_l2_tx">
    <ul>
-    <li class="current">睿思许愿堂1</li>
-    <li class="normal">睿思许愿堂2</li>
-    <li class="normal">睿思许愿堂3</li>
-    <li class="normal">睿思许愿堂4</li>
+    <li class="current">青山几度变黄山，世事纷飞总不干。眼内有沉三界窄，心头无事一床宽</li>
+    <li class="normal">行也安然，坐也安然；穷也安然，富也安然；宠辱不惊，看庭前花开花落；得失无意，看天际云卷云舒</li>
+    <li class="normal">人一旦失去了安详，同时便会褪去了生命的华彩，是女孩子，不会再容光照人，是男孩子，就面目可憎</li>
+    <li class="normal">美玉藏顽石，莲花出淤泥，须生烦恼出，悟得即菩提</li>
    </ul>
   </div>
  </div>
@@ -281,7 +281,7 @@ $firstvister
 <div class="bm_c">
 <ul>
 <!--{loop $ranks $rank}-->
-<li><span style="float:left;"><a href="home.php?mod=space&uid=$rank[uid]"><!--{avatar($rank['uid'],small)}--></a></span><span style="float:left; margin:10px 0 0 20px;">$rank['username']</span><span style="color:#0C0; float:right; margin:10px 0 0 0;">￥$rank['reward']</span></li>
+<li><span style="float:left;"><a target="_blank" href="home.php?mod=space&uid=$rank[uid]"><!--{avatar($rank['uid'],small)}--></a></span><span style="float:left; margin:10px 0 0 20px;">$rank['username']</span><span style="color:#0C0; float:right; margin:10px 0 0 0;">￥$rank['reward']</span></li>
 <div style=" clear:both;"></div>
 <!--{/loop}-->
 </ul>
@@ -319,7 +319,7 @@ function createmyXmlHttp() {
 function getCustomerInfo() {
   createmyXmlHttp();
   // Do something with the myXmlHttp variable
-  var data ="&sid="+Math.random();
+  var data ="sid="+Math.random();
   var url = "source/plugin/wishing_hall/ajax.php";
   myXmlHttp.open("POST", url, true);
   myXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -332,7 +332,7 @@ function updatePage() {
        if (myXmlHttp.status == 200) {		  
 //       var response = myXmlHttp.responseText.split("|");
 		 var xmlDoc=myXmlHttp.responseXML;
-		 
+		 document.getElementById("random").innerHTML= Math.round(Math.random()*1000);
 //		 if(!isNaN(xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue))
 //		 {alert("Is num:"+xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue+"");
 //		 }else alert("Not num.");
@@ -342,13 +342,12 @@ function updatePage() {
 			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue;
 				document.getElementById("xy_id"+i).innerHTML+=":";
 			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
-				document.getElementById("xy_id"+i).innerHTML+=Math.random()*20;
 				
-				document.getElementById("god_id"+i).innerHTML=xmlDoc.getElementsByTagName("godsay")[i-1].childNodes[0].nodeValue+" "+Math.random()*20;
+				document.getElementById("god_id"+i).innerHTML=xmlDoc.getElementsByTagName("godsay")[i-1].childNodes[0].nodeValue;
 			 }
 		 
 //  	 document.getElementById("xy_id1").innerHTML =xmlDoc.getElementsByTagName("todaysay")[2].childNodes[0].nodeValue;
-//       document.getElementById("todaysay").value = response[0];
+//      document.getElementById("todaysay").value = response[0];
 
        } else if (myXmlHttp.status == 404) {
          alert ("Requested URL is not found.");
@@ -359,7 +358,7 @@ function updatePage() {
      }
    }
 
-setInterval("getCustomerInfo()",5000);
+setInterval("getCustomerInfo()",2000);
 </script>
 <!--==========5 E ajax==================--> 
 <div id="ct" class="ct2 wp cl" style="margin:0;">
@@ -454,7 +453,7 @@ setInterval("getCustomerInfo()",5000);
 		<!--{/if}--><!--end of the first if-->
 
 <div style="width:77%; float:left; margin-left:10px; font-size:16px;">
-		<h1 class="mt">{lang wishing_hall:mb_ph}</h1>
+		<h1 class="mt">{lang wishing_hall:mb_ph}<span id="random">idol</span></h1>
 		<!--{if $_GET['operation'] == '' || $_GET['operation'] == 'month' || $_GET['operation'] == 'zong'}-->
 			<div class="datalist">
 				<table cellspacing="0" cellpadding="0" summary="phb" class="datatable">
@@ -540,7 +539,7 @@ $mrc[qdxq]:$mrc[todaysay]</span>
 			</div>
 			<div class="bm_c">
 				<ul class="xl">
-					<li><a href="{$signadd}" title="{lang wishing_hall:mb_verxq}" target="_blank"><span style="font: bold 14px Arial; color: #fbb040;">{lang wishing_hall:mb_rayst}</span><span style="font: bold 15px Verdana; color: #f15a29;">{lang wishing_hall:name}</span></a><span style="font: normal 9px Verdana; display:block;"> $signBuild</span></li>
+					<li><span style="font: bold 14px Arial; color: #fbb040;">{lang wishing_hall:mb_rayst}</span><span style="font: bold 15px Verdana; color: #f15a29;">{lang wishing_hall:name}</span><span style="font: normal 9px Verdana; display:block;"> $signBuild</span></li>
 				</ul>
 			</div>
 		</div>
