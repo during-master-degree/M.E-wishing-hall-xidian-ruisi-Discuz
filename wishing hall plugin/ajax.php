@@ -24,15 +24,15 @@ echo '<?xml version="1.0" encoding="utf-8"?>
 //	print_r(mysql_fetch_array($res));
  	while($row=mysql_fetch_array($res)){
 //		foreach($row as $key=>$val){$result.="$val";}
-		if($row['qdxq']=="kx"){$row['qdxq']="给神磕了个大大的响头";
-		}elseif($row['qdxq']=="ng"){$row['qdxq']="给神上了一炷香";
-		}elseif($row['qdxq']=="ym"){$row['qdxq']="给神献上鲜花";
-		}elseif($row['qdxq']=="wl"){$row['qdxq']="给神敬上玉饼";
-		}elseif($row['qdxq']=="nu"){$row['qdxq']="暂无";
-		}elseif($row['qdxq']=="ch"){$row['qdxq']="暂无";
-		}elseif($row['qdxq']=="fd"){$row['qdxq']="暂无";
-		}elseif($row['qdxq']=="yl"){$row['qdxq']="要给神修庙建祠堂";
-		}elseif($row['qdxq']=="shuai"){$row['qdxq']="暂无";
+		if($row['qdxq']=="kx"){$row['qdxq']="给神磕了个大大的响头，并说";
+		}elseif($row['qdxq']=="ng"){$row['qdxq']="给神上了一炷香，并说";
+		}elseif($row['qdxq']=="ym"){$row['qdxq']="给神献上鲜花，并说";
+		}elseif($row['qdxq']=="wl"){$row['qdxq']="给神敬上玉饼，并说";
+		}elseif($row['qdxq']=="nu"){$row['qdxq']="暂无，并说";
+		}elseif($row['qdxq']=="ch"){$row['qdxq']="暂无，并说";
+		}elseif($row['qdxq']=="fd"){$row['qdxq']="暂无，并说";
+		}elseif($row['qdxq']=="yl"){$row['qdxq']="要给神修庙建祠堂，并说";
+		}elseif($row['qdxq']=="shuai"){$row['qdxq']="暂无，并说";
 		}
 			
 		$result.="<wishing>

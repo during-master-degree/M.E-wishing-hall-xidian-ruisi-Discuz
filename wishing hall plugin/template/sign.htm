@@ -319,7 +319,7 @@ function getCustomerInfo() {
 function updatePage() {
      if (myXmlHttp.readyState == 4) {
        if (myXmlHttp.status == 200) {		  
-       var response = myXmlHttp.responseText.split("|");
+//       var response = myXmlHttp.responseText.split("|");
 		 var xmlDoc=myXmlHttp.responseXML;
 		 
 //		 if(!isNaN(xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue))
@@ -329,7 +329,7 @@ function updatePage() {
 		 for(var i=1;i<=item_num;i++){
 			 	document.getElementById("xy_id"+i).innerHTML="<a href='home.php?mod=space&uid="+xmlDoc.getElementsByTagName("uid")[i-1].childNodes[0].nodeValue+"' target='_blank' style='color:#ff7600;'>"+xmlDoc.getElementsByTagName("username")[i-1].childNodes[0].nodeValue+"("+xmlDoc.getElementsByTagName("time")[i-1].childNodes[0].nodeValue+") "+"</a>";
 			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue;
-				document.getElementById("xy_id"+i).innerHTML+=",";
+				document.getElementById("xy_id"+i).innerHTML+=":";
 			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
 				document.getElementById("xy_id"+i).innerHTML+=Math.random()*20;
 				
@@ -453,7 +453,7 @@ setInterval("getCustomerInfo()",2000);
 								<td></td>
 								<td><span id="{$mrc['xy_id']}"><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>
 
-$mrc[qdxq],$mrc[todaysay]</span>
+$mrc[qdxq]:$mrc[todaysay]</span>
 <!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=dsu_paulsign:sign&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang dsu_paulsign:ban_04}"><font color=red>[{lang dsu_paulsign:ban_05}]</font></a><!--{/if}--></td>
 							</tr>
 

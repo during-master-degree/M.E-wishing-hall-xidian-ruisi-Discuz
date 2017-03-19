@@ -72,9 +72,9 @@ EOT;
 				if (strlen($newname1) > 20) cpmsg($lang['custom_08'], '', 'error');
                 
                 $god_id1 = $_GET['newgod_id'][$key];
-				if (preg_match("/[^0-9]/",$god_id1) || strlen($god_id1) > 3) cpmsg($lang['custom_12'], '', 'error');
+				if (preg_match("/[^0-9]/",$god_id1) || strlen($god_id1) < 1) cpmsg($lang['custom_12'], '', 'error');
                 $price1 = $_GET['newprice'][$key];
-				if (preg_match("/[^0-9]/",$price1)|| strlen($god_id1) < 1) cpmsg($lang['custom_13'], '', 'error');
+				if (preg_match("/[^0-9]/",$price1)|| strlen($price1) < 1) cpmsg($lang['custom_13'], '', 'error');
                 
 				if($newqdxq1 && $newname1) {
 					$query = DB::query("SELECT id FROM ".DB::table('dsu_paulsignemot')." WHERE qdxq='$newqdxq1' LIMIT 1");
