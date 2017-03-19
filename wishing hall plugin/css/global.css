@@ -13,7 +13,7 @@ ol, ul {list-style: none;}
 blockquote, q {quotes: none;}
 blockquote:before, blockquote:after,q:before, q:after {content: ''; content: none;}
 table {border-collapse: collapse; border-spacing: 0;}
-em {font-style: italic;}
+/*em {font-style: italic;}*/
 
 @-webkit-keyframes reset { 0% {opacity: 0;} 100% {opacity: 0;}}
 @-webkit-keyframes fade-in {0% {opacity: 0;} 60% {opacity: 0;} 100% {opacity: 1;}}
@@ -89,7 +89,9 @@ section#work article#project .text ul li { color: rgba(0, 0, 0, .45); font-size:
 /* Form
 ================ */
 form > div { line-height: 0.8em; font-size: 1.1em; }
+/*
 form > div label { font-family: "proxima-nova",sans-serif; position: relative; font-size: 16px; letter-spacing: normal; display: inline-block; padding-bottom: 6px; color:#999; font-weight:800;}
+*/
 form > div textarea.form-input-field, form > div input.form-input-field[type="text"], form > div input.form-input-button[type="submit"], form > div input.form-input-button[type="reset"] { font-size: 16px; font-weight:600; font-family: "proxima-nova",sans-serif; padding: 15px 10px; position: relative; z-index: 10; -webkit-appearance: none; -webkit-border-radius: 0px; -webkit-transition: all 300ms; -moz-transition: all 300ms; -ms-transition: all 300ms; -o-transition: all 300ms; transition: all 300ms; width: 93%; border: none; border: 1px solid #E1E1E1; background: transparent; -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#07000000,endColorstr=#07000000)"; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#07000000,endColorstr=#07000000); zoom: 1; background-color: rgba(0, 0, 0, 0.05); outline: none;}
 
 .ie7 form > div textarea.form-input-field, 

@@ -129,7 +129,7 @@ class plugin_wishing_hall_home extends plugin_wishing_hall {
 					$q['lvqd'] = 3650 - $qiandaodb['days'];
 					$q['level'] = lang('plugin/wishing_hall','echo_11')."<font color=green><b>[LV.8]{$lv8name}</b></font>".lang('plugin/wishing_hall','echo_12')."<font color=#FF0000><b>[LV.9]{$lv9name}</b></font>".lang('plugin/wishing_hall','echo_13')."<font color=#FF0000><b>{$q['lvqd']}</b></font>".lang('plugin/wishing_hall','echo_14');
 				} elseif ($qiandaodb['days'] >= '1000') {
-					$q['lvqd'] = 240 - $qiandaodb['days'];
+					$q['lvqd'] = 2000 - $qiandaodb['days'];
 					$q['level'] = lang('plugin/wishing_hall','echo_11')."<font color=green><b>[LV.7]{$lv7name}</b></font>".lang('plugin/wishing_hall','echo_12')."<font color=#FF0000><b>[LV.8]{$lv8name}</b></font>".lang('plugin/wishing_hall','echo_13')."<font color=#FF0000><b>{$q['lvqd']}</b></font>".lang('plugin/wishing_hall','echo_14');
 				} elseif ($qiandaodb['days'] >= '600') {
 					$q['lvqd'] = 1000 - $qiandaodb['days'];
@@ -196,25 +196,25 @@ class plugin_wishing_hall_forum extends plugin_wishing_hall {
 				$i = 1;
 				while($mrc = DB::fetch($query)) {
 					$mrc['time'] = dgmdate($mrc['time'], 'Y-m-d H:i');
-					if ($mrc['days'] >= '1500') {
+					if ($mrc['days'] >= '15000') {
 			  			$mrc['level'] = "[LV.Master]{$lvmastername}";
-					} elseif ($mrc['days'] >= '750') {
+					} elseif ($mrc['days'] >= '7500') {
 			  			$mrc['level'] = "[LV.10]{$lv10name}";
-					} elseif ($mrc['days'] >= '365') {
+					} elseif ($mrc['days'] >= '3650') {
 			  			$mrc['level'] = "[LV.9]{$lv9name}";
-					} elseif ($mrc['days'] >= '240') {
+					} elseif ($mrc['days'] >= '2000') {
 			  			$mrc['level'] = "[LV.8]{$lv8name}";
-					} elseif ($mrc['days'] >= '120') {
+					} elseif ($mrc['days'] >= '1000') {
 			  			$mrc['level'] = "[LV.7]{$lv7name}";
-					} elseif ($mrc['days'] >= '60') {
+					} elseif ($mrc['days'] >= '600') {
 			  			$mrc['level'] = "[LV.6]{$lv6name}";
-					} elseif ($mrc['days'] >= '30') {
+					} elseif ($mrc['days'] >= '300') {
 			  			$mrc['level'] = "[LV.5]{$lv5name}";
-					} elseif ($mrc['days'] >= '15') {
+					} elseif ($mrc['days'] >= '150') {
 			  			$mrc['level'] = "[LV.4]{$lv4name}";
-					} elseif ($mrc['days'] >= '7') {
+					} elseif ($mrc['days'] >= '70') {
 			  			$mrc['level'] = "[LV.3]{$lv3name}";
-					} elseif ($mrc['days'] >= '3') {
+					} elseif ($mrc['days'] >= '30') {
 			  			$mrc['level'] = "[LV.2]{$lv2name}";
 					} elseif ($mrc['days'] >= '1') {
 			  			$mrc['level'] = "[LV.1]{$lv1name}";
@@ -251,6 +251,7 @@ class plugin_wishing_hall_forum extends plugin_wishing_hall {
 		list($lv1name, $lv2name, $lv3name, $lv4name, $lv5name, $lv6name, $lv7name, $lv8name, $lv9name, $lv10name, $lvmastername) = explode("/hhf/", $nlvtext);
 		while($mrc = DB::fetch($uidlists)) {
 			$days[$mrc['uid']]['days'] = $mrc['days'];
+			$days[$mrc['uid']]['uids'] = $mrc['uid'];
 			if(!array_key_exists($mrc['qdxq'],$emots)) {
 				$mrc['qdxq'] = end(array_keys($emots));
 			}
@@ -258,25 +259,25 @@ class plugin_wishing_hall_forum extends plugin_wishing_hall {
 			$days[$mrc['uid']]['todaysay'] = $mrc['todaysay'];
 			$days[$mrc['uid']]['time'] = dgmdate($mrc['time'], 'u');
 			if ($lastedop) $days[$mrc['uid']]['lasted'] = $mrc['lasted'];
-			if ($mrc['days'] >= '1500') {
+			if ($mrc['days'] >= '15000') {
 				$days[$mrc['uid']]['level'] = "[LV.Master]{$lvmastername}";
-			} elseif ($mrc['days'] >= '750') {
+			} elseif ($mrc['days'] >= '7500') {
 			  	$days[$mrc['uid']]['level'] = "[LV.10]{$lv10name}";
-			} elseif ($mrc['days'] >= '365') {
+			} elseif ($mrc['days'] >= '3650') {
 			  	$days[$mrc['uid']]['level'] = "[LV.9]{$lv9name}";
-			} elseif ($mrc['days'] >= '240') {
+			} elseif ($mrc['days'] >= '2000') {
 			  	$days[$mrc['uid']]['level'] = "[LV.8]{$lv8name}";
-			} elseif ($mrc['days'] >= '120') {
+			} elseif ($mrc['days'] >= '1000') {
 			  	$days[$mrc['uid']]['level'] = "[LV.7]{$lv7name}";
-			} elseif ($mrc['days'] >= '60') {
+			} elseif ($mrc['days'] >= '600') {
 			  	$days[$mrc['uid']]['level'] = "[LV.6]{$lv6name}";
-			} elseif ($mrc['days'] >= '30') {
+			} elseif ($mrc['days'] >= '300') {
 			  	$days[$mrc['uid']]['level'] = "[LV.5]{$lv5name}";
-			} elseif ($mrc['days'] >= '15') {
+			} elseif ($mrc['days'] >= '150') {
 			  	$days[$mrc['uid']]['level'] = "[LV.4]{$lv4name}";
-			} elseif ($mrc['days'] >= '7') {
+			} elseif ($mrc['days'] >= '70') {
 			  	$days[$mrc['uid']]['level'] = "[LV.3]{$lv3name}";
-			} elseif ($mrc['days'] >= '3') {
+			} elseif ($mrc['days'] >= '30') {
 			  	$days[$mrc['uid']]['level'] = "[LV.2]{$lv2name}";
 			} elseif ($mrc['days'] >= '1') {
 			  	$days[$mrc['uid']]['level'] = "[LV.1]{$lv1name}";
@@ -289,6 +290,22 @@ class plugin_wishing_hall_forum extends plugin_wishing_hall {
 			if($days[$postlist[$key][authorid]][days]) {
 				$lastedecho = $lastedop ? '<p>'.lang('plugin/wishing_hall','classn_12').': '.$days[$postlist[$key][authorid]][lasted].' '.lang('plugin/wishing_hall','classn_02').'</p>' : '';
 				if($open == '2')$echoonce = '<div class="qdsmile"><li><center>'.lang('plugin/wishing_hall','ta_mind').'</center><table><tr><th>'.$days[$postlist[$key][authorid]][time].'<br /><font size="-1" color="#FF7600">TA对神说</font>:<br />'.$days[$postlist[$key][authorid]][todaysay].'</th><th><img src="source/plugin/wishing_hall/img/emot/'.$days[$postlist[$key][authorid]][qdxq].'.gif"></th></tr></table></li></div>';//<font size="5px">'.$days[$postlist[$key][authorid]][qdxqzw].'</font>
+				
+				$master_fo=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_fo')." ORDER BY reward desc");
+				$master_ai=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_ai')." ORDER BY reward desc");
+				$master_kao=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_kao')." ORDER BY reward desc");
+				$master_shui=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_shui')." ORDER BY reward desc");
+				$master_bt=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_bt')." ORDER BY reward desc");
+				$master_miao=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_miao')." ORDER BY reward desc");
+				$master_offer=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_offer')." ORDER BY reward desc");
+if($days[$postlist[$key][authorid]][uids]==$master_fo['uid']){$echoonce.='<p style="text-align:center; font-size:24px; color:#f00; font-weight:bold;">佛堂堂主</p>';}
+if($days[$postlist[$key][authorid]][uids]==$master_ai['uid']){$echoonce.='<p style="text-align:center; font-size:24px; color:#f00; font-weight:bold;">爱神堂堂主</p>';}
+if($days[$postlist[$key][authorid]][uids]==$master_kao['uid']){$echoonce.='<p style="text-align:center; font-size:24px; color:#f00; font-weight:bold;">考神堂堂主</p>';}
+if($days[$postlist[$key][authorid]][uids]==$master_miao['uid']){$echoonce.='<p style="text-align:center; font-size:24px; color:#f00; font-weight:bold;">喵神堂堂主</p>';}
+if($days[$postlist[$key][authorid]][uids]==$master_offer['uid']){$echoonce.='<p style="text-align:center; font-size:22px; color:#f00; font-weight:bold;">offer堂堂主</p>';}
+if($days[$postlist[$key][authorid]][uids]==$master_shui['uid']){$echoonce.='<p style="text-align:center; font-size:24px; color:#f00; font-weight:bold;">水神堂堂主</p>';}
+if($days[$postlist[$key][authorid]][uids]==$master_bt['uid']){$echoonce.='<p style="text-align:center; font-size:24px; color:#f00; font-weight:bold;">BT堂堂主</p>';}
+				
 				$echoonce .= '<p>'.lang('plugin/wishing_hall','classn_01').': '.$days[$postlist[$key][authorid]][days].' '.lang('plugin/wishing_hall','classn_02').'</p>'.$lastedecho.'<p>'.$days[$postlist[$key][authorid]][level].'</p>';
 			} else {
 				$echoonce = '<p>'.lang('plugin/wishing_hall','classn_11').'</p>';

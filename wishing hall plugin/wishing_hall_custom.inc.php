@@ -36,7 +36,7 @@ $lang = $_G['cache']['pluginlanguage_script']['wishing_hall'];
 </script>
 EOT;
 
-		showformheader("plugins&operation=config&identifier=wishing_hall&pmod=sign_custom&submit=1");
+		showformheader("plugins&operation=config&identifier=wishing_hall&pmod=wishing_hall_custom&submit=1");
 		showtableheader('Tribute Custom By [Wishing hall]bikai');
 		showsubtitle(array('', $lang['custom_01'], $lang['custom_14'], $lang['custom_15'], $lang['custom_02'], $lang['custom_03']));
 		echo $emotechos;
@@ -96,16 +96,46 @@ EOT;
 				}
 			}
 		}
-		$cacheechos = array();
-		$cacheechokeys = array();
-		$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." ORDER BY displayorder");
-		while($cacheecho = DB::fetch($queryc)) {
-			$cacheechos[$cacheecho['qdxq']] = $cacheecho;
-			$cacheechokeys[] = $cacheecho['qdxq'];
+$cacheechos = array();
+$cacheechokeys = array();
+$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." WHERE god_id='1' ORDER BY displayorder");
+while($cacheecho = DB::fetch($queryc)) {
+	$cacheechos[$cacheecho['qdxq']] = $cacheecho;
+	$cacheechokeys[] = $cacheecho['qdxq'];
 
-		}
-		C::t('common_setting')->update('paulsign_emot', $cacheechos);
-		updatecache('setting');
+}
+C::t('common_setting')->update('paulsign_emot_fo', $cacheechos);
+
+$cacheechosai = array();
+$cacheechoaikeys = array();
+$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." WHERE god_id='2' ORDER BY displayorder");
+while($cacheechoai = DB::fetch($queryc)) {
+	$cacheechosai[$cacheechoai['qdxq']] = $cacheechoai;
+	$cacheechoaikeys[] = $cacheechoai['qdxq'];
+
+}
+C::t('common_setting')->update('paulsign_emot_ai', $cacheechosai);
+
+$cacheechoskao = array();
+$cacheechokaokeys = array();
+$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." WHERE god_id='3' ORDER BY displayorder");
+while($cacheechokao = DB::fetch($queryc)) {
+	$cacheechoskao[$cacheechokao['qdxq']] = $cacheechokao;
+	$cacheechokaokeys[] = $cacheechokao['qdxq'];
+
+}
+C::t('common_setting')->update('paulsign_emot_kao', $cacheechoskao);
+
+$cacheechosall = array();
+$cacheechoallkeys = array();
+$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." ORDER BY displayorder");
+while($cacheechoall = DB::fetch($queryc)) {
+	$cacheechosall[$cacheechoall['qdxq']] = $cacheechoall;
+	$cacheechoallkeys[] = $cacheechoall['qdxq'];
+
+}
+C::t('common_setting')->update('paulsign_emot_all', $cacheechosall);
+updatecache('setting');
 
 		cpmsg($lang['custom_11'], '', 'succeed');
 

@@ -35,14 +35,14 @@ $fastreplytexts = explode("/hhf/", $nfastreplytext);
 $_G['setting']['switchwidthauto']=0;//关闭宽窄屏切换
 $extreward = explode("/hhf/", $njlmain);
 $extreward_num = count($extreward);
-$jlxgroups = unserialize($var['jlxgroups']);
+//$jlxgroups = unserialize($var['jlxgroups']);
 $groups = unserialize($var['groups']);
 
 //$plgroups = unserialize($var['plgroups']);
 //$plgroups2 = unserialize($var['plgroups']);
 //$plgroups = dimplode($plgroups);
 
-$credit = mt_rand($var['mincredit'],$var['maxcredit']);
+//$credit = mt_rand($var['mincredit'],$var['maxcredit']);
 $read_ban = explode(",",$var['ban']);
 $post = DB::fetch_first("SELECT posts FROM ".DB::table('common_member_count')." WHERE uid='$_G[uid]'");
 $qiandaodb = DB::fetch_first("SELECT * FROM ".DB::table('wishing_hall')." WHERE uid='$_G[uid]'");
@@ -80,26 +80,26 @@ if($_GET['operation'] == '') {
 /*************7 S first vister & master & rank*****/	
 $firstvister = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('wishing_hall_wish_ai')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and time >= {$tdtime} ORDER BY q.time");
 	if($firstvister){
-		$firstvister="<li><span class='xi2 xg1'>".$firstvister['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$firstvister['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$firstvister['godsay']."</li>";	
+		$firstvister="<li><span class='xi2 xg1'>".$firstvister['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$firstvister['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>爱神说：</span>".$firstvister['godsay']."</li>";	
 	}else{
 	 	$firstvister="<li><span class='xi2 xg1'>今天还没有人许愿</li>";	
 	}	
 
 $goodpeople = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('wishing_hall_wish_ai')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and qdxq = 'shuai_ai' ORDER BY q.time desc");
 	if($goodpeople){
-		$goodpeople="<li><span class='xi2 xg1'>".$goodpeople['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$goodpeople['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$goodpeople['godsay']."</li>";	
+		$goodpeople="<li><span class='xi2 xg1'>".$goodpeople['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$goodpeople['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>爱神说：</span>".$goodpeople['godsay']."</li>";	
 	}else{
 	 	$goodpeople="<li><span class='xi2 xg1'>本庙久经风雨，几近坍塌。</li>";	
 	}
 		
 $master=DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('wishing_hall_ai')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY reward desc");	
 	if($master){
-		$master="<li><span class='xi2 xg1'>".$master['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$master['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$master['godsay']."</li>";	
+		$master="<li><span class='xi2 xg1'>".$master['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$master['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>爱神说：</span>".$master['godsay']."</li>";	
 	}else{
 	 	$master="<li><span class='xi2 xg1'>本庙暂无堂主</li>";	
 	}
 	
-$sql_rank="SELECT m.username,q.reward,q.uid FROM ".DB::table('wishing_hall_ai')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY reward desc LIMIT 0,5";	
+$sql_rank="SELECT m.username,q.reward,q.uid FROM ".DB::table('wishing_hall_ai')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY reward desc LIMIT 0,8";	
 $query = DB::query($sql_rank);
 	$rank = array();
 	while($rank = DB::fetch($query)) {
@@ -125,10 +125,10 @@ $query = DB::query($sql_rank);
 
 	else {
 ***********6 E*********/		
-		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall_ai')."");
-		$page = max(1, intval($_GET['page']));
-		$start_limit = ($page - 1) * 10;
-		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:ai&operation={$_GET[operation]}");
+//		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall_ai')."");
+//		$page = max(1, intval($_GET['page']));
+//		$start_limit = ($page - 1) * 10;
+//		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:ai&operation={$_GET[operation]}");
 //	}
 /*****5 S*******
 	if($_GET['operation'] == 'zong'){
@@ -157,7 +157,7 @@ $query = DB::query($sql_rank);
 			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('wishing_hall_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and q.time >= {$tdtime} ORDER BY q.time LIMIT $start_limit, 10";
 		} else {
 */			
-			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('wishing_hall_wish_ai')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.time desc LIMIT $start_limit, 10";
+			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('wishing_hall_wish_ai')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.time desc LIMIT 0, 10";
 /*		}
 
 	}
@@ -211,12 +211,7 @@ $query = DB::query($sql_rank);
 	if($_GET['formhash'] != FORMHASH) {
 		showmessage('undefined_action', NULL);
 	}
-/*************5 S********************/	
-$jinbi=getuserprofile('extcredits2');	
-if($jinbi<$credit){
-	sign_msg($lang['ts_yq']);
-}
-/*************5 E******************/
+
 	if($var['timeopen']) {
 		if ($htime < $var['stime']) {
 			sign_msg("{$lang['ts_timeearly1']}{$var[stime]}{$lang['ts_timeearly2']}");
@@ -256,10 +251,10 @@ if($jinbi<$credit){
 			usleep(100000);
 		}
 	}
-	if(in_array($_G['groupid'], $jlxgroups) && $var['jlx'] !== '0') {
+/*	if(in_array($_G['groupid'], $jlxgroups) && $var['jlx'] !== '0') {
 		$credit = $credit * $var['jlx'];
 	}
-/*	
+	
 	if(($tdtime - $qiandaodb['time']) < 86400 && $var['lastedop'] && $qiandaodb['lasted'] !== '0'){
 		$randlastednum = mt_rand($var['lastednuml'],$var['lastednumh']);
 		$randlastednum = sprintf("%03d", $randlastednum);
@@ -267,13 +262,19 @@ if($jinbi<$credit){
 		$randlastednum = $randlastednum * $qiandaodb['lasted'];
 		$credit = round($credit*(1+$randlastednum));
 	}
-*/	
+*/
+		$num1= DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall')." WHERE time >= {$tdtime}");
+	if(!$num1){
+		DB::query("UPDATE ".DB::table('wishing_hall')." SET todaytimes=0");//今天先将所有用户许愿次数清零
+	}
+	$num_items=DB::result_first("SELECT todaytimes FROM ".DB::table('wishing_hall')." WHERE uid='$_G[uid]'");
+	if($num_items>=$var['wishingnum']){sign_msg("每天只允许许愿".$var['wishingnum']."次哦，明天再来吧");}
+		
 	$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall_wish_ai')." WHERE time >= {$tdtime}");
 	if(!$qiandaodb['uid']) {
 		DB::query("INSERT INTO ".DB::table('wishing_hall')." (uid,time) VALUES ('$_G[uid]',$_G[timestamp])");
-//		DB::query("INSERT INTO ".DB::table('wishing_hall_ai')." uid VALUES '$_G[uid]'");
-	}
-	if(!$qiandaodb_in_ai['uid']){
+		DB::query("INSERT INTO ".DB::table('wishing_hall_ai')." (uid,reward) VALUES ('$_G[uid]','0')");
+	}elseif(!$qiandaodb_in_ai['uid']){
 		DB::query("INSERT INTO ".DB::table('wishing_hall_ai')." (uid,reward) VALUES ('$_G[uid]','0')");
 		}
 /************1 S*******************	
@@ -298,6 +299,10 @@ if($jinbi<$credit){
 	}
 *********************************/	
 	$credit=DB::result_first("SELECT price FROM ".DB::table('wishing_hallemot')." WHERE qdxq='$_GET[qdxq]' and god_id=2");
+	$jinbi=getuserprofile('extcredits1');	
+	if($jinbi<$credit){
+		sign_msg($lang['ts_yq']);
+	}
 /*************1 E******************/	
 $godword=mt_rand(0,count($fastreplytexts)-1);
 /*************************
@@ -397,7 +402,7 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish_ai')." (uid,time,qdxq,toda
 			$tidnumber = $var['tidnumber'];
 		} elseif($var['qdtype'] == '3') {
 			if($num=='0' || $stats['qdtidnumber'] == '0') {
-				$subject=str_replace(array('{m}','{d}','{y}','{bbname}','{author}'),array(dgmdate($_G['timestamp'], 'n',$var['tos']),dgmdate($_G['timestamp'], 'j',$var['tos']),dgmdate($_G['timestamp'], 'Y',$var['tos']),$_G['setting']['bbname'],$_G['username']),$var['title_thread']);
+				$subject=str_replace(array('{m}','{d}','{y}','{bbname}','{author}','{godname}'),array(dgmdate($_G['timestamp'], 'n',$var['tos']),dgmdate($_G['timestamp'], 'j',$var['tos']),dgmdate($_G['timestamp'], 'Y',$var['tos']),$_G['setting']['bbname'],$_G['username'],"爱神堂"),$var['title_thread']);
 				$hft = dgmdate($_G['timestamp'], 'Y-m-d H:i',$var['tos']);
 				if($exacr && $exacz) {
 					$message = "[quote][size=2][color=dimgray]{$lang[tsn_10]}[/color][url={$_G[siteurl]}plugin.php?id=wishing_hall:ai][color=darkorange]{$lang[tsn_11]}[/color][/url][color=dimgray]{$lang[tsn_12]}[/color][/size][/quote][quote][size=2][color=gray][color=teal] [/color][color=gray]{$lang[tsn_01]}[/color] [color=darkorange]{$hft}[/color] {$lang[tsn_02]}[color=red]{$lang[tsn_03]}[/color][color=darkorange]{$lang[tsn_04]}{$lang[tsn_13]}{$lang[tsn_05]}[/color]{$lang[tsn_06]} [/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][title]} [/color][color=darkorange]{$credit}[/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][unit]}[/color][color=gray]{$lang[tsn_17]}[/color] [color=gray]{$_G[setting][extcredits][$exacr][title]} [/color][color=darkorange]{$exacz}[/color][color=gray]{$_G[setting][extcredits][$exacr][unit]}.{$another_vip}[/color][/color][/size][/quote][size=3][color=dimgray]{$lang[tsn_07]}[color=red]{$todaysay}[/color]{$lang[tsn_08]}[/color][/size]";
@@ -431,7 +436,7 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish_ai')." (uid,time,qdxq,toda
 				DB::query("UPDATE ".DB::table('forum_forum')." SET lastpost='$lastpost', posts=posts+1, todayposts=todayposts+1 WHERE fid='$var[fidnumber]'", 'UNBUFFERED');
 			}
 		}
-	if(memory('check')) memory('set', 'dsu_pualsign_'.$_G['uid'], $_G['timestamp'], 86400);
+	if(memory('check')) memory('set', 'wh_pualsign_'.$_G['uid'], $_G['timestamp'], 86400);
 	if($num ==0) {
 		if($stats['todayq'] > $stats['highestq']) DB::query("UPDATE ".DB::table('wishing_hallset')." SET highestq='$stats[todayq]' WHERE id='2'");
 		DB::query("UPDATE ".DB::table('wishing_hallset')." SET yesterdayq='$stats[todayq]',todayq=1 WHERE id='2'");
@@ -441,6 +446,7 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish_ai')." (uid,time,qdxq,toda
 		DB::query("UPDATE ".DB::table('wishing_hallset')." SET todayq=todayq+1 WHERE id='2'");
 	}
 	DB::query("UPDATE ".DB::table('wishing_hallemot')." SET count=count+1 WHERE qdxq='$_GET[qdxq]'");
+	DB::query("UPDATE ".DB::table('wishing_hall')." SET todaytimes=todaytimes+1 WHERE uid='$_G[uid]'");
 	if($var['lockopen']) discuz_process::unlock('wishing_hall_ai');
 /************************	
 	if($var['tzopen']) {
@@ -495,7 +501,7 @@ $q['if']= $qiandaodb['time']<$tdtime ? "<span class=gray>".$lang['tdno']."</span
 $qtime = dgmdate($qiandaodb['time'], 'Y-m-d H:i');
 $navigation = $lang['name'];
 $navtitle = "$navigation";
-$signBuild = 'Ver 1.0 For X2.5!<br>&copy; <a href="http://scl.xidian.edu.cn/" target="_blank">毕凯</a><br>';
+$signBuild = 'Ver 2.0 For X2.5!<br>&copy; <a href="http://scl.xidian.edu.cn/" target="_blank">毕凯</a>';
 if($_G['inajax']){
 	include template('wishing_hall:ajaxsign');
 }else{

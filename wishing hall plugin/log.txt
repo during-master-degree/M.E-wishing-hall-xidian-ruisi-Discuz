@@ -39,3 +39,28 @@ nu_kao		求保过	mb_qb14
 ch_kao		免挂牌	mb_qb15
 yl_kao		学霸模式mb_qb16
 shuai_kao	修庙	mb_qb9
+
+
+睿思版许愿堂：
+睿思的扩展积分第一项extcredits1是金币，而默认extcredits2是金币。
+改动之处：
+1、XML：许愿奖励积分段nrcredit值改为1；前N额外奖励项自定义jlmain值竖杠左侧都改为1。
+2、fo.ini.php,ai.ini.php,kao.ini.php中的extcredits2改为extcredits1。
+
+
+
+水神
+2：飞絮五月
+3：qizige
+4：时光漫步
+5：海妖精
+6：飞絮五月
+
+Bt神
+2：lich0000
+3：huangxu366
+4：三公子
+5：飞絮五月
+
+
+

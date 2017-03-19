@@ -203,7 +203,7 @@ function Icon_selected(sId) {
 </div>
 
 <!--==========2 S pics scroll==============-->
-<div style="margin:0 auto;">
+<div style="margin:0 auto; min-width:1340px;">
 
 <div style="float:left;width:22%; text-align:center;">
 <div class="bm">
@@ -332,11 +332,11 @@ function updatePage() {
        if (myXmlHttp.status == 200) {		  
 //       var response = myXmlHttp.responseText.split("|");
 		 var xmlDoc=myXmlHttp.responseXML;
-		 document.getElementById("random").innerHTML= Math.round(Math.random()*1000);
 //		 if(!isNaN(xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue))
 //		 {alert("Is num:"+xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue+"");
 //		 }else alert("Not num.");
 		 var item_num=xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue;
+		 document.getElementById("random").innerHTML= Math.round(Math.random()*1000)+"+"+item_num;
 		 for(var i=1;i<=item_num;i++){
 				document.getElementById("xy_id"+i).innerHTML="<a href='home.php?mod=space&uid="+xmlDoc.getElementsByTagName("uid")[i-1].childNodes[0].nodeValue+"' target='_blank' style='color:#ff7600;'>"+xmlDoc.getElementsByTagName("username")[i-1].childNodes[0].nodeValue+"("+xmlDoc.getElementsByTagName("time")[i-1].childNodes[0].nodeValue+") "+"</a>"+xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue+":"+xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
 				
@@ -457,7 +457,7 @@ setInterval("getCustomerInfo()",2000);
 		<!--{/if}--><!--end of the first if-->
 
 <div style="width:77%; float:left; margin-left:10px; font-size:16px;">
-		<h1 class="mt">{lang wishing_hall:mb_ph}<span id="random">idol</span></h1>
+		<h1 class="mt">{lang wishing_hall:mb_ph}</h1>
 		<!--{if $_GET['operation'] == '' || $_GET['operation'] == 'month' || $_GET['operation'] == 'zong'}-->
 			<div class="datalist">
 				<table cellspacing="0" cellpadding="0" summary="phb" class="datatable">
@@ -477,7 +477,7 @@ $mrc[qdxq]:$mrc[todaysay]</span>
 								</td>
 							</tr>
 						<!--{/loop}-->
-						<!--{if !empty($multipage)}--><tr><td colspan="8"><div class="pages_btns">$multipage</div></td></tr><!--{/if}-->
+
 					<tr id="nobody_xy" <!--{if $has_items}-->style="display:none;"<!--{/if}-->><td colspan="9">{lang wishing_hall:mb_wrq}</td></tr>
 					<!--{/if}-->
 				</table>
@@ -541,7 +541,7 @@ $mrc[qdxq]:$mrc[todaysay]</span>
 			</div>
 			<div class="bm_c">
 				<ul class="xl">
-					<li><span style="font: bold 14px Arial; color: #fbb040;">{lang wishing_hall:mb_rayst}</span><span style="font: bold 15px Verdana; color: #f15a29;">{lang wishing_hall:name}</span><span style="font: normal 9px Verdana; display:block;"> $signBuild</span></li>
+					<li><span style="font: bold 14px Arial; color: #fbb040;">{lang wishing_hall:mb_rayst}</span><span style="font: bold 15px Verdana; color: #f15a29;">{lang wishing_hall:name}</span><span style="font: normal 12px Verdana; display:block;"> $signBuild&nbsp;&nbsp;<span id="random">idol</span></span></li>
 				</ul>
 			</div>
 		</div>

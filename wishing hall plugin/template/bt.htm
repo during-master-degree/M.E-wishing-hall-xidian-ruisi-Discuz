@@ -1,0 +1,437 @@
+{subtemplate common/header}
+<!--zhushi 5-->
+<style> 
+.datalist { zoom: 1; }
+.datalist table { margin-bottom: 30px; width: 100%; border: 1px solid #E6E7E1; }
+.datalist th, .datalist td { padding: 4px 5px; border: 1px solid #E6E7E1; font-weight: 400; }
+.datalist th img { vertical-align: top; }
+.datalist table .stat_subject { border-right: none; }
+.datalist table .stat_num { padding-right: 15px; text-align: right; border-left: none; }
+.datalist .datatable { margin-bottom: 10px; }
+.datalist .datatable, .datalist .datatable th, .datalist .datatable td { border-width: 1px 0; text-align: left; }
+.datalist .fixtable { table-layout: fixed; }
+.colplural, .colplural th, .colplural td, th.highlight, td.highlight { background-color: #F5F5F5; }
+.qdsmile{padding:3px;margin:auto;float:left;list-style:none;float:left}
+.qdsmile li{float: left;padding:5px .4em;border:2px #fff solid;}
+.qdsmile li img{margin-bottom:5px;}
+.qdsmile li:hover{cursor:pointer;background:#F7FAFF;border:2px dashed #D1D8D8;}
+</style>
+<!--=======8 S imagewall===========-->
+<script src="source/plugin/wishing_hall/js/jquery.min.js"></script> 
+
+<style type="text/css">
+/* container */
+#container{width:756px; margin:0 auto;}
+#container li{position:relative;left:0;top:0;z-index:0;}
+.templates li{float:left;height:210px;width:252px;}
+.templates a{display:block;height:139px;padding:7px 5px 34px;text-align:center;width:215px;cursor:pointer;position:relative;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:#666 2px 4px 8px;-moz-box-shadow:#666 2px 4px 8px;box-shadow:#666 2px 4px 8px;background:#ffffff;background:-webkit-gradient(linear, 0 0, 0 bottom, from(#ffffff), to(#ffffff));background:-webkit-linear-gradient(#ffffff, #ffffff);background:-moz-linear-gradient(#ffffff, #ffffff);background:-ms-linear-gradient(#ffffff, #ffffff);background:-o-linear-gradient(#ffffff, #ffffff);background:linear-gradient(#ffffff, #ffffff);-pie-background:linear-gradient(#ffffff, #ffffff);}
+.btn20{float:left;height:20px;font:1.2em/20px Arial;text-align:center;padding:0 20px;text-align:center;width:auto; max-width:100px; overflow:hidden;color:#fff;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:#666 2px 2px 2px;-moz-box-shadow:#666 2px 2px 2px;box-shadow:#666 2px 2px 2px;background:#009fd8;background:-webkit-gradient(linear, 0 0, 0 bottom, from(#009fd8), to(#0088ce));background:-webkit-linear-gradient(#009fd8, #0088ce);background:-moz-linear-gradient(#009fd8, #0088ce);background:-ms-linear-gradient(#009fd8, #0088ce);background:-o-linear-gradient(#009fd8, #0088ce);background:linear-gradient(#009fd8, #0088ce);-pie-background:linear-gradient(#009fd8, #0088ce);}
+.templates img{width:215px;height:139px;}
+.templates .btnLine{position:absolute;bottom:8px;left:6px;right:6px;display:block;}
+.templates .price{font:1.2em/20px Arial;float:right;}
+</style>
+<!--=======8 E imagewall===========-->
+<script type="text/javascript">
+function levelts(msg, script) {
+    script = !script ? '' : script;
+    var c = '<div class="f_c"><div class="c floatwrap" style="height: 370px">' + msg + '</div></div>';
+	var t = '{lang wishing_hall:lvmsg}' ;
+	showDialog(c, 'info', t);
+}
+function Icon_selected(sId) {
+    var oImg = document.getElementById('gongpin').getElementsByTagName('li');
+    for (var i = 0; i < oImg.length; i++) {
+      if (oImg[i].id == sId) {
+		var selectname = document.getElementById(oImg[i].id + "_s");
+        selectname.checked = true;
+        oImg[i].style. background = '#F7FAFF';
+		oImg[i].style. border = '2px dashed #D1D8D8';
+      } else {
+        oImg[i].style. background = '';
+		oImg[i].style. border = '2px dashed #FFF';
+      }
+    }
+}
+</script>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="plugin.php?id=wishing_hall:bt">{lang wishing_hall:name}</a>
+	</div> 
+</div>
+
+<!--==========2 S pics scroll==============-->
+<div style="margin:0 auto; min-width:1340px;">
+
+<div style="float:left;width:22%; text-align:center;">
+<div class="bm">
+<div class="bm_h cl">
+<h2>BT大神堂堂主</h2>
+</div>
+<div class="bm_c">
+<ul class="xl">$master
+</ul>
+</div>
+</div>
+
+<div class="bm">
+<div class="bm_h cl">
+<h2>修庙大善人</h2>
+</div>
+<div class="bm_c">
+<ul class="xl">
+$goodpeople
+</ul>
+</div>
+</div>
+
+<div class="bm">
+<div class="bm_h cl">
+<h2>今日首位进贡者</h2>
+</div>
+<div class="bm_c">
+<ul class="xl">
+$firstvister
+</ul>
+</div>
+</div>
+</div>
+
+<div style="width:56%; float:left; ">
+<!--==========7 S shui shen===============-->
+<div id="container">
+	<ul class="templates">
+    <!--{loop $postStar_bt $result}-->
+		<li>
+			<a href="home.php?mod=space&uid=$result['authorid']" title="{$result['author']} [发表{$result['num']}帖♂]" name="xxx" target="_blank">
+				<img alt="本水神比较羞涩哦！" src="uc_server/avatar.php?uid=$result['authorid']&amp;size=middle"  style="width:215px; height:139px;"/>
+				<div class="btnLine">
+					<span class="btn20">$result['author']</span>
+					<span class="price">发表{$result['num']}帖</span>
+				</div>
+			</a>
+		</li>
+        <!--{/loop}-->
+	</ul>
+</div>
+<script type="text/javascript">
+var jq = jQuery.noConflict();
+jq(function () {
+	
+	var cont_left = jq("#container").position().left;
+	
+    jq("UL.templates LI").hover(function () {
+        // hover in
+        jq(this).css("z-index", 2);
+        animateB(jq(this).find("A"));
+        animateB(jq(this).find("IMG"));
+    }, function () {
+        // hover out
+        jq(this).css("z-index", 0);
+        reversAnimationB(jq(this).find("A"));
+        reversAnimationB(jq(this).find("IMG"));
+    });
+
+
+    function animateB(obj) {
+        jq(obj).animate({
+            height: "189",
+            width: "265",
+            left: "-=25",
+            top: "-=25"
+        }, "1000");
+    }
+
+    function reversAnimationB(obj) {
+        jq(obj).animate({
+            height: "139",
+            width: "215",
+            left: "+=25",
+            top: "+=25"
+        }, "1000");
+    }
+
+    jq("#container a").each(function (index) {
+        var left = (index * 0);
+        jq(this).css("left", left + "px");
+    });
+
+});
+</script>
+<!--==========7 S shui shen===============--> 
+</div><!--ifocus_l2 end-->
+
+<div style="float:left; width:22%; text-align:center;">
+<div class="bm">
+<div class="bm_h cl">
+<h2>进贡排行榜</h2>
+</div>
+<div class="bm_c">
+<ul>
+<!--{loop $ranks $rank}-->
+<li><span style="float:left;"><a target="_blank" href="home.php?mod=space&uid=$rank[uid]"><!--{avatar($rank['uid'],small)}--></a></span><span style="float:left; margin:10px 0 0 20px;">$rank['username']</span><span style="color:#0C0; float:right; margin:10px 0 0 0;">￥$rank['reward']</span></li>
+<div style=" clear:both;"></div>
+<!--{/loop}-->
+</ul>
+
+</div>
+</div>
+</div>   
+</div>
+<div style="clear:both; height:30px;"></div>
+<!--==========2 E pics scroll===========--> 
+<!--==========5 S ajax==================--> 
+<script language="javascript" type="text/javascript">
+
+var myXmlHttp;
+
+function createmyXmlHttp() {
+  try {
+    myXmlHttp = new XMLHttpRequest();
+  } catch (trymicrosoft) {
+    try {
+      myXmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (othermicrosoft) {
+      try {
+        myXmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (failed) {
+        myXmlHttp = false;
+      }
+    }
+  }
+
+  if (!myXmlHttp)
+    alert("Error initializing XMLHttpRequest!");
+}
+
+function getCustomerInfo() {
+  createmyXmlHttp();
+  // Do something with the myXmlHttp variable
+  var data ="sid="+Math.random();
+  var url = "source/plugin/wishing_hall/ajax_bt.php";
+  myXmlHttp.open("POST", url, true);
+  myXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+  myXmlHttp.onreadystatechange = updatePage;
+  myXmlHttp.send(data);
+}
+
+function updatePage() {
+     if (myXmlHttp.readyState == 4) {
+       if (myXmlHttp.status == 200) {		  
+//       var response = myXmlHttp.responseText.split("|");
+		 var xmlDoc=myXmlHttp.responseXML;
+//		 if(!isNaN(xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue))
+//		 {alert("Is num:"+xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue+"");
+//		 }else alert("Not num.");
+		 var item_num=xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue;
+		 document.getElementById("random").innerHTML= Math.round(Math.random()*1000)+"+"+item_num;
+		 for(var i=1;i<=item_num;i++){
+				document.getElementById("xy_id"+i).innerHTML="<a href='home.php?mod=space&uid="+xmlDoc.getElementsByTagName("uid")[i-1].childNodes[0].nodeValue+"' target='_blank' style='color:#ff7600;'>"+xmlDoc.getElementsByTagName("username")[i-1].childNodes[0].nodeValue+"("+xmlDoc.getElementsByTagName("time")[i-1].childNodes[0].nodeValue+") "+"</a>"+xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue+":"+xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
+				
+				document.getElementById("god_id"+i).innerHTML=xmlDoc.getElementsByTagName("godsay")[i-1].childNodes[0].nodeValue;
+				
+				document.getElementById("xy_id"+i+"_tr").style.display="";//visibility="visible";
+				document.getElementById("god_id"+i+"_tr").style.display="";//visibility="visible";
+			 } 
+		 for(var j=parseInt(item_num)+1;j<=10;j++){
+			 	document.getElementById("xy_id"+j+"_tr").style.display="none";//visibility="hidden";
+				document.getElementById("god_id"+j+"_tr").style.display="none";//visibility="hidden";
+			 }
+		if(!parseInt(item_num)){document.getElementById("nobody_xy").style.display="";}	
+		else document.getElementById("nobody_xy").style.display="none";	 
+//  	 document.getElementById("xy_id1").innerHTML =xmlDoc.getElementsByTagName("todaysay")[2].childNodes[0].nodeValue;
+//      document.getElementById("todaysay").value = response[0];
+       } else if (myXmlHttp.status == 404) {
+         alert ("Requested URL is not found.");
+       } else if (myXmlHttp.status == 403) {
+         alert("Access denied.");
+       }// else
+//       alert("status is " + myXmlHttp.status);
+     }
+   }
+
+setInterval("getCustomerInfo()",2000);
+</script>
+<!--==========5 E ajax==================--> 
+<div id="ct" class="ct2 wp cl" style="margin:0;">
+	<div class="mn" style="width:85%;">
+		<!--{if  (!$var['timeopen'] || ($var['timeopen'] && ($htime >= $var['stime'] && $htime <= $var['ftime'])))}-->
+<!--%% $qiandaodb['time'] < $tdtime && %%-->
+			<div class="t" style="width:20%; overflow:auto; float:left;">
+            
+<!--=============3 S fwt===================-->
+			<h1 class="mt"></h1>
+			<!--{if $qiandaodb}-->
+				<p><font color="#FF0000"><b>$_G['username']</b></font> {lang wishing_hall:mb_fwt1} <b>$qiandaodb['days']</b> {lang wishing_hall:mb_fwt2}</p>
+				<p>{lang wishing_hall:mb_fwt3}<b>$qiandaodb['mdays']</b> {lang wishing_hall:mb_fwt2}</p>
+				<p>{lang wishing_hall:mb_fwt6}<font color="#ff00cc">$qtime</font> </p>
+				<p>{lang wishing_hall:mb_fwt8} <font color="#ff00cc"><b>$qiandaodb['reward']</b></font>.</p>
+				<p>{$q['level']}</p>
+                <a href="#" onclick="levelts('{lang wishing_hall:lvmsg1}', this.href);return false;"><span style="color:#0c0; font-weight:bold;">{lang wishing_hall:lvmsg}</span></a>
+			<!--{else}-->
+				<p>{lang wishing_hall:mb_fwt7}</p>
+			<!--{/if}-->
+<!--=============3 E fwt===================-->   
+         
+			<h3>{lang wishing_hall:mb_xz}</h3>            
+				<!--{if $var['qdajax']}-->
+					<form id="qiandao" method="post" action="plugin.php?id=wishing_hall:bt&operation=qiandao&infloat=1" onkeydown="if(event.keyCode==13){showWindow('qwindow', 'qiandao', 'post', '0');return false}">
+				<!--{else}-->
+					<form name="qiandao" method="post" action="plugin.php?id=wishing_hall:bt&operation=qiandao&infloat=0&inajax=0">
+				<!--{/if}-->
+				<input type="hidden" name="formhash" value="{FORMHASH}">
+				<table width="100%" cellpadding="0" cellspacing="0" align="center">
+					<tr>
+						<td class="tr3 tac">
+							<ul class="qdsmile" id="gongpin">
+							<!--{loop $emots $key $value}-->
+								<input id="{$key}_s" type="radio" name="qdxq" value="{$key}" style="display:none"><li id="{$key}" onclick="Icon_selected(this.id)" onmouseover="showMenu({'ctrlid':this.id, 'pos':'21'});"><center><img src="source/plugin/wishing_hall/img/emot/{$key}.gif" /><br /></center></li>
+							<!--{/loop}-->
+							</ul>
+						</td>
+					</tr>
+					<!--{loop $emots $key $value}-->
+						<div id="{$key}_menu" class="tip tip_4" style="display:none;width:50px;margin:0px 0px 0px 30px;"><div class="tip_horn"></div><div class="tip_c"><center>{$value['name']}</center></div></div>
+					<!--{/loop}-->
+				</table>
+
+					<!--{if !$var['sayclose']}-->
+						<div>
+							<div{if !$var['todaysayxt']} style="display:none;"{/if}>
+								<p>{lang wishing_hall:mb_mode1}</p>
+								<div>
+									<label><input type="radio" name="qdmode" value="1" checked="checked" onclick="if(checked == true){document.getElementById('mode1').style.display='';document.getElementById('mode2').style.display='none';}">&nbsp;{lang wishing_hall:mb_mode2}</label>&nbsp;&nbsp;
+									<!--{if $var['todaysayxt']}--><label><input type="radio" name="qdmode" value="3" onclick="if(checked){document.getElementById('mode1').style.display='none';document.getElementById('mode2').style.display='none';}">&nbsp;{lang wishing_hall:noq}</label><!--{/if}-->
+								</div>
+							</div>
+							<div id="mode1" style="display:;">
+								<p><label for="todaysay"></label></p>
+								<div><textarea cols="52" style="resize:vertical;" name="todaysay" id="todaysay" rows="3" onChange="getCustomerInfo();"></textarea></div>								
+                                <p>{lang wishing_hall:mb_xzzs}</p> 
+							</div>
+						</div>
+					<!--{/if}-->
+<!--============4 S button=================-->
+<style>
+.shopInfor_btn{padding:20px 0 60px; margin:0 0 0 40px;}
+.shopInfor_btn a,.shopInfor_btn input{display:block;width:110px;margin-left:10px}
+.shopInfor_btn input{height:38px;border:0}
+.cfl{*zoom:1}
+.cfl:after{content:"\0020";display:block;height:0;clear:both;overflow:hidden;visibility:hidden}
+.shopBtn{display:block;height:36px;font-size:14px;text-align:center;line-height:36px;color:#fff;background:#ec4f22;font-weight:bold;background:-webkit-gradient(linear,left top,left bottom,color-stop(#ff6e42,0),color-stop(#ec4f22,1));background:-webkit-linear-gradient(top,#ff6e42 0,#ec4f22 100%);background:-moz-linear-gradient(top,#ff6e42 0,#ec4f22 100%);background:-o-linear-gradient(top,#ff6e42 0,#ec4f22 100%);background:linear-gradient(top,#ff6e42 0,#ec4f22 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6e42',endColorstr='#ec4f22',GradientType=0);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;border:1px solid #fc6236}
+.shopBtn:hover{-webkit-box-shadow:0 1px 1px #fb7a54 inset,1px 1px 2px rgba(0,0,0,0.4);-moz-box-shadow:0 1px 1px #fb7a54 inset,1px 1px 2px rgba(0,0,0,0.4);box-shadow:0 1px 1px #fb7a54 inset,1px 1px 2px rgba(0,0,0,0.4)}
+.shopBtn:active{background:#ec4f22;-webkit-box-shadow:1px 1px 2px #ec4a1c inset;-moz-box-shadow:1px 1px 2px #ec4a1c inset;box-shadow:1px 1px 2px #ec4a1c inset}
+</style>
+
+<!--============4 E button================-->
+
+<div class="shopInfor_btn cfl"><!--{if $var['qdajax']}--><a href="javascript:;" style="text-decoration:none;" onclick="showWindow('qwindow', 'qiandao', 'post', '0');return false"><input name="Checkout[submit]" class="shopBtn" onClick="" type="submit" value="    许下心愿    " /></a><!--{else}--><input name="Checkout[submit]" class="shopBtn" onClick="" type="submit" value="    许下心愿    " /><!--{/if}--></div>
+                                    
+				</form>
+			</div>
+            <!--{else}--><!--notice while close wishing hall-->
+            <div style="width:20%; overflow:auto; float:left;">
+            			<h1 class="mt"></h1>
+			<!--{if $qiandaodb}-->
+				<p><font color="#FF0000"><b>$_G['username']</b></font> {lang wishing_hall:mb_fwt1} <b>$qiandaodb['days']</b> {lang wishing_hall:mb_fwt2}</p>
+				<p>{lang wishing_hall:mb_fwt3}<b>$qiandaodb['mdays']</b> {lang wishing_hall:mb_fwt2}</p>
+				<p>{lang wishing_hall:mb_fwt6}<font color="#ff00cc">$qtime</font> </p>
+				<p>{lang wishing_hall:mb_fwt8}{$_G[setting][extcredits][$var[nrcredit]][title]} <font color="#ff00cc"><b>$qiandaodb['reward']</b></font> {$_G['setting']['extcredits'][$var[nrcredit]]['unit']}{lang wishing_hall:mb_fwt9}{$_G[setting][extcredits][$var[nrcredit]][title]} <font color="#ff00cc"><b>$qiandaodb['lastreward']</b></font> {$_G['setting']['extcredits'][$var[nrcredit]]['unit']}.</p>
+				<p>{$q['level']}</p>
+			<!--{else}-->
+				<p>{lang wishing_hall:mb_fwt7}</p>
+			<!--{/if}-->
+            </div>
+		<!--{/if}--><!--end of the first if-->
+
+<div style="width:77%; float:left; margin-left:10px; font-size:16px;">
+		<h1 class="mt">{lang wishing_hall:mb_ph}</h1>
+		<!--{if $_GET['operation'] == '' || $_GET['operation'] == 'month' || $_GET['operation'] == 'zong'}-->
+			<div class="datalist">
+				<table cellspacing="0" cellpadding="0" summary="phb" class="datatable">
+					<!--{if $mrcs}-->
+						<!--{loop $mrcs $mrc}-->                       
+							<tr id="{$mrc['xy_id']}_tr" <!--{if $mrc[username]==''}-->style=" display:none;"<!--{/if}-->>
+								<td></td>
+								<td><span id="{$mrc['xy_id']}"><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>
+
+$mrc[qdxq]:$mrc[todaysay]</span>
+<!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=wishing_hall:bt&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang wishing_hall:ban_04}"><font color=red>[{lang wishing_hall:ban_05}]</font></a><!--{/if}--></td>
+							</tr>
+
+							<tr class="colplural" id="{$mrc['god_id']}_tr" <!--{if $mrc[username]==''}-->style=" display:none;"<!--{/if}-->>
+								<td align="left" colspan="9">
+                                	<span id="{$mrc['god_id']}">$mrc[godsay]</span>
+								</td>
+							</tr>
+<!--{/loop}-->
+
+					<tr id="nobody_xy" <!--{if $has_items}-->style="display:none;"<!--{/if}-->><td colspan="9">{lang wishing_hall:mb_wrq}</td></tr>
+					<!--{/if}-->
+				</table>
+			</div>	
+        </div>    		
+		<!--{/if}--><!--end of paihangbang if-->
+
+	</div>
+	<div  style="width:15%; float:right;">
+		<div class="bm">
+			<div class="bm_h cl">
+				<h2>{lang wishing_hall:mb_gg}</h2>
+			</div>
+			<div class="bm_c">
+				<ul class="xl">
+					<li>{$var[notice]}</li>
+				</ul>
+			</div>
+		</div>
+		<!--{if $var['timeopen']}-->
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang wishing_hall:mb_tips}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="xl">
+						<li>{lang wishing_hall:mb_tips1}{$var[stime]}{lang wishing_hall:mb_tips2}{$var[ftime]}{lang wishing_hall:mb_tips3}</li>
+					</ul>
+				</div>
+			</div>
+		<!--{/if}-->
+		<!--{if $var['tjopen']}-->
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang wishing_hall:tj_06}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="xl">
+						<!--{loop $emottops $emottop}-->
+							<li><span class="y xi2 xg1">$emottop[count] {lang wishing_hall:tj_03}</span>$emottop[name]</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang wishing_hall:tj_01}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="xl">
+						<li><span class="y xi2 xg1">$stats[todayq] {lang wishing_hall:tj_03}</span>{lang wishing_hall:tj_04}</li>
+						<li><span class="y xi2 xg1">$stats[yesterdayq] {lang wishing_hall:tj_03}</span>{lang wishing_hall:tj_05}</li>
+						<li><span class="y xi2 xg1">$stats[highestq] {lang wishing_hall:tj_03}</span>{lang wishing_hall:tj_02}</li>
+					</ul>
+				</div>
+			</div>
+		<!--{/if}-->
+		<div class="bm">
+			<div class="bm_h cl">
+				<h2>{lang wishing_hall:mb_ver}</h2>
+			</div>
+			<div class="bm_c">
+				<ul class="xl">
+					<li><span style="font: bold 14px Arial; color: #fbb040;">{lang wishing_hall:mb_rayst}</span><span style="font: bold 15px Verdana; color: #f15a29;">{lang wishing_hall:name}</span><span style="font: normal 12px Verdana; display:block;"> $signBuild&nbsp;&nbsp;<span id="random">idol</span></span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{subtemplate common/footer}

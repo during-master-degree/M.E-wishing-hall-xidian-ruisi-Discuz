@@ -99,6 +99,54 @@
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
+				<item id="7">
+					<item id="name"><![CDATA[offer]]></item>
+					<item id="menu"><![CDATA[offer神-许愿堂]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="8">
+					<item id="name"><![CDATA[miao]]></item>
+					<item id="menu"><![CDATA[喵神-许愿堂]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="9">
+					<item id="name"><![CDATA[shui]]></item>
+					<item id="menu"><![CDATA[水神-许愿堂]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="10">
+					<item id="name"><![CDATA[bt]]></item>
+					<item id="menu"><![CDATA[BT神-许愿堂]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
 			</item>
 		</item>
 		<item id="version"><![CDATA[X2.5]]></item>
@@ -106,10 +154,10 @@
 			<item id="0">
 				<item id="displayorder"><![CDATA[43]]></item>
 				<item id="title"><![CDATA[自定义每天独立许愿帖标题]]></item>
-				<item id="description"><![CDATA[当许愿设置中的"许愿的自动回复类型"设置为"指定版块每天一主题"时该选项有效,月用{m}日用{d}年用{y}论坛名称用{bbname}发帖用户名{author}代换.]]></item>
+				<item id="description"><![CDATA[当许愿设置中的"许愿的自动回复类型"设置为"指定版块每天一主题"时该选项有效,月用{m}日用{d}年用{y}神名用{godname}论坛名称用{bbname}发帖用户名{author}代换.]]></item>
 				<item id="variable"><![CDATA[title_thread]]></item>
 				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[{y}年{m}月{d}日许愿记录贴]]></item>
+				<item id="value"><![CDATA[{y}年{m}月{d}日{godname}许愿记录贴]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="1">
@@ -183,7 +231,7 @@
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[tidphopen]]></item>
 				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[1]]></item>
+				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="8">
@@ -271,7 +319,7 @@
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[sync_follow]]></item>
 				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[1]]></item>
+				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="16">
@@ -293,23 +341,6 @@
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="18">
-				<item id="displayorder"><![CDATA[17]]></item>
-				<item id="title"><![CDATA[奖励增倍的指定用户组选择]]></item>
-				<item id="description"><![CDATA[]]></item>
-				<item id="variable"><![CDATA[jlxgroups]]></item>
-				<item id="type"><![CDATA[groups]]></item>
-				<item id="extra"><![CDATA[]]></item>
-				<item id="__value">
-					<item id="0"><![CDATA[16]]></item>
-					<item id="1"><![CDATA[17]]></item>
-					<item id="2"><![CDATA[18]]></item>
-					<item id="3"><![CDATA[19]]></item>
-					<item id="4"><![CDATA[1]]></item>
-					<item id="5"><![CDATA[2]]></item>
-					<item id="6"><![CDATA[3]]></item>
-				</item>
-			</item>
-			<item id="19">
 				<item id="displayorder"><![CDATA[11]]></item>
 				<item id="title"><![CDATA[结束时间段]]></item>
 				<item id="description"><![CDATA[24小时制，请填写整数,实际结束时间为该点的59分，例：如果我填写的是22,那么实际结束时间为22：59.]]></item>
@@ -318,62 +349,35 @@
 				<item id="value"><![CDATA[22]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="20">
+			<item id="19">
 				<item id="displayorder"><![CDATA[12]]></item>
 				<item id="title"><![CDATA[许愿奖励积分段]]></item>
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[nrcredit]]></item>
 				<item id="type"><![CDATA[extcredit]]></item>
-				<item id="value"><![CDATA[2]]></item>
+				<item id="value"><![CDATA[1]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="21">
-				<item id="displayorder"><![CDATA[13]]></item>
-				<item id="title"><![CDATA[最少奖励积分值]]></item>
-				<item id="description"><![CDATA[]]></item>
-				<item id="variable"><![CDATA[mincredit]]></item>
-				<item id="type"><![CDATA[number]]></item>
-				<item id="value"><![CDATA[5]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="22">
-				<item id="displayorder"><![CDATA[16]]></item>
-				<item id="title"><![CDATA[指定用户组获取奖励是一般的几倍]]></item>
-				<item id="description"><![CDATA[]]></item>
-				<item id="variable"><![CDATA[jlx]]></item>
-				<item id="type"><![CDATA[number]]></item>
-				<item id="value"><![CDATA[2]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="23">
+			<item id="20">
 				<item id="displayorder"><![CDATA[15]]></item>
 				<item id="title"><![CDATA[前N额外奖励项自定义]]></item>
 				<item id="description"><![CDATA[从第一名到第N名可以自定义额外奖励的积分项与数值
 例如1|20为第一行,就是1楼奖励一号积分项20点.]]></item>
 				<item id="variable"><![CDATA[jlmain]]></item>
 				<item id="type"><![CDATA[textarea]]></item>
-				<item id="value"><![CDATA[2|10
-2|9
-2|8
-2|7
-2|6
-2|5
-2|4
-2|3
-2|2
-2|1]]></item>
+				<item id="value"><![CDATA[1|10
+1|9
+1|8
+1|7
+1|6
+1|5
+1|4
+1|3
+1|2
+1|1]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="24">
-				<item id="displayorder"><![CDATA[14]]></item>
-				<item id="title"><![CDATA[最多奖励积分值]]></item>
-				<item id="description"><![CDATA[]]></item>
-				<item id="variable"><![CDATA[maxcredit]]></item>
-				<item id="type"><![CDATA[number]]></item>
-				<item id="value"><![CDATA[10]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="25">
+			<item id="21">
 				<item id="displayorder"><![CDATA[21]]></item>
 				<item id="title"><![CDATA[自动开贴的typeid]]></item>
 				<item id="description"><![CDATA[仅对于"许愿的自动回复类型"中选择了"指定版块每天一主题"的设置后有效,如不清楚作用请留着不要设置.]]></item>
@@ -382,7 +386,7 @@
 				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="26">
+			<item id="22">
 				<item id="displayorder"><![CDATA[27]]></item>
 				<item id="title"><![CDATA[是否开启“是否许愿”选择项]]></item>
 				<item id="description"><![CDATA[]]></item>
@@ -391,7 +395,7 @@
 				<item id="value"><![CDATA[1]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="27">
+			<item id="23">
 				<item id="displayorder"><![CDATA[29]]></item>
 				<item id="title"><![CDATA[佛回复语句]]></item>
 				<item id="description"><![CDATA[每行一个.]]></item>
@@ -415,16 +419,16 @@
 佛的光芒，照耀着每一个信徒；我给予你们启迪，让你们拥有力量。]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="28">
+			<item id="24">
 				<item id="displayorder"><![CDATA[42]]></item>
 				<item id="title"><![CDATA[是否将许愿同步到记录]]></item>
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[sync_say]]></item>
 				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[1]]></item>
+				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="29">
+			<item id="25">
 				<item id="displayorder"><![CDATA[33]]></item>
 				<item id="title"><![CDATA[帖子侧边显示模式]]></item>
 				<item id="description"><![CDATA[]]></item>
@@ -435,7 +439,7 @@
 1=简单模式
 2=详细模式]]></item>
 			</item>
-			<item id="30">
+			<item id="26">
 				<item id="displayorder"><![CDATA[49]]></item>
 				<item id="title"><![CDATA[是否关闭许愿]]></item>
 				<item id="description"><![CDATA[通过此项目可彻底关闭.]]></item>
@@ -444,7 +448,7 @@
 				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="31">
+			<item id="27">
 				<item id="displayorder"><![CDATA[45]]></item>
 				<item id="title"><![CDATA[是否开启许愿内存缓存]]></item>
 				<item id="description"><![CDATA[开启后可以减轻许愿查询压力,但是有潜在的缓存数据问题,DZ这破东西内存缓存并不完善,总之,如果出现稀奇古怪的现象,请关闭此项]]></item>
@@ -453,7 +457,7 @@
 				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="32">
+			<item id="28">
 				<item id="displayorder"><![CDATA[46]]></item>
 				<item id="title"><![CDATA[许愿时差]]></item>
 				<item id="description"><![CDATA[]]></item>
@@ -462,16 +466,16 @@
 				<item id="value"><![CDATA[8]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="33">
+			<item id="29">
 				<item id="displayorder"><![CDATA[47]]></item>
 				<item id="title"><![CDATA[许愿是否同步到签名]]></item>
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[sync_sign]]></item>
 				<item id="type"><![CDATA[radio]]></item>
-				<item id="value"><![CDATA[1]]></item>
+				<item id="value"><![CDATA[0]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="34">
+			<item id="30">
 				<item id="displayorder"><![CDATA[48]]></item>
 				<item id="title"><![CDATA[许愿进程锁]]></item>
 				<item id="description"><![CDATA[可有效防止重复开贴现象发生,PHP4的WIN下的用户必须关闭,否则会出现许愿错误.]]></item>
@@ -480,7 +484,7 @@
 				<item id="value"><![CDATA[1]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="35">
+			<item id="31">
 				<item id="displayorder"><![CDATA[29]]></item>
 				<item id="title"><![CDATA[爱神回复语句]]></item>
 				<item id="description"><![CDATA[每行一个.]]></item>
@@ -508,34 +512,11 @@
 爱其实是一种习惯，你习惯生活中有他，他习惯生活中有你。拥有的时候不觉得什么，一旦失去，却仿佛失去了所有。]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
-			<item id="36">
+			<item id="32">
 				<item id="displayorder"><![CDATA[29]]></item>
 				<item id="title"><![CDATA[考神回复语句]]></item>
 				<item id="description"><![CDATA[每行一个.]]></item>
 				<item id="variable"><![CDATA[fastreplytext_kao]]></item>
-				<item id="type"><![CDATA[textarea]]></item>
-				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
-大神撇了撇嘴，说，“生男生女一样好。”
-大神微微睁开双目瞅了瞅，道：“爱卿平身。”
-天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，考神之风，山高水长。
-哥讨厌脑残，任何一个脑残，都会被哥的爷们之光刺瞎双眼双耳。
-天边飘来一句悠远雄浑的话，哥生一，一生二，二生三，三生万物。
-天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。
-天边飘来一句悠远雄浑的话，傻子加入了我变成了神，是一条最容易突出的游鱼；因为他凭恃才高学广，看不见自己的缺点。
-天边飘来一句悠远雄浑的话，哥讨厌脑残，任何一个脑残，都会被哥的爷们之光刺瞎双眼双耳。
-天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信哥。
-天边飘来一句悠远雄浑的话，信耶稣者、死后成神；信如来者、死后成佛；信哥者，死后满状态原地复活。
-逢考必过，常胜将军之名非你莫属！
-任何人，即使再爷们，也不能成为纯爷们，因为我是纯爷们。
-天边飘来一句悠远雄浑的话，犯哥者，虽远必爆。
-幸福属于膜拜哥的人们。]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="37">
-				<item id="displayorder"><![CDATA[29]]></item>
-				<item id="title"><![CDATA[新神回复语句]]></item>
-				<item id="description"><![CDATA[每行一个.]]></item>
-				<item id="variable"><![CDATA[fastreplytext_xin]]></item>
 				<item id="type"><![CDATA[textarea]]></item>
 				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
 多考少考多少要考，早过晚过早晚要过。
@@ -555,7 +536,127 @@
 有人考试靠实力，有人考试靠视力，我能给你的是想象力。
 一个月前我问佛祖怎么办佛祖送我四字:事在人为； 半月前我又问佛祖,佛祖又送我四字:一切随缘；今天我又问佛祖、佛祖沉默半晌后说:再送你四字:重在参与。]]></item>
 				<item id="extra"><![CDATA[]]></item>
-			</item>			
+			</item>
+			<item id="33">
+				<item id="displayorder"><![CDATA[29]]></item>
+				<item id="title"><![CDATA[水神回复语句]]></item>
+				<item id="description"><![CDATA[每行一个.]]></item>
+				<item id="variable"><![CDATA[fastreplytext_shui]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
+长江后浪退前浪，灌水英雄代代出。
+水神散金币啦，先到先得。
+灌水是一个态度，所谓的沉默的大多数；灌水是一个生活，既不是简单的路过，也不是单纯的看热闹；灌水是一种娱乐，冷眼旁观他人的喧嚣，静静品味自己的沉默！
+刚才游泳去了，嘿嘿，喝了好多水。。。。。不小心就成水神了。
+好久没有水了，继续各种水去！
+大神微微睁开双目瞅了瞅，道：“爱卿平身。”
+没有你的日子里，我拿什么与你同舟共济。
+一场游戏一场梦，一场暴雨轰隆隆。
+偶来此处散步，只见青蛙装酷，呕吐呕吐。
+大神撇了撇嘴，说，“生男生女一样好。”
+水水更健康，大家一起来水！come on！
+像我这样拉风的人，不管在什么地方，就好像漆黑中的萤火虫一样，是那样的鲜明，那样的出众。
+这位小友，我看你玉树临风，天赋异秉，将来必成水神。
+隐藏着灌水的力量的钥匙啊，在我面前显示你真正的力量！现在以你的主人，命令你——让一切帖子皆成水贴吧~~
+我就是文武双全，才貌双绝，男女双修，德艺双馨的传说中的水神。
+水神是谁？天生写轮眼，胸口碎大石，空手拆高达，大力金刚腿，你们要是再认错人，水神会生气，后果很严重。
+致正在水的孩子们：信水神者，满血满状态复活。
+天边飘来一句悠远雄浑的话，犯哥者，虽远必爆。
+幸福属于膜拜哥的人们。
+灌水，是一种美德。]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="34">
+				<item id="displayorder"><![CDATA[29]]></item>
+				<item id="title"><![CDATA[BT神回复语句]]></item>
+				<item id="description"><![CDATA[每行一个.]]></item>
+				<item id="variable"><![CDATA[fastreplytext_bt]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
+YY是我思考的方式，BT是我追求的境界。
+大神撇了撇嘴，说，“生男生女一样好。”
+大神微微睁开双目瞅了瞅，道：“爱卿平身。”
+你如果聪明的话，就乖乖到许愿池投个硬币，杜绝游戏币。
+哥讨厌脑残，任何一个脑残，都会被哥的爷们之光刺瞎双眼双耳。
+起得早，睡得晚，方可练成BT大神。
+天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。
+共享率底下者，必须供奉！
+我在这里，你在哪里，后生还需努力！
+天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信哥。
+天边飘来一句悠远雄浑的话，信耶稣者、死后成神；信如来者、死后成佛；信哥者，死后满状态原地复活。
+BT大神散流量啦，先到先得。
+任何人，即使再爷们，也不能成为纯爷们，因为我是纯爷们。
+天边飘来一句悠远雄浑的话，犯哥者，虽远必爆。
+幸福属于膜拜哥的人们。]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="35">
+				<item id="displayorder"><![CDATA[29]]></item>
+				<item id="title"><![CDATA[喵神回复语句]]></item>
+				<item id="description"><![CDATA[每行一个.]]></item>
+				<item id="variable"><![CDATA[fastreplytext_miao]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
+大神撇了撇嘴，说，“蠢货，这么点钱我只能给你看鼻孔哦!”
+大神微微睁开双目瞅了瞅，道：“猫罐头要牛肉味儿的!”
+天边飘来一句悠远雄浑的话，谁允许你给本大爷这么好吃食物的。
+喵喵喵喵喵喵喵喵喵喵喵喵喵喵！
+嘛！既然你诚心诚意的进贡了！祝你！考试顺利！喵！
+天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。
+嘛！既然你诚心诚意的进贡了！祝你！爱情顺利！喵！
+嘛！既然你诚心诚意的进贡了！祝你！看不见汪星人！喵！
+天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信哥。
+再一次轻而易举夺取人类的资源！喵！
+纳尼！伪装成甜甜圈的计划居然被发现了！
+人类已经无法阻止俺们喵星人了。
+我向星星许了个愿，我并不是真的相信它，但是反正也是免费的，而且也没有证据证明它不灵。
+今天我要做俯卧撑...今天先俯卧，明天再撑。
+真不愿意起来，尤其我还病了，可我还得带病坚持吃饭。
+这个汉堡的味道真不错，但是不如前八个的味道好。
+除了吃和睡，生命也许还会有别的意义，不过我觉得没有就挺好。
+爱情就像照片，需要大量的暗房时间来培养。
+信本喵神得永生哟~
+幸福属于膜拜喵喵哥的人们。]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="36">
+				<item id="displayorder"><![CDATA[29]]></item>
+				<item id="title"><![CDATA[offer神回复语句]]></item>
+				<item id="description"><![CDATA[每行一个.]]></item>
+				<item id="variable"><![CDATA[fastreplytext_offer]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”
+别管我要安全感，你以为我是专门杀毒的软件啊。
+打遍天下所有的酱油，让别人吃醋去吧。
+天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，大哥之风，山高水长。
+一口吃不成胖子，但胖子却是一口一口吃来的。
+谁若对我使用美人计，我就会将计就计。
+天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。
+生活就像我的歌声，时而不靠谱，时而不着调。
+再烦我就把你绑草船上借箭去！
+天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信哥。
+希望似火，失望如烟，人生就是七处点火，八处冒烟。
+所谓创意就是你的老板同意你做的梦。
+成熟不是看你的年龄有多大，而是看你的肩膀能挑起多重的责任。
+当老板告诉你退一步海阔天空的时候，你最好提防后面是不是断崖。上班辛苦了，愿你保持良好心态，工作顺利舒心！
+不要说别人脑子有病，脑子有病的前提是必须有个脑子。
+八戒，别以为你站在路灯下就是夜明猪了。
+执子之手，方知子丑，泪流满面，子不走我走。
+幸福属于膜拜哥的人们。
+学历代表你的过去，财力代表现在的努力，学习能力代表将来的成就。大多数人都想要改造这个世界，但却罕有人想改造自己。无论你在好单位还是一时不得志，都请你保持学习，这是你未来立足之本。
+在职场中，眼泪并不能代表什么；这个世界之所以灿烂，不是因为阳光，而是因为你的笑。
+如果工作是一种乐趣，人生就是天堂！]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>	
+			<item id="37">
+				<item id="displayorder"><![CDATA[32]]></item>
+				<item id="title"><![CDATA[每个用户每天许愿最大次数]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[wishingnum]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[3]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>		
 		</item>
 		<item id="language">
 			<item id="scriptlang">
