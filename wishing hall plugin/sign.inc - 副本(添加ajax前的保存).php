@@ -140,15 +140,9 @@ $query = DB::query($sql_rank);
 	}
 	$query = DB::query($sql);
 	$mrcs = array();
-	$xy_id_num=1;
-	$god_id_num=1;
 	while($mrc = DB::fetch($query)) {
 		$mrc['if']= $mrc['time']<$tdtime ? "<span class=gray>".$lang['tdno']."</span>" : "<font color=green>".$lang['tdyq']."</font>";
 		$mrc['time'] = dgmdate($mrc['time'], 'Y-m-d H:i');
-		$mrc['xy_id']="xy_id".$xy_id_num;
-		$xy_id_num++;
-		$mrc['god_id']="xy_id".$god_id_num;
-		$god_id_num++;
 		!$qd['qdxq'] && $qd['qdxq']=end(array_keys($emots));
 		if ($mrc['days'] >= '1500') {
 			$mrc['level'] = "[LV.Master]{$lvmastername}";
@@ -194,12 +188,6 @@ $query = DB::query($sql_rank);
 	if($_GET['formhash'] != FORMHASH) {
 		showmessage('undefined_action', NULL);
 	}
-/*************5 S********************/	
-$jinbi=getuserprofile('extcredits2');	
-if($jinbi<$credit){
-	sign_msg($lang['ts_yq']);
-}
-/*************5 E******************/
 	if($var['timeopen']) {
 		if ($htime < $var['stime']) {
 			sign_msg("{$lang['ts_timeearly1']}{$var[stime]}{$lang['ts_timeearly2']}");
@@ -283,9 +271,14 @@ $godword=mt_rand(0,count($fastreplytexts)-1);
 	}
 /*************2 S******************/
 DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysay,godsay) VALUES ('$_G[uid]',$_G[timestamp],'$_GET[qdxq]','$todaysay','$fastreplytexts[$godword]')");
+
+$jinbi=getuserprofile('extcredits2');	
+if($jinbi<$credit){
+	sign_msg($lang['ts_yq']);
+}else{
 	$credit=-$credit;
 	updatemembercount($_G['uid'], array($var['nrcredit'] => $credit));
-
+}
 
 /*************2 E******************/	
 	

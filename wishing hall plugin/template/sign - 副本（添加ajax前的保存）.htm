@@ -1,5 +1,4 @@
 {subtemplate common/header}
-<!--zhushi 5-->
 <style> 
 .datalist { zoom: 1; }
 .datalist table { margin-bottom: 30px; width: 100%; border: 1px solid #E6E7E1; }
@@ -281,59 +280,7 @@ $firstvister
 </div>
 <div style="clear:both; height:30px;"></div>
 <!--==========2 E pics scroll===========--> 
-<!--==========5 S ajax==================--> 
-<script language="javascript" type="text/javascript">
 
-var request;
-
-function createRequest() {
-  try {
-    request = new XMLHttpRequest();
-  } catch (trymicrosoft) {
-    try {
-      request = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (othermicrosoft) {
-      try {
-        request = new ActiveXObject("Microsoft.XMLHTTP");
-      } catch (failed) {
-        request = false;
-      }
-    }
-  }
-
-  if (!request)
-    alert("Error initializing XMLHttpRequest!");
-}
-
-function getCustomerInfo() {
-  createRequest();
-  // Do something with the request variable
-  var todaysay = document.getElementById("todaysay").value;
-  var url = "source/plugin/dsu_paulsign/ajax.php?todaysay=" + escape(todaysay);
-  request.open("GET", url, true);
-  request.onreadystatechange = updatePage;
-  request.send(null);
-//	ajaxget("photo.php","todaysay","updatePage","Loading");
-}
-
-function updatePage() {
-     if (request.readyState == 4) {
-       if (request.status == 200) {
-         var response = request.responseText.split("|");
-         document.getElementById("todaysay").value = response[0];
-         document.getElementById("god_id1").innerHTML=response[1].replace(/\n/g, "<br />");
-       } else if (request.status == 404) {
-         alert ("Requested URL is not found.");
-       } else if (request.status == 403) {
-         alert("Access denied.");
-       } else
-         alert("status is " + request.status);
-     }
-   }
-
-
-</script>
-<!--==========5 E ajax==================--> 
 <div id="ct" class="ct2 wp cl" style="margin:0;">
 	<div class="mn" style="width:80%;">
 		<!--{if  (!$var['timeopen'] || ($var['timeopen'] && ($htime >= $var['stime'] && $htime <= $var['ftime'])))}-->
@@ -386,7 +333,7 @@ function updatePage() {
 							</div>
 							<div id="mode1" style="display:;">
 								<p><label for="todaysay"></label></p>
-								<div><textarea cols="40" style="resize:vertical;" name="todaysay" id="todaysay" rows="4" onChange="getCustomerInfo();"></textarea></div>
+								<div><textarea cols="40" style="resize:vertical;" name="todaysay" id="todaysay" rows="4"></textarea></div>
 								<p>{lang dsu_paulsign:mb_xzzs}</p>
 							</div>
 						</div>
@@ -433,15 +380,14 @@ function updatePage() {
 						<!--{loop $mrcs $mrc}-->
 							<tr>
 								<td></td>
-								<td><span id="{$mrc['xy_id']}"><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>:
+								<td><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>:
 <!--{if !$_G['cache']['plugin']['dsu_paulsign']['sayclose']}-->
-<img src="source/plugin/dsu_paulsign/img/emot/$mrc[qdxq].gif" /> $mrc[todaysay]</span>
-<!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=dsu_paulsign:sign&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang dsu_paulsign:ban_04}"><font color=red>[{lang dsu_paulsign:ban_05}]</font></a><!--{/if}--></td>
+<img src="source/plugin/dsu_paulsign/img/emot/$mrc[qdxq].gif" /> $mrc[todaysay] <!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=dsu_paulsign:sign&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang dsu_paulsign:ban_04}"><font color=red>[{lang dsu_paulsign:ban_05}]</font></a><!--{/if}--></td>
 							</tr>
 
 							<tr class="colplural">
 								<td align="left" colspan="9">
-                                	<span style="color:#ff7600">神答曰：</span><span id="{$mrc['god_id']}">$mrc[godsay]</span>
+                                	<span style="color:#ff7600">神答曰：</span>$mrc[godsay]
 								</td>
 							</tr>
 							<!--{/if}-->
