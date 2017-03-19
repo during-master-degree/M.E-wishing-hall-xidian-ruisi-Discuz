@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `cdb_wishing_hall` (
   `mdays` int(5) NOT NULL DEFAULT '0',
   `reward` int(12) NOT NULL DEFAULT '0',
   `lastreward` int(12) NOT NULL DEFAULT '0',
-  `flow_up` float(11,3) NOT NULL DEFAULT '0',
+  `flow_up` int(12) NOT NULL DEFAULT '0',
   `chip_up` int(12) NOT NULL DEFAULT '0',
   `coin_award` int(12) NOT NULL DEFAULT '0',
   `flow_award` float(11,3) NOT NULL DEFAULT '0',

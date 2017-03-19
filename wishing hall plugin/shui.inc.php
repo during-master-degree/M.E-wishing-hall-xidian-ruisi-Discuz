@@ -110,7 +110,7 @@ $query = DB::query($sql_rank);
 /**************8 S user slider*******************/
 require_once libfile('function/cache');//1
 $cache_file = DISCUZ_ROOT.'./data/sysdata/cache_wishing_hall_shui.php';
-if(($_G['timestamp'] - @filemtime($cache_file)) > (1+60)) {
+if(($_G['timestamp'] - @filemtime($cache_file)) > (1+699999990)) {
 		global $_G;
 		$poststar = array(); 
 		$tomonth = date('n'); 
@@ -118,7 +118,7 @@ if(($_G['timestamp'] - @filemtime($cache_file)) > (1+60)) {
 		$toyear = date('Y');
 
 		$time = mktime(0, 0, 0, $tomonth, $todate, $toyear); 
-		$query = DB::query("select count(pid) as num, authorid, author from ".DB::table('forum_post')." where dateline>=$time group by authorid order by num desc limit 0, 18");
+		$query = DB::query("select count(pid) as num, authorid, author from ".DB::table('forum_post')." where dateline>=$time group by authorid order by num desc limit 0, 6");
 
 		while($result = DB::fetch($query)) {
 //			$result['authorid'] = $result['authorid'];
@@ -484,9 +484,13 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish_shui')." (uid,time,qdxq,to
 	} else {
 *************************/		
 		if($exacr && $exacz) {
+			if($exacz==10)DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+'$exacz'+2 WHERE uid='$_G[uid]'");
+			else DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+'$exacz'+1 WHERE uid='$_G[uid]'");
+			
 			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} 上传量 {$credit} GB  {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} 金钱 {$random_rewards} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:shui");
 		} else {
-			sign_msg("{$lang[tsn_18]} 金钱 {$random_rewards} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:shui");
+			DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+1 WHERE uid='$_G[uid]'");
+			sign_msg("进贡上传量 {$credit} GB {$lang[tsn_18]} 金钱 {$random_rewards} .".$another_vip,"plugin.php?id=wishing_hall:shui");
 		}
 //	}
 }

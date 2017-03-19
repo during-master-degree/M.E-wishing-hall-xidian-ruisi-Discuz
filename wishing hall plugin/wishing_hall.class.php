@@ -232,6 +232,7 @@ class plugin_wishing_hall_forum extends plugin_wishing_hall {
 	}
 	function viewthread_sidetop_output() {
 		global $postlist,$_G,$_GET;
+		$tdtime = gmmktime(0,0,0,dgmdate($_G['timestamp'], 'n',$var['tos']),dgmdate($_G['timestamp'], 'j',$var['tos']),dgmdate($_G['timestamp'], 'Y',$var['tos'])) - $var['tos']*3600;
 		$open = $_G['cache']['plugin']['wishing_hall']['sidebarmode'];
 		$lastedop = $_G['cache']['plugin']['wishing_hall']['lastedop'];
 		if(empty($_GET['tid']) || !is_array($postlist) || !$open) return array();
@@ -245,7 +246,7 @@ class plugin_wishing_hall_forum extends plugin_wishing_hall {
 		$authorids = array_filter($authorids);
 		$authorids = dimplode($authorids);
 		if($authorids == '') return array();
-		$uidlists = DB::query("SELECT uid,days,lasted,qdxq,time,todaysay FROM ".DB::table('wishing_hall')." WHERE uid IN($authorids)");
+		$uidlists = DB::query("SELECT uid,days,lasted,qdxq,time,todaysay FROM ".DB::table('wishing_hall')." WHERE uid IN($authorids) and time>{$tdtime}");
 		$days = array();
 		$nlvtext =str_replace(array("\r\n", "\n", "\r"), '/hhf/', $_G['cache']['plugin']['wishing_hall']['lvtext']);
 		list($lv1name, $lv2name, $lv3name, $lv4name, $lv5name, $lv6name, $lv7name, $lv8name, $lv9name, $lv10name, $lvmastername) = explode("/hhf/", $nlvtext);
@@ -289,7 +290,7 @@ class plugin_wishing_hall_forum extends plugin_wishing_hall {
 		foreach($postlist as $key => $val) {
 			if($days[$postlist[$key][authorid]][days]) {
 				$lastedecho = $lastedop ? '<p>'.lang('plugin/wishing_hall','classn_12').': '.$days[$postlist[$key][authorid]][lasted].' '.lang('plugin/wishing_hall','classn_02').'</p>' : '';
-				if($open == '2')$echoonce = '<div class="qdsmile"><li><center>'.lang('plugin/wishing_hall','ta_mind').'</center><table><tr><th>'.$days[$postlist[$key][authorid]][time].'<br /><font size="-1" color="#FF7600">TA对神说</font>:<br />'.$days[$postlist[$key][authorid]][todaysay].'</th><th><img src="source/plugin/wishing_hall/img/emot/'.$days[$postlist[$key][authorid]][qdxq].'.gif"></th></tr></table></li></div>';//<font size="5px">'.$days[$postlist[$key][authorid]][qdxqzw].'</font>
+				if($open == '2')$echoonce = '<div class="qdsmile"><li><center>'.lang('plugin/wishing_hall','ta_mind').'</center><table><tr><th>'.$days[$postlist[$key][authorid]][time].'<br /><font size="-1" color="#FF7600">TA对神说</font>:<br />'.cnString($days[$postlist[$key][authorid]][todaysay],62).'</th><th><img src="source/plugin/wishing_hall/img/emot/'.$days[$postlist[$key][authorid]][qdxq].'.gif"></th></tr></table></li></div>';//<font size="5px">'.$days[$postlist[$key][authorid]][qdxqzw].'</font>
 				
 				$master_fo=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_fo')." ORDER BY reward desc");
 				$master_ai=DB::fetch_first("SELECT uid FROM ".DB::table('wishing_hall_ai')." ORDER BY reward desc");
@@ -308,12 +309,24 @@ if($days[$postlist[$key][authorid]][uids]==$master_bt['uid']){$echoonce.='<p sty
 				
 				$echoonce .= '<p>'.lang('plugin/wishing_hall','classn_01').': '.$days[$postlist[$key][authorid]][days].' '.lang('plugin/wishing_hall','classn_02').'</p>'.$lastedecho.'<p>'.$days[$postlist[$key][authorid]][level].'</p>';
 			} else {
-				$echoonce = '<p>'.lang('plugin/wishing_hall','classn_11').'</p>';
+				$echoonce = '<p>'.lang('plugin/wishing_hall','classn_13').'</p>';
 			}
 			$echoq[] = $echoonce;
 			$echoonce = '';
 		}
 		return $echoq;
 	}
+}
+function cnString($str,$len)
+{
+   $tmpstr = "";
+   for($i = 0; $i < $len; $i++) {
+       if(ord(substr($str, $i, 1)) > 0xa0) {
+           $tmpstr .= substr($str, $i, 2);
+           $i++;
+       } else
+           $tmpstr .= substr($str, $i, 1);
+   }
+   return $tmpstr;
 }
 ?>

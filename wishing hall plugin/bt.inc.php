@@ -19,6 +19,9 @@ lastedop
 */
 
 !defined('IN_DISCUZ') && exit('Access Denied');
+//if(!memory('check')){
+//	showmessage("无法读取缓存！");
+//}
 define('IN_wishing_hall', '1');
 define("NOROBOT", TRUE);
 $navtitle = "BT神-许愿堂";
@@ -110,21 +113,54 @@ $query = DB::query($sql_rank);
 /**************8 S user slider*******************/
 require_once libfile('function/cache');//1
 $cache_file = DISCUZ_ROOT.'./data/sysdata/cache_wishing_hall_bt.php';
-if(($_G['timestamp'] - @filemtime($cache_file)) > (1+60)) {
+if(($_G['timestamp'] - @filemtime($cache_file)) > (1+20)) {
 		global $_G;
 		$poststar = array(); 
-		$tomonth = date('n'); 
-		$todate = date('j'); 
-		$toyear = date('Y');
-
-		$time = mktime(0, 0, 0, $tomonth, $todate, $toyear); 
-		$query = DB::query("select count(pid) as num, authorid, author from ".DB::table('forum_post')." where dateline>=$time group by authorid order by num desc limit 0, 18");
-
-		while($result = DB::fetch($query)) {
-//			$result['authorid'] = $result['authorid'];
-//			$result['autitl'] = $result['author'];
-			$poststar[] = $result;
-		}
+		$poststar1 = array();
+		$poststar2 = array();
+		$poststar3 = array();
+		
+		$sendrolon = memory('get','sendrolon');
+		$top10infos = $sendrolon['top10infos'];
+		
+		//		$top10infos['uid']=array("aa","bb","cc");
+//		$top10infos['username']=array("aa1","bb2","cc3");
+//		$top10infos['delta']=array(11,22,33);
+		$items_bt=0;
+		foreach($top10infos['uid'] as $value){
+				if($items_bt<6){
+						$poststar1[]=$value;
+						$items_bt++;
+					}else{
+							break;
+						}
+			}
+		$items_bt=0;
+		foreach($top10infos['username'] as $value){
+				if($items_bt<6){
+						$poststar2[]=$value;
+						$items_bt++;
+					}else{
+							break;
+						}
+			}
+		$items_bt=0;
+		foreach($top10infos['delta'] as $value){
+				if($items_bt<6){
+						$poststar3[]=$value;
+						$items_bt++;
+					}else{
+							break;
+						}
+			}
+$total_bt_items=(count($poststar1)<6)?count($poststar1):6;	
+for($i=0;$i<$total_bt_items;$i++){
+		$result['uid']=$poststar1[$i];
+		$result['username']=$poststar2[$i];
+		$result['delta']=$poststar3[$i];
+		$poststar[]=$result;
+	}	
+		
 		$cacheArray .= "\$postStar_bt=".arrayeval($poststar).";\n";
 		writetocache('wishing_hall_bt', $cacheArray);
 }
@@ -338,14 +374,13 @@ $godword=mt_rand(0,count($fastreplytexts)-1);
 	updatemembercount($_G['uid'], array( "extcredits2"=> $random_rewards_buf));
 		
 		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',flow_award=flow_award+{$random_rewards},reward=reward+{$credit},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
-DB::query("UPDATE ".DB::table('wishing_hall_bt')." SET todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit} WHERE uid='$_G[uid]'");		
+DB::query("UPDATE ".DB::table('wishing_hall_bt')." SET todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit} WHERE uid='$_G[uid]'");	
+	
 //	}
 /*************2 S******************/
 DB::query("INSERT INTO ".DB::table('wishing_hall_wish_bt')." (uid,time,qdxq,todaysay,godsay) VALUES ('$_G[uid]',$_G[timestamp],'$_GET[qdxq]','$todaysay','$fastreplytexts[$godword]')");
-	$credit_munt=-$credit;
+	$credit=-$credit;
 	updatemembercount($_G['uid'], array('extcredits1' => $credit_munt));
-
-
 /*************2 E******************/	
 	
 	$another_vip = '';
@@ -485,9 +520,13 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish_bt')." (uid,time,qdxq,toda
 	} else {
 *************************/		
 		if($exacr && $exacz) {
-			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} 金币 {$credit}  {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} 上传量 {$random_rewards} GB {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:bt");
+			if($exacz==10)DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+'$exacz'+2 WHERE uid='$_G[uid]'");
+			else DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+'$exacz'+1 WHERE uid='$_G[uid]'");
+			
+			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} 金钱 {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} 上传量 {$random_rewards}GB {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:bt");
 		} else {
-			sign_msg("{$lang[tsn_18]} 上传量 {$random_rewards} GB {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:bt");
+			DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+1 WHERE uid='$_G[uid]'");
+			sign_msg("进贡金钱 {$credit} {$lang[tsn_18]} 上传量 {$random_rewards}GB .".$another_vip,"plugin.php?id=wishing_hall:bt");
 		}
 //	}
 }

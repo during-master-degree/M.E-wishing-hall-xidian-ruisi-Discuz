@@ -310,10 +310,10 @@ $godword=mt_rand(0,count($fastreplytexts)-1);
 		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',reward=reward+{$credit},lastreward='$credit',lasted=lasted+1 WHERE uid='$_G[uid]'");
 	} else {
 *************************/	
-	$random_rewards=ceil(($credit/200)*mt_rand(0,100)/100+mt_rand(0,100)/100);
-	updatemembercount($_G['uid'], array( "extcredits8"=> $random_rewards));
+	$random_rewards=ceil((($credit/15)*mt_rand(0,100)/100+mt_rand(0,100)/100)*2);
+	updatemembercount($_G['uid'], array( "extcredits5"=> $random_rewards));
 		
-		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit},character_award=character_award+{$random_rewards},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
+		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit},chip_award=chip_award+{$random_rewards},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
 DB::query("UPDATE ".DB::table('wishing_hall_kao')." SET todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit} WHERE uid='$_G[uid]'");		
 //	}
 /*************2 S******************/
@@ -461,9 +461,13 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish_kao')." (uid,time,qdxq,tod
 	} else {
 *************************/		
 		if($exacr && $exacz) {
-			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} 金币 {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} 人品 {$random_rewards} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:kao");
+			if($exacz==10)DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+'$exacz'+2 WHERE uid='$_G[uid]'");
+			else DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+'$exacz'+1 WHERE uid='$_G[uid]'");
+			
+			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} 金币 {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} 筹码 {$random_rewards} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:kao");
 		} else {
-			sign_msg("{$lang[tsn_18]} 人品 {$random_rewards} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:kao");
+			DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+1 WHERE uid='$_G[uid]'");
+			sign_msg("进贡金币 {$credit} {$lang[tsn_18]} 筹码 {$random_rewards} .".$another_vip,"plugin.php?id=wishing_hall:kao");
 		}
 //	}
 }

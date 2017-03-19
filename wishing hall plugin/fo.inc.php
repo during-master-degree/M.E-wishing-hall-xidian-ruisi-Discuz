@@ -467,9 +467,13 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish')." (uid,time,qdxq,todaysa
 	} else {
 *************************/		
 		if($exacr && $exacz) {
+			if($exacz==10)DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+'$exacz'+2 WHERE uid='$_G[uid]'");
+			else DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+'$exacz'+1 WHERE uid='$_G[uid]'");
+			
 			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} 筹码 {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} 上传量 {$random_rewards} GB {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:fo");
 		} else {
-			sign_msg("{$lang[tsn_18]} 上传量 {$random_rewards} GB {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:fo");
+			DB::query("UPDATE ".DB::table('wishing_hall')." SET coin_award=coin_award+1 WHERE uid='$_G[uid]'");
+			sign_msg("进贡筹码 {$credit} {$lang[tsn_18]} 上传量 {$random_rewards} GB .".$another_vip,"plugin.php?id=wishing_hall:fo");
 		}
 //	}
 }

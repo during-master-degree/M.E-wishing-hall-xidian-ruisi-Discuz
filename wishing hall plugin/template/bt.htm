@@ -26,7 +26,7 @@
 .templates li{float:left;height:210px;width:252px;}
 .templates a{display:block;height:139px;padding:7px 5px 34px;text-align:center;width:215px;cursor:pointer;position:relative;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:#666 2px 4px 8px;-moz-box-shadow:#666 2px 4px 8px;box-shadow:#666 2px 4px 8px;background:#ffffff;background:-webkit-gradient(linear, 0 0, 0 bottom, from(#ffffff), to(#ffffff));background:-webkit-linear-gradient(#ffffff, #ffffff);background:-moz-linear-gradient(#ffffff, #ffffff);background:-ms-linear-gradient(#ffffff, #ffffff);background:-o-linear-gradient(#ffffff, #ffffff);background:linear-gradient(#ffffff, #ffffff);-pie-background:linear-gradient(#ffffff, #ffffff);}
 .btn20{float:left;height:20px;font:1.2em/20px Arial;text-align:center;padding:0 20px;text-align:center;width:auto; max-width:100px; overflow:hidden;color:#fff;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-box-shadow:#666 2px 2px 2px;-moz-box-shadow:#666 2px 2px 2px;box-shadow:#666 2px 2px 2px;background:#009fd8;background:-webkit-gradient(linear, 0 0, 0 bottom, from(#009fd8), to(#0088ce));background:-webkit-linear-gradient(#009fd8, #0088ce);background:-moz-linear-gradient(#009fd8, #0088ce);background:-ms-linear-gradient(#009fd8, #0088ce);background:-o-linear-gradient(#009fd8, #0088ce);background:linear-gradient(#009fd8, #0088ce);-pie-background:linear-gradient(#009fd8, #0088ce);}
-.templates img{width:215px;height:139px;}
+.templates img{height:139px;}
 .templates .btnLine{position:absolute;bottom:8px;left:6px;right:6px;display:block;}
 .templates .price{font:1.2em/20px Arial;float:right;}
 </style>
@@ -99,43 +99,53 @@ $firstvister
 <div style="width:56%; float:left; ">
 <!--==========7 S shui shen===============-->
 <div id="container">
+<!--{if $postStar_bt}-->
 	<ul class="templates">
     <!--{loop $postStar_bt $result}-->
 		<li>
-			<a href="home.php?mod=space&uid=$result['authorid']" title="{$result['author']} [发表{$result['num']}帖♂]" name="xxx" target="_blank">
-				<img alt="本水神比较羞涩哦！" src="uc_server/avatar.php?uid=$result['authorid']&amp;size=middle"  style="width:215px; height:139px;"/>
+			<a href="home.php?mod=space&uid=$result['uid']" name="xxx" target="_blank">
+				<img alt="BT大神们比较羞涩哦！" src="uc_server/avatar.php?uid=$result['uid']&amp;size=middle"/>
 				<div class="btnLine">
-					<span class="btn20">$result['author']</span>
-					<span class="price">发表{$result['num']}帖</span>
+					<span class="btn20">$result['username']</span>
+					<span class="price">上传量{$result['delta']}GB</span>
 				</div>
 			</a>
 		</li>
         <!--{/loop}-->
 	</ul>
+<!--{else}-->
+<h1 style="color:#ff7600; font-size:24px; text-align:center;">BT大神们比较羞涩哦，今天暂无上传信息！</h1>
+<!--{/if}-->    
 </div>
 <script type="text/javascript">
 var jq = jQuery.noConflict();
+var lock=0;
 jq(function () {
 	
 	var cont_left = jq("#container").position().left;
 	
     jq("UL.templates LI").hover(function () {
         // hover in
+		if(lock==0){
         jq(this).css("z-index", 2);
         animateB(jq(this).find("A"));
         animateB(jq(this).find("IMG"));
+		lock=1;
+		}
     }, function () {
         // hover out
+		if(lock==1){
         jq(this).css("z-index", 0);
         reversAnimationB(jq(this).find("A"));
         reversAnimationB(jq(this).find("IMG"));
+		lock=0;
+		}
     });
 
 
     function animateB(obj) {
         jq(obj).animate({
             height: "189",
-            width: "265",
             left: "-=25",
             top: "-=25"
         }, "1000");
@@ -144,7 +154,6 @@ jq(function () {
     function reversAnimationB(obj) {
         jq(obj).animate({
             height: "139",
-            width: "215",
             left: "+=25",
             top: "+=25"
         }, "1000");
@@ -269,7 +278,6 @@ setInterval("getCustomerInfo()",2000);
   				<tr><td>金钱</td><td>$qiandaodb['reward']</td><td>$qiandaodb['coin_award']</td></tr>
   				<tr><td>上传量</td><td>$qiandaodb['flow_up']<font color="#ff0000">GB</font></td><td>$qiandaodb['flow_award']<font color="#ff0000">GB</font></td></tr>
   				<tr><td>筹码</td><td>$qiandaodb['chip_up']</td><td>$qiandaodb['chip_award']</td></tr>
-  				<tr><td>人品</td><td></td><td>$qiandaodb['character_award']</td></tr>
 				</table>
 				<p>{$q['level']}</p>
                 <a href="#" onclick="levelts('{lang wishing_hall:lvmsg1}', this.href);return false;"><span style="color:#0c0; font-weight:bold;">{lang wishing_hall:lvmsg}</span></a>
@@ -346,7 +354,6 @@ setInterval("getCustomerInfo()",2000);
   				<tr><td>金钱</td><td>$qiandaodb['reward']</td><td>$qiandaodb['coin_award']</td></tr>
   				<tr><td>上传量</td><td>$qiandaodb['flow_up']<font color="#ff0000">GB</font></td><td>$qiandaodb['flow_award']<font color="#ff0000">GB</font></td></tr>
   				<tr><td>筹码</td><td>$qiandaodb['chip_up']</td><td>$qiandaodb['chip_award']</td></tr>
-  				<tr><td>人品</td><td></td><td>$qiandaodb['character_award']</td></tr>
 				</table>
 				<p>{$q['level']}</p>
 			<!--{else}-->
