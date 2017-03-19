@@ -338,20 +338,14 @@ function updatePage() {
 //		 }else alert("Not num.");
 		 var item_num=xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue;
 		 for(var i=1;i<=item_num;i++){
-				document.getElementById("xy_id"+i).innerHTML="<a href='home.php?mod=space&uid="+xmlDoc.getElementsByTagName("uid")[i-1].childNodes[0].nodeValue+"' target='_blank' style='color:#ff7600;'>"+xmlDoc.getElementsByTagName("username")[i-1].childNodes[0].nodeValue+"("+xmlDoc.getElementsByTagName("time")[i-1].childNodes[0].nodeValue+") "+"</a>"+xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue+":"+xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
+			 	document.getElementById("xy_id"+i).innerHTML="<a href='home.php?mod=space&uid="+xmlDoc.getElementsByTagName("uid")[i-1].childNodes[0].nodeValue+"' target='_blank' style='color:#ff7600;'>"+xmlDoc.getElementsByTagName("username")[i-1].childNodes[0].nodeValue+"("+xmlDoc.getElementsByTagName("time")[i-1].childNodes[0].nodeValue+") "+"</a>";
+			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue;
+				document.getElementById("xy_id"+i).innerHTML+=":";
+			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
 				
 				document.getElementById("god_id"+i).innerHTML=xmlDoc.getElementsByTagName("godsay")[i-1].childNodes[0].nodeValue;
-				
-				document.getElementById("xy_id"+i+"_tr").style.display="";
-				document.getElementById("god_id"+i+"_tr").style.display="";
 			 }
-		 var nodisplay_num=1;	 
-		 if(item_num>0)	 nodisplay_num=item_num;
-		 else nodisplay_num=1;
-		 for(var j=item_num;j<=10;j++){
-			 	document.getElementById("xy_id"+j+"_tr").style.display="none";
-				document.getElementById("god_id"+j+"_tr").style.display="none";
-			 }	 
+		 
 //  	 document.getElementById("xy_id1").innerHTML =xmlDoc.getElementsByTagName("todaysay")[2].childNodes[0].nodeValue;
 //      document.getElementById("todaysay").value = response[0];
 
@@ -465,8 +459,7 @@ setInterval("getCustomerInfo()",2000);
 				<table cellspacing="0" cellpadding="0" summary="phb" class="datatable">
 					<!--{if $mrcs}-->
 						<!--{loop $mrcs $mrc}-->
-                        	<!--{if $mrc[godsay]!=''}-->                        
-							<tr id="{$mrc['xy_id']}_tr">
+							<tr>
 								<td></td>
 								<td><span id="{$mrc['xy_id']}"><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>
 
@@ -474,12 +467,12 @@ $mrc[qdxq]:$mrc[todaysay]</span>
 <!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=wishing_hall:ai&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang wishing_hall:ban_04}"><font color=red>[{lang wishing_hall:ban_05}]</font></a><!--{/if}--></td>
 							</tr>
 
-							<tr class="colplural" id="{$mrc['god_id']}_tr">
+							<tr class="colplural">
 								<td align="left" colspan="9">
                                 	<span id="{$mrc['god_id']}">$mrc[godsay]</span>
 								</td>
 							</tr>
-							<!--{/loop}-->
+
 						<!--{/loop}-->
 						<!--{if !empty($multipage)}--><tr><td colspan="8"><div class="pages_btns">$multipage</div></td></tr><!--{/if}-->
 					<!--{else}-->

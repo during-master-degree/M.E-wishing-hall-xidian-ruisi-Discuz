@@ -210,12 +210,6 @@ $query = DB::query($sql_rank);
 		}
 		$mrcs[] = $mrc;
 	}
-	for($j=$xy_id_num;$j<=10;$j++){/*1*/
-		$mrc['xy_id']="xy_id".$xy_id_num;			
-		$mrc['god_id']="god_id".$xy_id_num;
-		$xy_id_num++;
-		$mrcs[] = $mrc;
-	}
 	$emotquery = DB::query("SELECT count,name FROM ".DB::table('wishing_hallemot')."  WHERE god_id='3' ORDER BY count desc LIMIT 0, 5");
 	$emottops = array();
 	while($emottop = DB::fetch($emotquery)) {
