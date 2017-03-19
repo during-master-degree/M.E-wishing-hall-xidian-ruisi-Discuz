@@ -1,0 +1,520 @@
+{subtemplate common/header}
+<!--zhushi 5-->
+<style> 
+.datalist { zoom: 1; }
+.datalist table { margin-bottom: 30px; width: 100%; border: 1px solid #E6E7E1; }
+.datalist th, .datalist td { padding: 4px 5px; border: 1px solid #E6E7E1; font-weight: 400; }
+.datalist th img { vertical-align: top; }
+.datalist table .stat_subject { border-right: none; }
+.datalist table .stat_num { padding-right: 15px; text-align: right; border-left: none; }
+.datalist .datatable { margin-bottom: 10px; }
+.datalist .datatable, .datalist .datatable th, .datalist .datatable td { border-width: 1px 0; text-align: left; }
+.datalist .fixtable { table-layout: fixed; }
+.colplural, .colplural th, .colplural td, th.highlight, td.highlight { background-color: #F5F5F5; }
+.qdsmile{padding:3px;margin:auto;float:left;list-style:none;float:left}
+.qdsmile li{float: left;padding:5px .4em;border:2px #fff solid;}
+.qdsmile li img{margin-bottom:5px;}
+.qdsmile li:hover{cursor:pointer;background:#F7FAFF;border:2px dashed #D1D8D8;}
+</style>
+<!--========1 S pics scroll===============-->
+<style>
+/* iFocus style */
+#ifocus_l2 { width:530px; height:297px; border:1px solid #DEDEDE; background:#F8F8F8; margin:0 auto;}
+ #ifocus_l2_pic { display:inline; position:relative; float:right; width:510px; height:277px; overflow:hidden; margin:10px 10px 0 0; }
+  #ifocus_l2_piclist { position:absolute; }
+  #ifocus_l2_piclist li { width:510px; height:277px; overflow:hidden; }
+  #ifocus_l2_piclist img { width:510px; height:277px; }
+ #ifocus_l2_btn { display:inline; float:left; width:91px; margin:9px 0 0 9px; }
+  #ifocus_l2_btn li { width:91px; height:57px; cursor:pointer; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); }
+  #ifocus_l2_btn img { width:75px; height:45px; margin:7px 0 0 5px; }
+  #ifocus_l2_btn .current { background: url(ifocus_l_btn_bg.gif) no-repeat; opacity:1; -moz-opacity:1; filter:alpha(opacity=100);}
+ #ifocus_l2_opdiv { position:absolute; left:0; bottom:0; width:510px; height:35px; background:#000; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); }
+ #ifocus_l2_tx { position:absolute; left:8px; bottom:8px; color:#FFF; }
+  #ifocus_l2_tx .normal { display:none; }
+ </style>
+<script type="text/javascript">
+function addLoadEvent_l(func){
+ var oldonload = window.onload;
+ if (typeof window.onload != 'function') {
+  window.onload = func;
+ } else {
+  window.onload = function(){
+   oldonload();
+   func();
+  }
+ }
+}
+function moveElement_l(elementID,final_x,final_y,interval) {
+  if (!document.getElementById) return false;
+  if (!document.getElementById(elementID)) return false;
+  var elem = document.getElementById(elementID);
+  if (elem.movement) {
+    clearTimeout(elem.movement);
+  }
+  if (!elem.style.left) {
+    elem.style.left = "0px";
+  }
+  if (!elem.style.top) {
+    elem.style.top = "0px";
+  }
+  var xpos = parseInt(elem.style.left);
+  var ypos = parseInt(elem.style.top);
+  if (xpos == final_x  &&  ypos == final_y) {
+  return true;
+  }
+  if (xpos < final_x) {
+    var dist = Math.ceil((final_x - xpos)/10);
+    xpos = xpos + dist;
+  }
+  if (xpos > final_x) {
+    var dist = Math.ceil((xpos - final_x)/10);
+    xpos = xpos - dist;
+  }
+  if (ypos < final_y) {
+    var dist = Math.ceil((final_y - ypos)/10);
+    ypos = ypos + dist;
+  }
+  if (ypos > final_y) {
+    var dist = Math.ceil((ypos - final_y)/10);
+    ypos = ypos - dist;
+  }
+  elem.style.left = xpos + "px";
+  elem.style.top = ypos + "px";
+  var repeat = "moveElement_l('"+elementID+"',"+final_x+","+final_y+","+interval+")";
+  elem.movement = setTimeout(repeat,interval);
+}
+function classNormal_l(iFocusBtnID,iFocusTxID){
+ var iFocusBtns= document.getElementById(iFocusBtnID).getElementsByTagName('li');
+ var iFocusTxs = document.getElementById(iFocusTxID).getElementsByTagName('li');
+ for(var i=0; i<iFocusBtns.length; i++) {
+  iFocusBtns[i].className='normal';
+  iFocusTxs[i].className='normal';
+ }
+}
+function classCurrent_l(iFocusBtnID,iFocusTxID,n){
+ var iFocusBtns= document.getElementById(iFocusBtnID).getElementsByTagName('li');
+ var iFocusTxs = document.getElementById(iFocusTxID).getElementsByTagName('li');
+ iFocusBtns[n].className='current';
+ iFocusTxs[n].className='current';
+}
+function iFocusChange_l() {
+ if(!document.getElementById('ifocus_l2')) return false;
+ document.getElementById('ifocus_l2').onmouseover = function(){atuokey = true};
+ document.getElementById('ifocus_l2').onmouseout = function(){atuokey = false};
+ var iFocusBtns = document.getElementById('ifocus_l2_btn').getElementsByTagName('li');
+ var listLength = iFocusBtns.length;
+ iFocusBtns[0].onmouseover = function() {
+  moveElement_l('ifocus_l2_piclist',0,0,5);
+  classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+  classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',0);
+ }
+ if (listLength>=2) {
+  iFocusBtns[1].onmouseover = function() {
+   moveElement_l('ifocus_l2_piclist',0,-225,5);
+   classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+   classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',1);
+  }
+ }
+ if (listLength>=3) {
+  iFocusBtns[2].onmouseover = function() {
+   moveElement_l('ifocus_l2_piclist',0,-450,5);
+   classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+   classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',2);
+  }
+ }
+ if (listLength>=4) {
+  iFocusBtns[3].onmouseover = function() {
+   moveElement_l('ifocus_l2_piclist',0,-675,5);
+   classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+   classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',3);
+  }
+ }
+}
+setInterval('autoiFocus_l()',3000);
+var atuokey = false;
+function autoiFocus_l() {
+ if(!document.getElementById('ifocus_l2')) return false;
+ if(atuokey) return false;
+ var focusBtnList = document.getElementById('ifocus_l2_btn').getElementsByTagName('li');
+ var listLength = focusBtnList.length;
+ for(var i=0; i<listLength; i++) {
+  if (focusBtnList[i].className == 'current') var currentNum = i;
+ }
+ if (currentNum==0 && listLength!=1 ){
+  moveElement_l('ifocus_l2_piclist',0,-277,5);
+  classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+  classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',1);
+ }
+ if (currentNum==1 && listLength!=2 ){
+  moveElement_l('ifocus_l2_piclist',0,-554,5);
+  classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+  classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',2);
+ }
+ if (currentNum==2 && listLength!=3 ){
+  moveElement_l('ifocus_l2_piclist',0,-831,5);
+  classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+  classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',3);
+ }
+ if (currentNum==3 ){
+  moveElement_l('ifocus_l2_piclist',0,0,5);
+  classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+  classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',0);
+ }
+ if (currentNum==1 && listLength==2 ){
+  moveElement_l('ifocus_l2_piclist',0,0,5);
+  classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+  classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',0);
+ }
+ if (currentNum==2 && listLength==3 ){
+  moveElement_l('ifocus_l2_piclist',0,0,5);
+  classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
+  classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',0);
+ }
+}
+addLoadEvent_l(iFocusChange_l);
+</script>
+<!--========1 E pics scroll==============-->    
+<script type="text/javascript">
+function levelts(msg, script) {
+    script = !script ? '' : script;
+    var c = '<div class="f_c"><div class="c floatwrap" style="height: 370px">' + msg + '</div></div>';
+	var t = '{lang dsu_paulsign:lvmsg}' ;
+	showDialog(c, 'info', t);
+}
+function Icon_selected(sId) {
+    var oImg = document.getElementsByTagName('li');
+    for (var i = 0; i < oImg.length; i++) {
+      if (oImg[i].id == sId) {
+		var selectname = document.getElementById(oImg[i].id + "_s");
+        selectname.checked = true;
+        oImg[i].style. background = '#F7FAFF';
+		oImg[i].style. border = '2px dashed #D1D8D8';
+      } else {
+        oImg[i].style. background = '';
+		oImg[i].style. border = '';
+      }
+    }
+}
+</script>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em>&rsaquo;</em><a href="plugin.php?id=dsu_paulsign:sign">{lang dsu_paulsign:name}</a>
+	</div> 
+</div>
+
+<!--==========2 S pics scroll==============-->
+<div style="margin:0 auto;">
+
+<div style="float:left;width:22%; text-align:center;">
+<div class="bm">
+<div class="bm_h cl">
+<h2>佛堂堂主</h2>
+</div>
+<div class="bm_c">
+<ul class="xl">$master
+</ul>
+</div>
+</div>
+
+<div class="bm">
+<div class="bm_h cl">
+<h2>今日首位进贡者</h2>
+</div>
+<div class="bm_c">
+<ul class="xl">
+$firstvister
+</ul>
+</div>
+</div>
+</div>
+
+<div style="width:56%; float:left; ">
+<div id="ifocus_l2">
+
+<div id="ifocus_l2_btn" style="display:none;">
+  <ul>
+   <li class="current"><img src="btn_01.jpg" alt="" /></li>
+   <li class="normal"><img src="btn_02.jpg" alt="" /></li>
+   <li class="normal"><img src="btn_03.jpg" alt="" /></li>
+   <li class="normal"><img src="btn_04.jpg" alt="" /></li>
+  </ul>
+ </div>
+ 
+<div id="ifocus_l2_pic">
+  <div id="ifocus_l2_piclist" style="left:0; top:0;">
+   <ul>
+    <li><img src="source/plugin/dsu_paulsign/img/images/1.png" alt="" /></li>
+    <li><img src="source/plugin/dsu_paulsign/img/images/2.png" alt="" /></li>
+    <li><img src="source/plugin/dsu_paulsign/img/images/3.png" alt="" /></li>
+    <li><img src="source/plugin/dsu_paulsign/img/images/4.png" alt="" /></li>
+   </ul>
+  </div>
+  <div id="ifocus_l2_opdiv"></div>
+  <div id="ifocus_l2_tx">
+   <ul>
+    <li class="current">睿思许愿堂1</li>
+    <li class="normal">睿思许愿堂2</li>
+    <li class="normal">睿思许愿堂3</li>
+    <li class="normal">睿思许愿堂4</li>
+   </ul>
+  </div>
+ </div>
+</div> 
+</div><!--ifocus_l2 end-->
+
+<div style="float:left; width:22%; text-align:center;">
+<div class="bm">
+<div class="bm_h cl">
+<h2>进贡排行榜</h2>
+</div>
+<div class="bm_c">
+<ul>
+<!--{loop $ranks $rank}-->
+<li><span style="float:left;"><!--{avatar($rank['uid'],small)}--></span><span style="float:left; margin:10px 0 0 20px;">$rank['username']</span><span style="color:#0F0; float:right; margin:10px 0 0 0;">￥$rank['reward']</span></li>
+<div style=" clear:both;"></div>
+<!--{/loop}-->
+</ul>
+
+</div>
+</div>
+</div>   
+</div>
+<div style="clear:both; height:30px;"></div>
+<!--==========2 E pics scroll===========--> 
+<!--==========5 S ajax==================--> 
+<script language="javascript" type="text/javascript">
+
+var request;
+
+function createRequest() {
+  try {
+    request = new XMLHttpRequest();
+  } catch (trymicrosoft) {
+    try {
+      request = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (othermicrosoft) {
+      try {
+        request = new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (failed) {
+        request = false;
+      }
+    }
+  }
+
+  if (!request)
+    alert("Error initializing XMLHttpRequest!");
+}
+
+function getCustomerInfo() {
+  createRequest();
+  // Do something with the request variable
+  var todaysay = document.getElementById("todaysay").value;
+  var url = "source/plugin/dsu_paulsign/ajax.php?todaysay=" + escape(todaysay);
+  request.open("GET", url, true);
+  request.onreadystatechange = updatePage;
+  request.send(null);
+
+}
+
+function updatePage() {
+     if (request.readyState == 4) {
+       if (request.status == 200) {
+         var response = request.responseText.split("|");
+         document.getElementById("todaysay").value = response[0];
+         document.getElementById("god_id1").innerHTML=response[1].replace(/\n/g, "<br />");
+       } else if (request.status == 404) {
+         alert ("Requested URL is not found.");
+       } else if (request.status == 403) {
+         alert("Access denied.");
+       } else
+         alert("status is " + request.status);
+     }
+   }
+
+
+</script>
+<!--==========5 E ajax==================--> 
+<div id="ct" class="ct2 wp cl" style="margin:0;">
+	<div class="mn" style="width:80%;">
+		<!--{if  (!$var['timeopen'] || ($var['timeopen'] && ($htime >= $var['stime'] && $htime <= $var['ftime'])))}-->
+<!--%% $qiandaodb['time'] < $tdtime && %%-->
+			<div class="t" style="width:30%; overflow:auto; float:left;">
+            
+<!--=============3 S fwt===================-->
+			<h1 class="mt"></h1>
+			<!--{if $qiandaodb}-->
+				<p><font color="#FF0000"><b>$_G['username']</b></font> {lang dsu_paulsign:mb_fwt1} <b>$qiandaodb['days']</b> {lang dsu_paulsign:mb_fwt2}</p>
+				<p>{lang dsu_paulsign:mb_fwt3}<b>$qiandaodb['mdays']</b> {lang dsu_paulsign:mb_fwt2}</p>
+				<p>{lang dsu_paulsign:mb_fwt6}<font color="#ff00cc">$qtime</font> </p>
+				<p>{lang dsu_paulsign:mb_fwt8} <font color="#ff00cc"><b>$qiandaodb['reward']</b></font>.</p>
+				<p>{$q['level']}</p>
+			<!--{else}-->
+				<p>{lang dsu_paulsign:mb_fwt7}</p>
+			<!--{/if}-->
+<!--=============3 E fwt===================-->   
+         
+			<h3>{lang dsu_paulsign:mb_xz}<!--{if $var['ftopen']}--><br><font color="red">[{lang dsu_paulsign:mb_xz1}]</font><!--{/if}--></h3>            
+				<!--{if $var['qdajax']}-->
+					<form id="qiandao" method="post" action="plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=1" onkeydown="if(event.keyCode==13){showWindow('qwindow', 'qiandao', 'post', '0');return false}">
+				<!--{else}-->
+					<form name="qiandao" method="post" action="plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0">
+				<!--{/if}-->
+				<input type="hidden" name="formhash" value="{FORMHASH}">
+				<table width="100%" cellpadding="0" cellspacing="0" align="center">
+					<tr>
+						<td class="tr3 tac">
+							<ul class="qdsmile" >
+							<!--{loop $emots $key $value}-->
+								<input id="{$key}_s" type="radio" name="qdxq" value="{$key}" style="display:none"><li id="{$key}" onclick="Icon_selected(this.id)" onmouseover="showMenu({'ctrlid':this.id, 'pos':'21'});"><center><img src="source/plugin/dsu_paulsign/img/emot/{$key}.gif" /><br /></center></li>
+							<!--{/loop}-->
+							</ul>
+						</td>
+					</tr>
+					<!--{loop $emots $key $value}-->
+						<div id="{$key}_menu" class="tip tip_4" style="display:none;width:50px;margin:0px 0px 0px 30px;"><div class="tip_horn"></div><div class="tip_c"><center>{$value['name']}</center></div></div>
+					<!--{/loop}-->
+				</table>
+
+					<!--{if !$var['sayclose']}-->
+						<div>
+							<div{if !$var['ksopen'] && !$var['todaysayxt']} style="display:none;"{/if}>
+								<p>{lang dsu_paulsign:mb_mode1}</p>
+								<div>
+									<label><input type="radio" name="qdmode" value="1" checked="checked" onclick="if(checked == true){document.getElementById('mode1').style.display='';document.getElementById('mode2').style.display='none';}">&nbsp;{lang dsu_paulsign:mb_mode2}</label>&nbsp;&nbsp;
+									<!--{if $var['todaysayxt']}--><label><input type="radio" name="qdmode" value="3" onclick="if(checked){document.getElementById('mode1').style.display='none';document.getElementById('mode2').style.display='none';}">&nbsp;{lang dsu_paulsign:noq}</label><!--{/if}-->
+								</div>
+							</div>
+							<div id="mode1" style="display:;">
+								<p><label for="todaysay"></label></p>
+								<div><textarea cols="40" style="resize:vertical;" name="todaysay" id="todaysay" rows="4" onChange="getCustomerInfo();"></textarea></div>
+								<p>{lang dsu_paulsign:mb_xzzs}</p>
+							</div>
+						</div>
+					<!--{/if}-->
+<!--============4 S button=================-->
+<style>
+.shopInfor_btn{padding:20px 0 60px; margin:0 0 0 40px;}
+.shopInfor_btn a,.shopInfor_btn input{display:block;width:110px;margin-left:10px}
+.shopInfor_btn input{height:38px;border:0}
+.cfl{*zoom:1}
+.cfl:after{content:"\0020";display:block;height:0;clear:both;overflow:hidden;visibility:hidden}
+.shopBtn{display:block;height:36px;font-size:14px;text-align:center;line-height:36px;color:#fff;background:#ec4f22;font-weight:bold;background:-webkit-gradient(linear,left top,left bottom,color-stop(#ff6e42,0),color-stop(#ec4f22,1));background:-webkit-linear-gradient(top,#ff6e42 0,#ec4f22 100%);background:-moz-linear-gradient(top,#ff6e42 0,#ec4f22 100%);background:-o-linear-gradient(top,#ff6e42 0,#ec4f22 100%);background:linear-gradient(top,#ff6e42 0,#ec4f22 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6e42',endColorstr='#ec4f22',GradientType=0);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;border:1px solid #fc6236}
+.shopBtn:hover{-webkit-box-shadow:0 1px 1px #fb7a54 inset,1px 1px 2px rgba(0,0,0,0.4);-moz-box-shadow:0 1px 1px #fb7a54 inset,1px 1px 2px rgba(0,0,0,0.4);box-shadow:0 1px 1px #fb7a54 inset,1px 1px 2px rgba(0,0,0,0.4)}
+.shopBtn:active{background:#ec4f22;-webkit-box-shadow:1px 1px 2px #ec4a1c inset;-moz-box-shadow:1px 1px 2px #ec4a1c inset;box-shadow:1px 1px 2px #ec4a1c inset}
+</style>
+
+<!--============4 E button================-->
+
+<div class="shopInfor_btn cfl"><!--{if $var['qdajax']}--><a href="javascript:;" style="text-decoration:none;" onclick="showWindow('qwindow', 'qiandao', 'post', '0');return false"><input name="Checkout[submit]" class="shopBtn" onClick="" type="submit" value="    许下心愿    " /></a><!--{else}--><input name="Checkout[submit]" class="shopBtn" onClick="" type="submit" value="    许下心愿    " /><!--{/if}--></div>
+                                    
+				</form>
+			</div>
+            <!--{else}--><!--notice while close wishing hall-->
+            <div style="width:30%; overflow:auto; float:left;">
+            			<h1 class="mt"></h1>
+			<!--{if $qiandaodb}-->
+				<p><font color="#FF0000"><b>$_G['username']</b></font> {lang dsu_paulsign:mb_fwt1} <b>$qiandaodb['days']</b> {lang dsu_paulsign:mb_fwt2}</p>
+				<p>{lang dsu_paulsign:mb_fwt3}<b>$qiandaodb['mdays']</b> {lang dsu_paulsign:mb_fwt2}</p>
+				<p>{lang dsu_paulsign:mb_fwt6}<font color="#ff00cc">$qtime</font> </p>
+				<p>{lang dsu_paulsign:mb_fwt8}{$_G[setting][extcredits][$var[nrcredit]][title]} <font color="#ff00cc"><b>$qiandaodb['reward']</b></font> {$_G['setting']['extcredits'][$var[nrcredit]]['unit']}{lang dsu_paulsign:mb_fwt9}{$_G[setting][extcredits][$var[nrcredit]][title]} <font color="#ff00cc"><b>$qiandaodb['lastreward']</b></font> {$_G['setting']['extcredits'][$var[nrcredit]]['unit']}.</p>
+				<p>{$q['level']}</p>
+			<!--{else}-->
+				<p>{lang dsu_paulsign:mb_fwt7}</p>
+			<!--{/if}-->
+            </div>
+		<!--{/if}--><!--end of the first if-->
+
+<div style="width:66%; float:left; margin-left:10px;">
+		<h1 class="mt">{lang dsu_paulsign:mb_ph}</h1>
+		<!--{if $_GET['operation'] == '' || $_GET['operation'] == 'month' || $_GET['operation'] == 'zong'}-->
+			<div class="datalist">
+				<table cellspacing="0" cellpadding="0" summary="phb" class="datatable">
+					<!--{if $mrcs}-->
+						<!--{loop $mrcs $mrc}-->
+							<tr>
+								<td></td>
+								<td><span id="{$$mrc['xy_id']}"><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>:
+<!--{if !$_G['cache']['plugin']['dsu_paulsign']['sayclose']}-->
+<img src="source/plugin/dsu_paulsign/img/emot/$mrc[qdxq].gif" /> $mrc[todaysay]</span>
+<!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=dsu_paulsign:sign&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang dsu_paulsign:ban_04}"><font color=red>[{lang dsu_paulsign:ban_05}]</font></a><!--{/if}--></td>
+							</tr>
+
+							<tr class="colplural">
+								<td align="left" colspan="9">
+                                	<span style="color:#ff7600">神答曰：</span><span id="{$$mrc['god_id']}">$mrc[godsay]</span>
+								</td>
+							</tr>
+							<!--{/if}-->
+						<!--{/loop}-->
+						<!--{if !empty($multipage)}--><tr><td colspan="8"><div class="pages_btns">$multipage</div></td></tr><!--{/if}-->
+					<!--{else}-->
+						<tr><td colspan="9">{lang dsu_paulsign:mb_wrq}</td></tr>
+					<!--{/if}-->
+				</table>
+			</div>	
+        </div>    		
+		<!--{/if}--><!--end of paihangbang if-->
+
+	</div>
+	<div  style="width:20%; float:right;">
+		<div class="bm">
+			<div class="bm_h cl">
+				<h2>{lang dsu_paulsign:mb_gg}</h2>
+			</div>
+			<div class="bm_c">
+				<ul class="xl">
+					<li>{$var[notice]}</li>
+				</ul>
+			</div>
+		</div>
+		<!--{if $var['timeopen']}-->
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang dsu_paulsign:mb_tips}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="xl">
+						<li>{lang dsu_paulsign:mb_tips1}{$var[stime]}{lang dsu_paulsign:mb_tips2}{$var[ftime]}{lang dsu_paulsign:mb_tips3}</li>
+					</ul>
+				</div>
+			</div>
+		<!--{/if}-->
+		<!--{if $var['tjopen']}-->
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang dsu_paulsign:tj_06}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="xl">
+						<!--{loop $emottops $emottop}-->
+							<li><span class="y xi2 xg1">$emottop[count] {lang dsu_paulsign:tj_03}</span>$emottop[name]</li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<div class="bm">
+				<div class="bm_h cl">
+					<h2>{lang dsu_paulsign:tj_01}</h2>
+				</div>
+				<div class="bm_c">
+					<ul class="xl">
+						<li><span class="y xi2 xg1">$stats[todayq] {lang dsu_paulsign:tj_03}</span>{lang dsu_paulsign:tj_04}</li>
+						<li><span class="y xi2 xg1">$stats[yesterdayq] {lang dsu_paulsign:tj_03}</span>{lang dsu_paulsign:tj_05}</li>
+						<li><span class="y xi2 xg1">$stats[highestq] {lang dsu_paulsign:tj_03}</span>{lang dsu_paulsign:tj_02}</li>
+					</ul>
+				</div>
+			</div>
+		<!--{/if}-->
+		<div class="bm">
+			<div class="bm_h cl">
+				<h2>{lang dsu_paulsign:mb_ver}</h2>
+			</div>
+			<div class="bm_c">
+				<ul class="xl">
+					<li><a href="{$signadd}" title="{lang dsu_paulsign:mb_verxq}" target="_blank"><span style="font: bold 14px Arial; color: #fbb040;">{lang dsu_paulsign:mb_rayst}</span><span style="font: bold 15px Verdana; color: #f15a29;">{lang dsu_paulsign:name}</span></a><span style="font: normal 9px Verdana; display:block;"> $signBuild</span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{subtemplate common/footer}
