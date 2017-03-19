@@ -33,7 +33,7 @@ $lang = $_G['cache']['pluginlanguage_script']['dsu_paulsign'];
 EOT;
 
 		showformheader("plugins&operation=config&identifier=dsu_paulsign&pmod=sign_custom&submit=1");
-		showtableheader('Emotion Custom By [DSU]Shy9000');
+		showtableheader('Tribute Custom By [Wishing hall]bikai');
 		showsubtitle(array('', $lang['custom_01'], $lang['custom_02'], $lang['custom_03']));
 		echo $emotechos;
 		echo '<tr><td></td><td colspan="4"><div><a href="###" onclick="addrow(this, 0)" class="addtr">'.$lang['custom_04'].'</a></div></td></tr>';

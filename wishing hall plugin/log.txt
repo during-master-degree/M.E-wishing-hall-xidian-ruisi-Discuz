@@ -4,7 +4,8 @@
 2、uninstall.php中，添加一句：DB::query("DROP TABLE IF EXISTS ".DB::table('cdb_dsu_paulsign_wish')."");
 3、discuz_plugin_dsu_paulsign_SC_UTF8.xml:修改了论坛公告、神仙回复语句、插件声明。
 4、删除了discuz_plugin_dsu_paulsign_SC_GBK.xml，discuz_plugin_dsu_paulsign_TC_BIG5.xml，discuz_plugin_dsu_paulsign_TC_UTF8.xml。
-5、
+
+
 
 
 

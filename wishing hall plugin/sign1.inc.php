@@ -21,7 +21,7 @@ $nfastreplytext =str_replace(array("\r\n", "\n", "\r"), '/hhf/', $var['fastreply
 $njlmain =str_replace(array("\r\n", "\n", "\r"), '/hhf/', $var['jlmain']);
 list($lv1name, $lv2name, $lv3name, $lv4name, $lv5name, $lv6name, $lv7name, $lv8name, $lv9name, $lv10name, $lvmastername) = explode("/hhf/", $nlvtext);
 $fastreplytexts = explode("/hhf/", $nfastreplytext);
-$_G['setting']['switchwidthauto']=0;//关闭宽窄屏切换
+
 $extreward = explode("/hhf/", $njlmain);
 $extreward_num = count($extreward);
 $jlxgroups = unserialize($var['jlxgroups']);
@@ -62,7 +62,7 @@ if($var['plopen'] && $plgroups) {
 	}
 }
 *************4 E******************/
-if($_GET['operation'] == 'zong' || $_GET['operation'] == 'month' || $_GET['operation'] == '' || ($_GET['operation'] == 'zdyhz') || ($_GET['operation'] == 'rewardlist' && $var['rewardlistopen']) && !defined('IN_MOBILE')) {	
+if($_GET['operation'] == 'zong' || $_GET['operation'] == 'month' || $_GET['operation'] == '' || ($_GET['operation'] == 'zdyhz') || ($_GET['operation'] == 'rewardlist' && $var['rewardlistopen']) && !defined('IN_MOBILE')) {
 /*************7 S first vister & master & rank*****/	
 $firstvister = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and time >= {$tdtime} ORDER BY q.time");
 	if($firstvister){
@@ -151,38 +151,38 @@ $query = DB::query($sql_rank);
 		$god_id_num++;
 		!$qd['qdxq'] && $qd['qdxq']=end(array_keys($emots));
 		
-		if($mrc['qdxq']=="kx"){$mrc['qdxq']="给神磕了个大大的响头";
-		}elseif($mrc['qdxq']=="ng"){$mrc['qdxq']="给神上了一炷香";
-		}elseif($mrc['qdxq']=="ym"){$mrc['qdxq']="给神献上鲜花";
-		}elseif($mrc['qdxq']=="wl"){$mrc['qdxq']="给神敬上玉饼";
-		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="暂无";
-		}elseif($mrc['qdxq']=="ch"){$mrc['qdxq']="暂无";
-		}elseif($mrc['qdxq']=="fd"){$mrc['qdxq']="暂无";
-		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="要给神修庙建祠堂";
-		}elseif($mrc['qdxq']=="shuai"){$mrc['qdxq']="暂无";
+		if($mrc['qdxq']=="kx"){$mrc['qdxq']="给神磕了个大大的响头并说：";
+		}elseif($mrc['qdxq']=="ng"){$mrc['qdxq']="给神上了一炷香并说：";
+		}elseif($mrc['qdxq']=="ym"){$mrc['qdxq']="给神献上鲜花并说：";
+		}elseif($mrc['qdxq']=="wl"){$mrc['qdxq']="给神敬上玉饼并说：";
+		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="暂无：";
+		}elseif($mrc['qdxq']=="ch"){$mrc['qdxq']="暂无：";
+		}elseif($mrc['qdxq']=="fd"){$mrc['qdxq']="暂无：";
+		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="要给神修庙建祠堂并说：";
+		}elseif($mrc['qdxq']=="shuai"){$mrc['qdxq']="暂无：";
 		}
 		
-		if ($mrc['days'] >= '15000') {
+		if ($mrc['days'] >= '1500') {
 			$mrc['level'] = "[LV.Master]{$lvmastername}";
-		} elseif ($mrc['days'] >= '7500') {
+		} elseif ($mrc['days'] >= '750') {
 			$mrc['level'] = "[LV.10]{$lv10name}";
-		} elseif ($mrc['days'] >= '3650') {
+		} elseif ($mrc['days'] >= '365') {
 			$mrc['level'] = "[LV.9]{$lv9name}";
-		} elseif ($mrc['days'] >= '2000') {
+		} elseif ($mrc['days'] >= '240') {
 			$mrc['level'] = "[LV.8]{$lv10name}";
-		} elseif ($mrc['days'] >= '1000') {
+		} elseif ($mrc['days'] >= '120') {
 			$mrc['level'] = "[LV.7]{$lv7name}";
-		} elseif ($mrc['days'] >= '600') {
+		} elseif ($mrc['days'] >= '60') {
 			$mrc['level'] = "[LV.6]{$lv6name}";
-		} elseif ($mrc['days'] >= '300') {
-			$mrc['level'] = "[LV.5]{$lv5name}";
-		} elseif ($mrc['days'] >= '150') {
-			$mrc['level'] = "[LV.4]{$lv4name}";
-		} elseif ($mrc['days'] >= '70') {
-			$mrc['level'] = "[LV.3]{$lv3name}";
 		} elseif ($mrc['days'] >= '30') {
+			$mrc['level'] = "[LV.5]{$lv5name}";
+		} elseif ($mrc['days'] >= '15') {
+			$mrc['level'] = "[LV.4]{$lv4name}";
+		} elseif ($mrc['days'] >= '7') {
+			$mrc['level'] = "[LV.3]{$lv3name}";
+		} elseif ($mrc['days'] >= '3') {
 			$mrc['level'] = "[LV.2]{$lv2name}";
-		} elseif ($mrc['days'] >= '10') {
+		} elseif ($mrc['days'] >= '1') {
 			$mrc['level'] = "[LV.1]{$lv1name}";
 		}
 		$mrcs[] = $mrc;
@@ -229,11 +229,10 @@ if($jinbi<$credit){
 	if(!array_key_exists($_GET['qdxq'],$emots)) sign_msg($lang['ts_xqnr']);
 	if(!$var['sayclose']){
 		if($_GET['qdmode']=='1'){
-			$todaysay='并说';
-			$todaysay.= dhtmlspecialchars($_GET['todaysay']);
+			$todaysay = dhtmlspecialchars($_GET['todaysay']);
 			if($todaysay=='') sign_msg($lang['ts_nots']);
-			if(strlen($todaysay) > 990) sign_msg($lang['ts_ovts']);
-			if(strlen($todaysay) < 10) sign_msg($lang['ts_syts']);
+			if(strlen($todaysay) > 1000) sign_msg($lang['ts_ovts']);
+			if(strlen($todaysay) < 6) sign_msg($lang['ts_syts']);
 			if (!preg_match("/[^A-Za-z0-9.,]/",$todaysay)) sign_msg($lang['ts_saywater']);
 			$illegaltest = censormod($todaysay);
 			if($illegaltest) {
@@ -268,19 +267,19 @@ if($jinbi<$credit){
 	}
 /************1 S********************/	
 		if($_GET[qdxq]=='kx'){
-		$credit=0;
-	}else if($_GET[qdxq]=='ng'){
 		$credit=20;
-	}else if($_GET[qdxq]=='ym'){
+	}else if($_GET[qdxq]=='ng'){
 		$credit=40;
-	}else if($_GET[qdxq]=='wl'){
+	}else if($_GET[qdxq]=='ym'){
 		$credit=50;
-	}else if($_GET[qdxq]=='nu'){
+	}else if($_GET[qdxq]=='wl'){
 		$credit=60;
+	}else if($_GET[qdxq]=='nu'){
+		$credit=80;
 	}else if($_GET[qdxq]=='ch'){
-		$credit=70;
+		$credit=100;
 	}else if($_GET[qdxq]=='fd'){
-		$credit=200;
+		$credit=500;
 	}else if($_GET[qdxq]=='yl'){
 		$credit=800;
 	}else if($_GET[qdxq]=='shuai'){
@@ -422,7 +421,6 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 		if($stats['todayq'] > $stats['highestq']) DB::query("UPDATE ".DB::table('dsu_paulsignset')." SET highestq='$stats[todayq]' WHERE id='1'");
 		DB::query("UPDATE ".DB::table('dsu_paulsignset')." SET yesterdayq='$stats[todayq]',todayq=1 WHERE id='1'");
 		DB::query("UPDATE ".DB::table('dsu_paulsignemot')." SET count=0");
-		DB::query("DELETE from ".DB::table('dsu_paulsign_wish')." where time<{$tdtime}-3600*24");//删除前天及以前的记录
 	} else {
 		DB::query("UPDATE ".DB::table('dsu_paulsignset')." SET todayq=todayq+1 WHERE id='1'");
 	}
@@ -442,37 +440,37 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 		}
 	}
 }
-if ($qiandaodb['days'] >= '15000') {
+if ($qiandaodb['days'] >= '1500') {
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.Master]{$lvmastername}</b></font> .";
-} elseif ($qiandaodb['days'] >= '7500') {
-	$q['lvqd'] = 15000 - $qiandaodb['days'];
+} elseif ($qiandaodb['days'] >= '750') {
+	$q['lvqd'] = 1500 - $qiandaodb['days'];
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.10]{$lv10name}{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.Master]{$lvmastername}</b></font> .";
-} elseif ($qiandaodb['days'] >= '3650') {
-	$q['lvqd'] = 7500 - $qiandaodb['days'];
+} elseif ($qiandaodb['days'] >= '365') {
+	$q['lvqd'] = 750 - $qiandaodb['days'];
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.9]{$lv9name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.10]{$lv10name}</b></font> .";
-} elseif ($qiandaodb['days'] >= '2000') {
-	$q['lvqd'] = 3650 - $qiandaodb['days'];
+} elseif ($qiandaodb['days'] >= '240') {
+	$q['lvqd'] = 365 - $qiandaodb['days'];
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.8]{$lv8name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.9]{$lv9name}</b></font> .";
-} elseif ($qiandaodb['days'] >= '1000') {
-	$q['lvqd'] = 2000 - $qiandaodb['days'];
+} elseif ($qiandaodb['days'] >= '120') {
+	$q['lvqd'] = 240 - $qiandaodb['days'];
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.7]{$lv7name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.8]{$lv8name}</b></font> .";
-} elseif ($qiandaodb['days'] >= '600') {
-	$q['lvqd'] = 1000 - $qiandaodb['days'];
+} elseif ($qiandaodb['days'] >= '60') {
+	$q['lvqd'] = 120 - $qiandaodb['days'];
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.6]{$lv6name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.7]{$lv7name}</b></font> .";
-} elseif ($qiandaodb['days'] >= '300') {
-	$q['lvqd'] = 600 - $qiandaodb['days'];
-	$q['level'] = "{$lang['level']}<font color=green><b>[LV.5]{$lv5name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.6]{$lv6name}</b></font> .";
-} elseif ($qiandaodb['days'] >= '150') {
-	$q['lvqd'] = 300 - $qiandaodb['days'];
-	$q['level'] = "{$lang['level']}<font color=green><b>[LV.4]{$lv4name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.5]{$lv5name}</b></font> .";
-} elseif ($qiandaodb['days'] >= '70') {
-	$q['lvqd'] = 150 - $qiandaodb['days'];
-	$q['level'] = "{$lang['level']}<font color=green><b>[LV.3]{$lv3name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.4]{$lv4name}</b></font> .";
 } elseif ($qiandaodb['days'] >= '30') {
-	$q['lvqd'] = 70 - $qiandaodb['days'];
-	$q['level'] = "{$lang['level']}<font color=green><b>[LV.2]{$lv2name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.3]{$lv3name}</b></font> .";
-} elseif ($qiandaodb['days'] >= '10') {
+	$q['lvqd'] = 60 - $qiandaodb['days'];
+	$q['level'] = "{$lang['level']}<font color=green><b>[LV.5]{$lv5name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.6]{$lv6name}</b></font> .";
+} elseif ($qiandaodb['days'] >= '15') {
 	$q['lvqd'] = 30 - $qiandaodb['days'];
+	$q['level'] = "{$lang['level']}<font color=green><b>[LV.4]{$lv4name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.5]{$lv5name}</b></font> .";
+} elseif ($qiandaodb['days'] >= '7') {
+	$q['lvqd'] = 15 - $qiandaodb['days'];
+	$q['level'] = "{$lang['level']}<font color=green><b>[LV.3]{$lv3name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.4]{$lv4name}</b></font> .";
+} elseif ($qiandaodb['days'] >= '3') {
+	$q['lvqd'] = 7 - $qiandaodb['days'];
+	$q['level'] = "{$lang['level']}<font color=green><b>[LV.2]{$lv2name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.3]{$lv3name}</b></font> .";
+} elseif ($qiandaodb['days'] >= '1') {
+	$q['lvqd'] = 3 - $qiandaodb['days'];
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.1]{$lv1name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.2]{$lv2name}</b></font> .";
 }
 $q['if']= $qiandaodb['time']<$tdtime ? "<span class=gray>".$lang['tdno']."</span>" : "<font color=green>".$lang['tdyq']."</font>";
@@ -484,6 +482,6 @@ $signadd = 'http://rs.xidian.edu.cn/';
 if($_G['inajax']){
 	include template('dsu_paulsign:ajaxsign');
 }else{
-	include template('dsu_paulsign:sign');
+	include template('dsu_paulsign:sign1');
 }
 ?>

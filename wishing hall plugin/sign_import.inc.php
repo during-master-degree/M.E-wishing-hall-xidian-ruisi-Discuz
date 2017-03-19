@@ -8,7 +8,7 @@ loadcache('pluginlanguage_script');
 $lang = $_G['cache']['pluginlanguage_script']['dsu_paulsign'];
 if(is_file(DISCUZ_ROOT.'./data/dsu_paulsign_import.lock'))cpmsg("{$lang[import_16]}", '');
 if(!$_GET['submit']) {
-	showtableheader($lang['import_07'].' 20110619 By [DSU]Shy9000');
+	showtableheader($lang['import_07'].' 20130219 By [Wishing hall]bikai');
 	showformheader("plugins&operation=config&identifier=dsu_paulsign&pmod=sign_import&submit=1", "");
 	echo '<tr><td colspan="2" class="td27" s="1">'.$lang['import_08'].':</td></tr>
 	<tr class="noborder""><td class="vtop rowform">

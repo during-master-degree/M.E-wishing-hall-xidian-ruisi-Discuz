@@ -308,54 +308,38 @@ function createmyXmlHttp() {
 function getCustomerInfo() {
   createmyXmlHttp();
   // Do something with the myXmlHttp variable
-  var data ="&sid="+Math.random();
-  var url = "source/plugin/dsu_paulsign/ajax.php";
-  myXmlHttp.open("POST", url, true);
-  myXmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+  var todaysay = document.getElementById("todaysay").value;
+  var url = "source/plugin/dsu_paulsign/ajax.php?todaysay=" + escape(todaysay)+"&sid="+Math.random();
+  myXmlHttp.open("GET", url, true);
   myXmlHttp.onreadystatechange = updatePage;
-  myXmlHttp.send(data);
+  myXmlHttp.send(null);
 }
 
 function updatePage() {
      if (myXmlHttp.readyState == 4) {
-       if (myXmlHttp.status == 200) {		  
-       var response = myXmlHttp.responseText.split("|");
+       if (myXmlHttp.status == 200) {
+         var response = myXmlHttp.responseText.split("|");
 		 var xmlDoc=myXmlHttp.responseXML;
-		 
-//		 if(!isNaN(xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue))
-//		 {alert("Is num:"+xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue+"");
-//		 }else alert("Not num.");
-		 var item_num=xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue;
-		 for(var i=1;i<=item_num;i++){
-			 	document.getElementById("xy_id"+i).innerHTML="<a href='home.php?mod=space&uid="+xmlDoc.getElementsByTagName("uid")[i-1].childNodes[0].nodeValue+"' target='_blank' style='color:#ff7600;'>"+xmlDoc.getElementsByTagName("username")[i-1].childNodes[0].nodeValue+"("+xmlDoc.getElementsByTagName("time")[i-1].childNodes[0].nodeValue+") "+"</a>";
-			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue;
-				document.getElementById("xy_id"+i).innerHTML+=",";
-			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
-				document.getElementById("xy_id"+i).innerHTML+=Math.random()*20;
-				
-				document.getElementById("god_id"+i).innerHTML=xmlDoc.getElementsByTagName("godsay")[i-1].childNodes[0].nodeValue+Math.random()*20;
-			 }
-		 
-//  	 document.getElementById("xy_id1").innerHTML =xmlDoc.getElementsByTagName("todaysay")[2].childNodes[0].nodeValue;
-//       document.getElementById("todaysay").value = response[0];
-
+		 document.getElementById("xy_id1").innerHTML =xmlDoc.getElementsByTagName("todaysay")[2].childNodes[0].nodeValue;
+         document.getElementById("todaysay").value = response[0];
+         document.getElementById("god_id1").innerHTML=response[1].replace(/\n/g, "<br />");
        } else if (myXmlHttp.status == 404) {
          alert ("Requested URL is not found.");
        } else if (myXmlHttp.status == 403) {
          alert("Access denied.");
-       }// else
-//       alert("status is " + myXmlHttp.status);
+       } else
+         alert("status is " + myXmlHttp.status);
      }
    }
 
-setInterval("getCustomerInfo()",2000);
+
 </script>
 <!--==========5 E ajax==================--> 
 <div id="ct" class="ct2 wp cl" style="margin:0;">
-	<div class="mn" style="width:85%;">
+	<div class="mn" style="width:80%;">
 		<!--{if  (!$var['timeopen'] || ($var['timeopen'] && ($htime >= $var['stime'] && $htime <= $var['ftime'])))}-->
 <!--%% $qiandaodb['time'] < $tdtime && %%-->
-			<div class="t" style="width:20%; overflow:auto; float:left;">
+			<div class="t" style="width:30%; overflow:auto; float:left;">
             
 <!--=============3 S fwt===================-->
 			<h1 class="mt"></h1>
@@ -365,7 +349,6 @@ setInterval("getCustomerInfo()",2000);
 				<p>{lang dsu_paulsign:mb_fwt6}<font color="#ff00cc">$qtime</font> </p>
 				<p>{lang dsu_paulsign:mb_fwt8} <font color="#ff00cc"><b>$qiandaodb['reward']</b></font>.</p>
 				<p>{$q['level']}</p>
-                <a href="#" onclick="levelts('{lang dsu_paulsign:lvmsg1}', this.href);return false;"><span style="color:#0c0; font-weight:bold;">{lang dsu_paulsign:lvmsg}</span></a>
 			<!--{else}-->
 				<p>{lang dsu_paulsign:mb_fwt7}</p>
 			<!--{/if}-->
@@ -404,8 +387,8 @@ setInterval("getCustomerInfo()",2000);
 							</div>
 							<div id="mode1" style="display:;">
 								<p><label for="todaysay"></label></p>
-								<div><textarea cols="52" style="resize:vertical;" name="todaysay" id="todaysay" rows="3" onChange="getCustomerInfo();"></textarea></div>								
-                                <p>{lang dsu_paulsign:mb_xzzs}</p> 
+								<div><textarea cols="40" style="resize:vertical;" name="todaysay" id="todaysay" rows="4" onChange="getCustomerInfo();"></textarea></div>
+<div><textarea cols="40" style="resize:vertical;" name="test1" id="test1" rows="4"></textarea></div>								<p>{lang dsu_paulsign:mb_xzzs}</p>
 							</div>
 						</div>
 					<!--{/if}-->
@@ -428,7 +411,7 @@ setInterval("getCustomerInfo()",2000);
 				</form>
 			</div>
             <!--{else}--><!--notice while close wishing hall-->
-            <div style="width:20%; overflow:auto; float:left;">
+            <div style="width:30%; overflow:auto; float:left;">
             			<h1 class="mt"></h1>
 			<!--{if $qiandaodb}-->
 				<p><font color="#FF0000"><b>$_G['username']</b></font> {lang dsu_paulsign:mb_fwt1} <b>$qiandaodb['days']</b> {lang dsu_paulsign:mb_fwt2}</p>
@@ -442,7 +425,7 @@ setInterval("getCustomerInfo()",2000);
             </div>
 		<!--{/if}--><!--end of the first if-->
 
-<div style="width:77%; float:left; margin-left:10px; font-size:16px;">
+<div style="width:66%; float:left; margin-left:10px; font-size:16px;">
 		<h1 class="mt">{lang dsu_paulsign:mb_ph}</h1>
 		<!--{if $_GET['operation'] == '' || $_GET['operation'] == 'month' || $_GET['operation'] == 'zong'}-->
 			<div class="datalist">
@@ -452,8 +435,8 @@ setInterval("getCustomerInfo()",2000);
 							<tr>
 								<td></td>
 								<td><span id="{$mrc['xy_id']}"><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>
-
-$mrc[qdxq],$mrc[todaysay]</span>
+<!--{if !$_G['cache']['plugin']['dsu_paulsign']['sayclose']}-->
+$mrc[qdxq] $mrc[todaysay]</span>
 <!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=dsu_paulsign:sign&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang dsu_paulsign:ban_04}"><font color=red>[{lang dsu_paulsign:ban_05}]</font></a><!--{/if}--></td>
 							</tr>
 
@@ -462,7 +445,7 @@ $mrc[qdxq],$mrc[todaysay]</span>
                                 	<span id="{$mrc['god_id']}">$mrc[godsay]</span>
 								</td>
 							</tr>
-
+							<!--{/if}-->
 						<!--{/loop}-->
 						<!--{if !empty($multipage)}--><tr><td colspan="8"><div class="pages_btns">$multipage</div></td></tr><!--{/if}-->
 					<!--{else}-->
@@ -474,7 +457,7 @@ $mrc[qdxq],$mrc[todaysay]</span>
 		<!--{/if}--><!--end of paihangbang if-->
 
 	</div>
-	<div  style="width:15%; float:right;">
+	<div  style="width:20%; float:right;">
 		<div class="bm">
 			<div class="bm_h cl">
 				<h2>{lang dsu_paulsign:mb_gg}</h2>
