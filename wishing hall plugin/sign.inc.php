@@ -17,8 +17,11 @@ ajax_sign
 autosign_ug
 lastedop
 */
+
 !defined('IN_DISCUZ') && exit('Access Denied');
 define('IN_wishing_hall', '1');
+define("NOROBOT", TRUE);
+$navtitle = "佛-许愿堂";
 $var = $_G['cache']['plugin']['wishing_hall'];
 $tdtime = gmmktime(0,0,0,dgmdate($_G['timestamp'], 'n',$var['tos']),dgmdate($_G['timestamp'], 'j',$var['tos']),dgmdate($_G['timestamp'], 'Y',$var['tos'])) - $var['tos']*3600;
 $htime = dgmdate($_G['timestamp'], 'H',$var['tos']);
@@ -175,10 +178,9 @@ $query = DB::query($sql_rank);
 		}elseif($mrc['qdxq']=="ng"){$mrc['qdxq']="给神磕了个大大的响头，并说";
 		}elseif($mrc['qdxq']=="ym"){$mrc['qdxq']="给神上了一炷香，并说";
 		}elseif($mrc['qdxq']=="wl"){$mrc['qdxq']="给神献上鲜花，并说";
-		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="给神敬上玉饼，并说";
+		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="给神敬上一个摩提，并说";
 		}elseif($mrc['qdxq']=="ch"){$mrc['qdxq']="给神敬上一杯酒，并说";
-		}elseif($mrc['qdxq']=="fd"){$mrc['qdxq']="暂无，并说";
-		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="暂无，并说";
+		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="给神献上巧克力，并说";
 		}elseif($mrc['qdxq']=="shuai"){$mrc['qdxq']="要给神修庙建祠堂，并说";
 		}
 		
@@ -505,8 +507,7 @@ $q['if']= $qiandaodb['time']<$tdtime ? "<span class=gray>".$lang['tdno']."</span
 $qtime = dgmdate($qiandaodb['time'], 'Y-m-d H:i');
 $navigation = $lang['name'];
 $navtitle = "$navigation";
-$signBuild = 'Ver 1.0 For X2.5!<br>&copy; <a href="http://scl.xidian.edu.cn/">毕凯</a><br>';
-$signadd = 'http://rs.xidian.edu.cn/';
+$signBuild = 'Ver 1.0 For X2.5!<br>&copy; <a href="http://scl.xidian.edu.cn/" target="_blank">毕凯</a><br>';
 if($_G['inajax']){
 	include template('wishing_hall:ajaxsign');
 }else{
