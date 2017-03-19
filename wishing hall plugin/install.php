@@ -57,7 +57,8 @@ INSERT INTO `cdb_wishing_hallemot` (`id`, `displayorder`, `god_id`, `price`, `qd
 (4, 4, 1, 50, 'wl', '$installlang[mb_qb4]'),
 (5, 5, 1, 60, 'nu', '$installlang[mb_qb5]'),
 (6, 6, 1, 80, 'ch', '$installlang[mb_qb6]'),
-(8, 8, 1, 200, 'yl', '$installlang[mb_qb8]'),
+(7, 7, 1, 200, 'fd', '$installlang[mb_qb7]'),
+(8, 8, 1, 800, 'yl', '$installlang[mb_qb8]'),
 (9, 9, 1, 1000, 'shuai', '$installlang[mb_qb9]');
 EOF;
 runquery($sql);

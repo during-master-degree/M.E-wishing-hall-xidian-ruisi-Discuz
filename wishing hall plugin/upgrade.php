@@ -21,14 +21,15 @@ CREATE TABLE IF NOT EXISTS `cdb_wishing_hallemot` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM;
 INSERT INTO `cdb_wishing_hallemot` (`id`, `displayorder`, `qdxq`, `count`, `name`) VALUES
-(1, 1, 1, 0, 'kx', '$installlang[mb_qb1]'),
-(2, 2, 1, 20, 'ng', '$installlang[mb_qb2]'),
-(3, 3, 1, 40, 'ym', '$installlang[mb_qb3]'),
-(4, 4, 1, 50, 'wl', '$installlang[mb_qb4]'),
-(5, 5, 1, 60, 'nu', '$installlang[mb_qb5]'),
-(6, 6, 1, 80, 'ch', '$installlang[mb_qb6]'),
-(8, 8, 1, 200, 'yl', '$installlang[mb_qb8]'),
-(9, 9, 1, 1000, 'shuai', '$installlang[mb_qb9]');
+(1, 1, 'kx', '0', '$installlang[mb_qb1]'),
+(2, 2, 'ng', '0', '$installlang[mb_qb2]'),
+(3, 3, 'ym', '0', '$installlang[mb_qb3]'),
+(4, 4, 'wl', '0', '$installlang[mb_qb4]'),
+(5, 5, 'nu', '0', '$installlang[mb_qb5]'),
+(6, 6, 'ch', '0', '$installlang[mb_qb6]'),
+(7, 7, 'fd', '0', '$installlang[mb_qb7]'),
+(8, 8, 'yl', '0', '$installlang[mb_qb8]'),
+(9, 9, 'shuai', '0', '$installlang[mb_qb9]');
 EOF;
 runquery($sql);
 }
