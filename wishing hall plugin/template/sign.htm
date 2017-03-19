@@ -19,16 +19,16 @@
 <!--========1 S pics scroll===============-->
 <style>
 /* iFocus style */
-#ifocus_l2 { width:530px; height:297px; border:1px solid #DEDEDE; background:#F8F8F8; margin:0 auto;}
- #ifocus_l2_pic { display:inline; position:relative; float:right; width:510px; height:277px; overflow:hidden; margin:10px 10px 0 0; }
+#ifocus_l2 { width:750px; height:390px; border:1px solid #DEDEDE; background:#F8F8F8; margin:0 auto;}
+ #ifocus_l2_pic { display:inline; position:relative; float:right; width:730px; height:370px; overflow:hidden; margin:10px 10px 0 0; }
   #ifocus_l2_piclist { position:absolute; }
-  #ifocus_l2_piclist li { width:510px; height:277px; overflow:hidden; }
-  #ifocus_l2_piclist img { width:510px; height:277px; }
+  #ifocus_l2_piclist li { width:730px; height:370px; overflow:hidden; }
+  #ifocus_l2_piclist img { width:730px; height:370px; }
  #ifocus_l2_btn { display:inline; float:left; width:91px; margin:9px 0 0 9px; }
   #ifocus_l2_btn li { width:91px; height:57px; cursor:pointer; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); }
   #ifocus_l2_btn img { width:75px; height:45px; margin:7px 0 0 5px; }
   #ifocus_l2_btn .current { background: url(ifocus_l_btn_bg.gif) no-repeat; opacity:1; -moz-opacity:1; filter:alpha(opacity=100);}
- #ifocus_l2_opdiv { position:absolute; left:0; bottom:0; width:510px; height:35px; background:#000; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); }
+ #ifocus_l2_opdiv { position:absolute; left:0; bottom:0; width:730px; height:35px; background:#000; opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50); }
  #ifocus_l2_tx { position:absolute; left:8px; bottom:8px; color:#FFF; }
   #ifocus_l2_tx .normal { display:none; }
  </style>
@@ -141,17 +141,17 @@ function autoiFocus_l() {
   if (focusBtnList[i].className == 'current') var currentNum = i;
  }
  if (currentNum==0 && listLength!=1 ){
-  moveElement_l('ifocus_l2_piclist',0,-277,5);
+  moveElement_l('ifocus_l2_piclist',0,-370,5);
   classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
   classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',1);
  }
  if (currentNum==1 && listLength!=2 ){
-  moveElement_l('ifocus_l2_piclist',0,-554,5);
+  moveElement_l('ifocus_l2_piclist',0,-740,5);
   classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
   classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',2);
  }
  if (currentNum==2 && listLength!=3 ){
-  moveElement_l('ifocus_l2_piclist',0,-831,5);
+  moveElement_l('ifocus_l2_piclist',0,-1110,5);
   classNormal_l('ifocus_l2_btn','ifocus_l2_tx');
   classCurrent_l('ifocus_l2_btn','ifocus_l2_tx',3);
  }
@@ -212,6 +212,17 @@ function Icon_selected(sId) {
 </div>
 <div class="bm_c">
 <ul class="xl">$master
+</ul>
+</div>
+</div>
+
+<div class="bm">
+<div class="bm_h cl">
+<h2>修庙大善人</h2>
+</div>
+<div class="bm_c">
+<ul class="xl">
+$goodpeople
 </ul>
 </div>
 </div>
@@ -371,7 +382,7 @@ setInterval("getCustomerInfo()",2000);
 			<!--{/if}-->
 <!--=============3 E fwt===================-->   
          
-			<h3>{lang wishing_hall:mb_xz}<!--{if $var['ftopen']}--><br><font color="red">[{lang wishing_hall:mb_xz1}]</font><!--{/if}--></h3>            
+			<h3>{lang wishing_hall:mb_xz}</h3>            
 				<!--{if $var['qdajax']}-->
 					<form id="qiandao" method="post" action="plugin.php?id=wishing_hall:sign&operation=qiandao&infloat=1" onkeydown="if(event.keyCode==13){showWindow('qwindow', 'qiandao', 'post', '0');return false}">
 				<!--{else}-->
@@ -395,7 +406,7 @@ setInterval("getCustomerInfo()",2000);
 
 					<!--{if !$var['sayclose']}-->
 						<div>
-							<div{if !$var['ksopen'] && !$var['todaysayxt']} style="display:none;"{/if}>
+							<div{if !$var['todaysayxt']} style="display:none;"{/if}>
 								<p>{lang wishing_hall:mb_mode1}</p>
 								<div>
 									<label><input type="radio" name="qdmode" value="1" checked="checked" onclick="if(checked == true){document.getElementById('mode1').style.display='';document.getElementById('mode2').style.display='none';}">&nbsp;{lang wishing_hall:mb_mode2}</label>&nbsp;&nbsp;

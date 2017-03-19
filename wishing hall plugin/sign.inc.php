@@ -7,7 +7,15 @@
 完整删除的变量：
 plopen
 qddesc
-
+ftopen
+tzgroupid
+mintdpost
+rewardlistopen
+xxkxsz
+plgroups
+ajax_sign
+autosign_ug
+lastedop
 */
 !defined('IN_DISCUZ') && exit('Access Denied');
 define('IN_wishing_hall', '1');
@@ -26,9 +34,11 @@ $extreward = explode("/hhf/", $njlmain);
 $extreward_num = count($extreward);
 $jlxgroups = unserialize($var['jlxgroups']);
 $groups = unserialize($var['groups']);
-$plgroups = unserialize($var['plgroups']);
-$plgroups2 = unserialize($var['plgroups']);
-$plgroups = dimplode($plgroups);
+
+//$plgroups = unserialize($var['plgroups']);
+//$plgroups2 = unserialize($var['plgroups']);
+//$plgroups = dimplode($plgroups);
+
 $credit = mt_rand($var['mincredit'],$var['maxcredit']);
 $read_ban = explode(",",$var['ban']);
 $post = DB::fetch_first("SELECT posts FROM ".DB::table('common_member_count')." WHERE uid='$_G[uid]'");
@@ -62,7 +72,7 @@ if($var['plopen'] && $plgroups) {
 	}
 }
 *************4 E******************/
-if($_GET['operation'] == 'zong' || $_GET['operation'] == 'month' || $_GET['operation'] == '' || ($_GET['operation'] == 'zdyhz') || ($_GET['operation'] == 'rewardlist' && $var['rewardlistopen']) && !defined('IN_MOBILE')) {	
+if($_GET['operation'] == '') {	
 /*************7 S first vister & master & rank*****/	
 $firstvister = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and time >= {$tdtime} ORDER BY q.time");
 	if($firstvister){
@@ -70,7 +80,14 @@ $firstvister = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB:
 	}else{
 	 	$firstvister="<li><span class='xi2 xg1'>今天还没有人许愿</li>";	
 	}	
-	
+
+$goodpeople = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and qdxq = 'shuai' ORDER BY q.time desc");
+	if($goodpeople){
+		$goodpeople="<li><span class='xi2 xg1'>".$goodpeople['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$goodpeople['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$goodpeople['godsay']."</li>";	
+	}else{
+	 	$goodpeople="<li><span class='xi2 xg1'>本庙久经风雨，几近坍塌。</li>";	
+	}
+		
 $master=DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY reward desc");	
 	if($master){
 		$master="<li><span class='xi2 xg1'>".$master['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$master['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$master['godsay']."</li>";	
@@ -86,7 +103,7 @@ $query = DB::query($sql_rank);
 	$ranks[] = $rank;
 	}	
 /*************7 E first vister & master & rank*****/
-
+/**********6 S***********
 	if($_GET['operation'] == 'month'){
 		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign_wish')." WHERE time >= {$tdtime}");
 		$page = max(1, intval($_GET['page']));
@@ -94,20 +111,22 @@ $query = DB::query($sql_rank);
 		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
 	} elseif($_GET['operation'] == 'zdyhz' || $_GET['operation'] == 'rewardlist'){
 	} 
-/**********6 S***********
+
 	elseif($_GET['operation'] == '' && $var['qddesc']){
 		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." WHERE time >= {$tdtime}");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
 		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
 	} 
-***********6 E*********/
+
 	else {
+***********6 E*********/		
 		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')."");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
 		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
-	}
+//	}
+/*****5 S*******
 	if($_GET['operation'] == 'zong'){
 		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.days desc LIMIT $start_limit, 10";
 	} elseif ($_GET['operation'] == 'month') {
@@ -129,15 +148,16 @@ $query = DB::query($sql_rank);
 	} elseif ($var['rewardlistopen'] && $_GET['operation'] == 'rewardlist') {
 		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,q.reward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.reward desc LIMIT 0, 10";
 	} elseif ($_GET['operation'] == '') {
-/*****5 S*******
+
 		if($var['qddesc']) {
 			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and q.time >= {$tdtime} ORDER BY q.time LIMIT $start_limit, 10";
 		} else {
 */			
 			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.time desc LIMIT $start_limit, 10";
 /*		}
-*******5 E******/
+
 	}
+*******5 E******/
 	$query = DB::query($sql);
 	$mrcs = array();
 	$xy_id_num=1;
@@ -151,15 +171,15 @@ $query = DB::query($sql_rank);
 		$god_id_num++;
 		!$qd['qdxq'] && $qd['qdxq']=end(array_keys($emots));
 		
-		if($mrc['qdxq']=="kx"){$mrc['qdxq']="给神磕了个大大的响头，并说";
-		}elseif($mrc['qdxq']=="ng"){$mrc['qdxq']="给神上了一炷香，并说";
-		}elseif($mrc['qdxq']=="ym"){$mrc['qdxq']="给神献上鲜花，并说";
-		}elseif($mrc['qdxq']=="wl"){$mrc['qdxq']="给神敬上玉饼，并说";
-		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="暂无，并说";
-		}elseif($mrc['qdxq']=="ch"){$mrc['qdxq']="暂无，并说";
-		}elseif($mrc['qdxq']=="fd"){$mrc['qdxq']="暂无，并说";
-		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="要给神修庙建祠堂，并说";
-		}elseif($mrc['qdxq']=="shuai"){$mrc['qdxq']="暂无，并说";
+		if($row['qdxq']=="kx"){$row['qdxq']="虔诚的想要听取神的教诲，并说";
+		}elseif($row['qdxq']=="ng"){$row['qdxq']="给神磕了个大大的响头，并说";
+		}elseif($row['qdxq']=="ym"){$row['qdxq']="给神上了一炷香，并说";
+		}elseif($row['qdxq']=="wl"){$row['qdxq']="给神献上鲜花，并说";
+		}elseif($row['qdxq']=="nu"){$row['qdxq']="给神敬上玉饼，并说";
+		}elseif($row['qdxq']=="ch"){$row['qdxq']="给神敬上一杯酒，并说";
+		}elseif($row['qdxq']=="fd"){$row['qdxq']="暂无，并说";
+		}elseif($row['qdxq']=="yl"){$row['qdxq']="暂无，并说";
+		}elseif($row['qdxq']=="shuai"){$row['qdxq']="要给神修庙建祠堂，并说";
 		}
 		
 		if ($mrc['days'] >= '15000') {
@@ -254,6 +274,7 @@ if($jinbi<$credit){
 	if(in_array($_G['groupid'], $jlxgroups) && $var['jlx'] !== '0') {
 		$credit = $credit * $var['jlx'];
 	}
+/*	
 	if(($tdtime - $qiandaodb['time']) < 86400 && $var['lastedop'] && $qiandaodb['lasted'] !== '0'){
 		$randlastednum = mt_rand($var['lastednuml'],$var['lastednumh']);
 		$randlastednum = sprintf("%03d", $randlastednum);
@@ -261,6 +282,7 @@ if($jinbi<$credit){
 		$randlastednum = $randlastednum * $qiandaodb['lasted'];
 		$credit = round($credit*(1+$randlastednum));
 	}
+*/	
 	$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign_wish')." WHERE time >= {$tdtime}");
 	if(!$qiandaodb['uid']) {
 		DB::query("INSERT INTO ".DB::table('dsu_paulsign')." (uid,time) VALUES ('$_G[uid]',$_G[timestamp])");
@@ -289,12 +311,13 @@ if($jinbi<$credit){
 	$credit=DB::result_first("SELECT price FROM ".DB::table('dsu_paulsignemot')." WHERE qdxq='$_GET[qdxq]' and god_id=1");
 /*************1 E******************/	
 $godword=mt_rand(0,count($fastreplytexts)-1);
-
+/*************************
 	if(($tdtime - $qiandaodb['time']) < 86400 && $var['lastedop']){
 		DB::query("UPDATE ".DB::table('dsu_paulsign')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',reward=reward+{$credit},lastreward='$credit',lasted=lasted+1 WHERE uid='$_G[uid]'");
 	} else {
+*************************/		
 		DB::query("UPDATE ".DB::table('dsu_paulsign')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
-	}
+//	}
 /*************2 S******************/
 DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysay,godsay) VALUES ('$_G[uid]',$_G[timestamp],'$_GET[qdxq]','$todaysay','$fastreplytexts[$godword]')");
 	$credit=-$credit;
@@ -429,6 +452,7 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 	}
 	DB::query("UPDATE ".DB::table('dsu_paulsignemot')." SET count=count+1 WHERE qdxq='$_GET[qdxq]'");
 	if($var['lockopen']) discuz_process::unlock('wishing_hall');
+/************************	
 	if($var['tzopen']) {
 		if($exacr && $exacz) {
 			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"forum.php?mod=redirect&tid={$tidnumber}&goto=lastpost#lastpost");
@@ -436,12 +460,13 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 			sign_msg("{$lang[tsn_18]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"forum.php?mod=redirect&tid={$tidnumber}&goto=lastpost#lastpost");
 		}
 	} else {
+*************************/		
 		if($exacr && $exacz) {
 			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:sign");
 		} else {
 			sign_msg("{$lang[tsn_18]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:sign");
 		}
-	}
+//	}
 }
 if ($qiandaodb['days'] >= '15000') {
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.Master]{$lvmastername}</b></font> .";
