@@ -161,7 +161,7 @@ C::t('common_setting')->update('paulsign_emot_kao', $cacheechoskao);
 
 $cacheechosall = array();
 $cacheechoallkeys = array();
-$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." ORDER BY displayorder");
+$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." WHERE god_id='2' ORDER BY displayorder");
 while($cacheechoall = DB::fetch($queryc)) {
 	$cacheechosall[$cacheechoall['qdxq']] = $cacheechoall;
 	$cacheechoallkeys[] = $cacheechoall['qdxq'];
