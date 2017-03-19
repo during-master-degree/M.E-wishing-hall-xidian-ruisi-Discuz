@@ -9,7 +9,7 @@ $lang = $_G['cache']['pluginlanguage_script']['wishing_hall'];
 	if(!submitcheck('emotsubmit')) {
 
 			$emotechos = '';
-			$query = DB::query("SELECT * FROM ".DB::table('dsu_paulsignemot')." ORDER BY displayorder");
+			$query = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." ORDER BY displayorder");
 			while($emot = DB::fetch($query)) {
 				$emotechos .= showtablerow('', array('class="td25"', 'class="td28"'), array(
 					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$emot[id]\">",
@@ -49,12 +49,12 @@ EOT;
 	} else {
 		if($_G['adminid']!=='1' || $_GET['formhash']!==FORMHASH)cpmsg($lang['custom_07'], '', 'error');
 		if($ids = dimplode($_GET['delete'])) {
-			DB::query("DELETE FROM ".DB::table('dsu_paulsignemot')." WHERE id IN ($ids)");
+			DB::query("DELETE FROM ".DB::table('wishing_hallemot')." WHERE id IN ($ids)");
 		}
 
 		if(is_array($_GET['qdxq'])) {
 			foreach($_GET['qdxq'] as $id => $val) {
-				DB::update('dsu_paulsignemot', array(
+				DB::update('wishing_hallemot', array(
 					'displayorder' => $_GET['displayorder'][$id],
                     'god_id' => $_GET['god_id'][$id],
                     'price' => $_GET['price'][$id],
@@ -77,7 +77,7 @@ EOT;
 				if (preg_match("/[^0-9]/",$price1)|| strlen($price1) < 1) cpmsg($lang['custom_13'], '', 'error');
                 
 				if($newqdxq1 && $newname1) {
-					$query = DB::query("SELECT id FROM ".DB::table('dsu_paulsignemot')." WHERE qdxq='$newqdxq1' LIMIT 1");
+					$query = DB::query("SELECT id FROM ".DB::table('wishing_hallemot')." WHERE qdxq='$newqdxq1' LIMIT 1");
 					if(DB::num_rows($query)) {
 						cpmsg($lang['custom_09'], '', 'error');
 					}
@@ -88,7 +88,7 @@ EOT;
 						'qdxq' => $newqdxq1,
 						'name' => $newname1,
 					);
-					DB::insert('dsu_paulsignemot', $data);
+					DB::insert('wishing_hallemot', $data);
 				} elseif($newqdxq1 && !$newname1) {
 					cpmsg($lang['custom_10'], '', 'error');
 				}elseif($newqdxq1 && !$god_id1) {
@@ -98,7 +98,7 @@ EOT;
 		}
 		$cacheechos = array();
 		$cacheechokeys = array();
-		$queryc = DB::query("SELECT * FROM ".DB::table('dsu_paulsignemot')." ORDER BY displayorder");
+		$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." ORDER BY displayorder");
 		while($cacheecho = DB::fetch($queryc)) {
 			$cacheechos[$cacheecho['qdxq']] = $cacheecho;
 			$cacheechokeys[] = $cacheecho['qdxq'];

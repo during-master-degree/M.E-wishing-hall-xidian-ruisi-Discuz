@@ -281,7 +281,7 @@ $firstvister
 <div class="bm_c">
 <ul>
 <!--{loop $ranks $rank}-->
-<li><span style="float:left;"><!--{avatar($rank['uid'],small)}--></span><span style="float:left; margin:10px 0 0 20px;">$rank['username']</span><span style="color:#0C0; float:right; margin:10px 0 0 0;">￥$rank['reward']</span></li>
+<li><span style="float:left;"><a href="home.php?mod=space&uid=$rank[uid]"><!--{avatar($rank['uid'],small)}--></a></span><span style="float:left; margin:10px 0 0 20px;">$rank['username']</span><span style="color:#0C0; float:right; margin:10px 0 0 0;">￥$rank['reward']</span></li>
 <div style=" clear:both;"></div>
 <!--{/loop}-->
 </ul>
@@ -344,7 +344,7 @@ function updatePage() {
 			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
 				document.getElementById("xy_id"+i).innerHTML+=Math.random()*20;
 				
-				document.getElementById("god_id"+i).innerHTML=xmlDoc.getElementsByTagName("godsay")[i-1].childNodes[0].nodeValue+Math.random()*20;
+				document.getElementById("god_id"+i).innerHTML=xmlDoc.getElementsByTagName("godsay")[i-1].childNodes[0].nodeValue+" "+Math.random()*20;
 			 }
 		 
 //  	 document.getElementById("xy_id1").innerHTML =xmlDoc.getElementsByTagName("todaysay")[2].childNodes[0].nodeValue;
@@ -359,7 +359,7 @@ function updatePage() {
      }
    }
 
-setInterval("getCustomerInfo()",2000);
+setInterval("getCustomerInfo()",5000);
 </script>
 <!--==========5 E ajax==================--> 
 <div id="ct" class="ct2 wp cl" style="margin:0;">

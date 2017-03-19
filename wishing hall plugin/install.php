@@ -1,8 +1,8 @@
 <?php
 if(!defined('IN_ADMINCP')) exit('Access Denied');
 $sql = <<<EOF
-DROP TABLE IF EXISTS `cdb_dsu_paulsign`;
-CREATE TABLE IF NOT EXISTS `cdb_dsu_paulsign` (
+DROP TABLE IF EXISTS `cdb_wishing_hall`;
+CREATE TABLE IF NOT EXISTS `cdb_wishing_hall` (
   `uid` int(10) unsigned NOT NULL,
   `time` int(10) NOT NULL,
   `days` int(5) NOT NULL DEFAULT '0',
@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS `cdb_dsu_paulsign` (
   KEY `time` (`time`)
 ) ENGINE=MyISAM;
 
-DROP TABLE IF EXISTS `cdb_dsu_paulsign_wish`;
-CREATE TABLE IF NOT EXISTS `cdb_dsu_paulsign_wish` (
+DROP TABLE IF EXISTS `cdb_wishing_hall_wish`;
+CREATE TABLE IF NOT EXISTS `cdb_wishing_hall_wish` (
   `id` int(15) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL,
   `time` int(10) NOT NULL,
@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS `cdb_dsu_paulsign_wish` (
   KEY `time` (`time`)
 ) ENGINE=MyISAM;
 
-DROP TABLE IF EXISTS `cdb_dsu_paulsignset`;
-CREATE TABLE IF NOT EXISTS `cdb_dsu_paulsignset` (
+DROP TABLE IF EXISTS `cdb_wishing_hallset`;
+CREATE TABLE IF NOT EXISTS `cdb_wishing_hallset` (
   `id` int(10) unsigned NOT NULL,
   `todayq` int(10) NOT NULL DEFAULT '0',
   `yesterdayq` int(10) NOT NULL DEFAULT '0',
@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS `cdb_dsu_paulsignset` (
   `qdtidnumber` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM;
-INSERT INTO `cdb_dsu_paulsignset` (id, todayq, yesterdayq, highestq, qdtidnumber) VALUES ('1', '0', '0', '0', '0');
-DROP TABLE IF EXISTS `cdb_dsu_paulsignemot`;
-CREATE TABLE IF NOT EXISTS `cdb_dsu_paulsignemot` (
+INSERT INTO `cdb_wishing_hallset` (id, todayq, yesterdayq, highestq, qdtidnumber) VALUES ('1', '0', '0', '0', '0');
+DROP TABLE IF EXISTS `cdb_wishing_hallemot`;
+CREATE TABLE IF NOT EXISTS `cdb_wishing_hallemot` (
   `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
   `displayorder` tinyint(3) NOT NULL DEFAULT '0',
   `god_id` tinyint(3) unsigned NOT NULL DEFAULT '1',
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `cdb_dsu_paulsignemot` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM;
-INSERT INTO `cdb_dsu_paulsignemot` (`id`, `displayorder`, `god_id`, `price`, `qdxq`, `name`) VALUES
+INSERT INTO `cdb_wishing_hallemot` (`id`, `displayorder`, `god_id`, `price`, `qdxq`, `name`) VALUES
 (1, 1, 1, 0, 'kx', '$installlang[mb_qb1]'),
 (2, 2, 1, 20, 'ng', '$installlang[mb_qb2]'),
 (3, 3, 1, 40, 'ym', '$installlang[mb_qb3]'),
@@ -64,7 +64,7 @@ EOF;
 runquery($sql);
 $cacheechos = array();
 $cacheechokeys = array();
-$queryc = DB::query("SELECT * FROM ".DB::table('dsu_paulsignemot')." ORDER BY displayorder");
+$queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." ORDER BY displayorder");
 while($cacheecho = DB::fetch($queryc)) {
 	$cacheechos[$cacheecho['qdxq']] = $cacheecho;
 	$cacheechokeys[] = $cacheecho['qdxq'];

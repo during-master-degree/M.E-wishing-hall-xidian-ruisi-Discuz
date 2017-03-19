@@ -18,6 +18,18 @@
 			<item id="__modules">
 				<item id="0">
 					<item id="name"><![CDATA[sign]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[sign]]></item>
 					<item id="menu"><![CDATA[许愿堂]]></item>
 					<item id="url"><![CDATA[]]></item>
 					<item id="type"><![CDATA[5]]></item>
@@ -28,7 +40,7 @@
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
-				<item id="1">
+				<item id="2">
 					<item id="name"><![CDATA[sign_crash]]></item>
 					<item id="menu"><![CDATA[冗余数据清理]]></item>
 					<item id="url"><![CDATA[]]></item>
@@ -40,7 +52,7 @@
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
-				<item id="2">
+				<item id="3">
 					<item id="name"><![CDATA[sign_custom]]></item>
 					<item id="menu"><![CDATA[自定义贡品]]></item>
 					<item id="url"><![CDATA[]]></item>

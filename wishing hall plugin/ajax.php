@@ -14,7 +14,7 @@ $conn=mysql_connect("localhost","root","");
      mysql_select_db("ruisi",$conn);   
      mysql_query("set names utf8");    
  //查询
-     $res = mysql_query("SELECT q.uid,q.time,q.qdxq,q.todaysay,q.godsay,m.username FROM dsu_paulsign_wish q,common_member m where q.uid=m.uid order by q.time desc limit 0,10");  
+     $res = mysql_query("SELECT q.uid,q.time,q.qdxq,q.todaysay,q.godsay,m.username FROM wishing_hall_wish q,common_member m where q.uid=m.uid order by q.time desc limit 0,10");  
 
 echo '<?xml version="1.0" encoding="utf-8"?>
 <root>

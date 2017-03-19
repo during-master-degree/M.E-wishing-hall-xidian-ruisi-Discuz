@@ -42,14 +42,14 @@ $groups = unserialize($var['groups']);
 $credit = mt_rand($var['mincredit'],$var['maxcredit']);
 $read_ban = explode(",",$var['ban']);
 $post = DB::fetch_first("SELECT posts FROM ".DB::table('common_member_count')." WHERE uid='$_G[uid]'");
-$qiandaodb = DB::fetch_first("SELECT * FROM ".DB::table('dsu_paulsign')." WHERE uid='$_G[uid]'");
-$stats = DB::fetch_first("SELECT * FROM ".DB::table('dsu_paulsignset')." WHERE id='1'");
-$qddb = DB::fetch_first("SELECT time FROM ".DB::table('dsu_paulsign')." ORDER BY time DESC limit 0,1");
+$qiandaodb = DB::fetch_first("SELECT * FROM ".DB::table('wishing_hall')." WHERE uid='$_G[uid]'");
+$stats = DB::fetch_first("SELECT * FROM ".DB::table('wishing_hallset')." WHERE id='1'");
+$qddb = DB::fetch_first("SELECT time FROM ".DB::table('wishing_hall')." ORDER BY time DESC limit 0,1");
 $lastmonth=dgmdate($qddb['time'], 'm',$var['tos']);
 $nowmonth=dgmdate($_G['timestamp'], 'm',$var['tos']);
 $emots = unserialize($_G['setting']['paulsign_emot']);
 if($nowmonth!=$lastmonth){
-	DB::query("UPDATE ".DB::table('dsu_paulsign')." SET mdays=0 WHERE uid");
+	DB::query("UPDATE ".DB::table('wishing_hall')." SET mdays=0 WHERE uid");
 }
 function sign_msg($msg, $treferer = '') {
 	global $_G;
@@ -74,28 +74,28 @@ if($var['plopen'] && $plgroups) {
 *************4 E******************/
 if($_GET['operation'] == '') {	
 /*************7 S first vister & master & rank*****/	
-$firstvister = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and time >= {$tdtime} ORDER BY q.time");
+$firstvister = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('wishing_hall_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and time >= {$tdtime} ORDER BY q.time");
 	if($firstvister){
 		$firstvister="<li><span class='xi2 xg1'>".$firstvister['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$firstvister['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$firstvister['godsay']."</li>";	
 	}else{
 	 	$firstvister="<li><span class='xi2 xg1'>今天还没有人许愿</li>";	
 	}	
 
-$goodpeople = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and qdxq = 'shuai' ORDER BY q.time desc");
+$goodpeople = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('wishing_hall_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and qdxq = 'shuai' ORDER BY q.time desc");
 	if($goodpeople){
 		$goodpeople="<li><span class='xi2 xg1'>".$goodpeople['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$goodpeople['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$goodpeople['godsay']."</li>";	
 	}else{
 	 	$goodpeople="<li><span class='xi2 xg1'>本庙久经风雨，几近坍塌。</li>";	
 	}
 		
-$master=DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY reward desc");	
+$master=DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY reward desc");	
 	if($master){
 		$master="<li><span class='xi2 xg1'>".$master['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$master['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$master['godsay']."</li>";	
 	}else{
 	 	$master="<li><span class='xi2 xg1'>本庙暂无堂主</li>";	
 	}
 	
-$sql_rank="SELECT m.username,q.reward,q.uid FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY reward desc LIMIT 0,5";	
+$sql_rank="SELECT m.username,q.reward,q.uid FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY reward desc LIMIT 0,5";	
 $query = DB::query($sql_rank);
 	$rank = array();
 	while($rank = DB::fetch($query)) {
@@ -105,7 +105,7 @@ $query = DB::query($sql_rank);
 /*************7 E first vister & master & rank*****/
 /**********6 S***********
 	if($_GET['operation'] == 'month'){
-		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign_wish')." WHERE time >= {$tdtime}");
+		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall_wish')." WHERE time >= {$tdtime}");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
 		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
@@ -113,7 +113,7 @@ $query = DB::query($sql_rank);
 	} 
 
 	elseif($_GET['operation'] == '' && $var['qddesc']){
-		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." WHERE time >= {$tdtime}");
+		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall')." WHERE time >= {$tdtime}");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
 		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
@@ -121,39 +121,39 @@ $query = DB::query($sql_rank);
 
 	else {
 ***********6 E*********/		
-		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')."");
+		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall')."");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
 		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
 //	}
 /*****5 S*******
 	if($_GET['operation'] == 'zong'){
-		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.days desc LIMIT $start_limit, 10";
+		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.days desc LIMIT $start_limit, 10";
 	} elseif ($_GET['operation'] == 'month') {
-		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND q.mdays != 0 ORDER BY q.mdays desc LIMIT $start_limit, 10";
+		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND q.mdays != 0 ORDER BY q.mdays desc LIMIT $start_limit, 10";
 	} elseif($_GET['operation'] == 'zdyhz'){
 		if(in_array($_GET['qdgroupid'], $plgroups2)) {
-			$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($_GET[qdgroupid])");
+			$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($_GET[qdgroupid])");
 			$page = max(1, intval($_GET['page']));
 			$start_limit = ($page - 1) * 10;
 			$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}", 0);
-			$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($_GET[qdgroupid]) ORDER BY q.time desc LIMIT $start_limit, 10";
+			$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($_GET[qdgroupid]) ORDER BY q.time desc LIMIT $start_limit, 10";
 		} else {
-			$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($plgroups)");
+			$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($plgroups)");
 			$page = max(1, intval($_GET['page']));
 			$start_limit = ($page - 1) * 10;
 			$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}", 0);
-			$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($plgroups) ORDER BY q.time desc LIMIT $start_limit, 10";
+			$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($plgroups) ORDER BY q.time desc LIMIT $start_limit, 10";
 		}
 	} elseif ($var['rewardlistopen'] && $_GET['operation'] == 'rewardlist') {
-		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,q.reward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.reward desc LIMIT 0, 10";
+		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,q.reward,m.username FROM ".DB::table('wishing_hall')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.reward desc LIMIT 0, 10";
 	} elseif ($_GET['operation'] == '') {
 
 		if($var['qddesc']) {
-			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and q.time >= {$tdtime} ORDER BY q.time LIMIT $start_limit, 10";
+			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('wishing_hall_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and q.time >= {$tdtime} ORDER BY q.time LIMIT $start_limit, 10";
 		} else {
 */			
-			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('dsu_paulsign_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.time desc LIMIT $start_limit, 10";
+			$sql = "SELECT q.time,q.qdxq,q.uid,q.todaysay,q.godsay,m.username FROM ".DB::table('wishing_hall_wish')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.time desc LIMIT $start_limit, 10";
 /*		}
 
 	}
@@ -171,15 +171,15 @@ $query = DB::query($sql_rank);
 		$god_id_num++;
 		!$qd['qdxq'] && $qd['qdxq']=end(array_keys($emots));
 		
-		if($row['qdxq']=="kx"){$row['qdxq']="虔诚的想要听取神的教诲，并说";
-		}elseif($row['qdxq']=="ng"){$row['qdxq']="给神磕了个大大的响头，并说";
-		}elseif($row['qdxq']=="ym"){$row['qdxq']="给神上了一炷香，并说";
-		}elseif($row['qdxq']=="wl"){$row['qdxq']="给神献上鲜花，并说";
-		}elseif($row['qdxq']=="nu"){$row['qdxq']="给神敬上玉饼，并说";
-		}elseif($row['qdxq']=="ch"){$row['qdxq']="给神敬上一杯酒，并说";
-		}elseif($row['qdxq']=="fd"){$row['qdxq']="暂无，并说";
-		}elseif($row['qdxq']=="yl"){$row['qdxq']="暂无，并说";
-		}elseif($row['qdxq']=="shuai"){$row['qdxq']="要给神修庙建祠堂，并说";
+		if($mrc['qdxq']=="kx"){$mrc['qdxq']="虔诚的想要听取神的教诲，并说";
+		}elseif($mrc['qdxq']=="ng"){$mrc['qdxq']="给神磕了个大大的响头，并说";
+		}elseif($mrc['qdxq']=="ym"){$mrc['qdxq']="给神上了一炷香，并说";
+		}elseif($mrc['qdxq']=="wl"){$mrc['qdxq']="给神献上鲜花，并说";
+		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="给神敬上玉饼，并说";
+		}elseif($mrc['qdxq']=="ch"){$mrc['qdxq']="给神敬上一杯酒，并说";
+		}elseif($mrc['qdxq']=="fd"){$mrc['qdxq']="暂无，并说";
+		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="暂无，并说";
+		}elseif($mrc['qdxq']=="shuai"){$mrc['qdxq']="要给神修庙建祠堂，并说";
 		}
 		
 		if ($mrc['days'] >= '15000') {
@@ -202,12 +202,12 @@ $query = DB::query($sql_rank);
 			$mrc['level'] = "[LV.3]{$lv3name}";
 		} elseif ($mrc['days'] >= '30') {
 			$mrc['level'] = "[LV.2]{$lv2name}";
-		} elseif ($mrc['days'] >= '10') {
+		} elseif ($mrc['days'] >= '1') {
 			$mrc['level'] = "[LV.1]{$lv1name}";
 		}
 		$mrcs[] = $mrc;
 	}
-	$emotquery = DB::query("SELECT count,name FROM ".DB::table('dsu_paulsignemot')." ORDER BY count desc LIMIT 0, 5");
+	$emotquery = DB::query("SELECT count,name FROM ".DB::table('wishing_hallemot')." ORDER BY count desc LIMIT 0, 5");
 	$emottops = array();
 	while($emottop = DB::fetch($emotquery)) {
 		$emottops[] = $emottop;
@@ -217,7 +217,7 @@ $query = DB::query($sql_rank);
 		showmessage('undefined_action', NULL);
 	}
 	if($_G['adminid'] == 1) {
-		DB::query("UPDATE ".DB::table('dsu_paulsign')." SET todaysay='{$lang['ban_01']}' WHERE uid='".intval($_GET['banuid'])."'");
+		DB::query("UPDATE ".DB::table('wishing_hall')." SET todaysay='{$lang['ban_01']}' WHERE uid='".intval($_GET['banuid'])."'");
 		showmessage("{$lang['ban_02']}", dreferer());
 	} else {
 		showmessage("{$lang['ban_03']}", dreferer());
@@ -283,9 +283,9 @@ if($jinbi<$credit){
 		$credit = round($credit*(1+$randlastednum));
 	}
 */	
-	$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign_wish')." WHERE time >= {$tdtime}");
+	$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('wishing_hall_wish')." WHERE time >= {$tdtime}");
 	if(!$qiandaodb['uid']) {
-		DB::query("INSERT INTO ".DB::table('dsu_paulsign')." (uid,time) VALUES ('$_G[uid]',$_G[timestamp])");
+		DB::query("INSERT INTO ".DB::table('wishing_hall')." (uid,time) VALUES ('$_G[uid]',$_G[timestamp])");
 	}
 /************1 S*******************	
 		if($_GET[qdxq]=='kx'){
@@ -308,18 +308,18 @@ if($jinbi<$credit){
 		$credit=1000;
 	}
 *********************************/	
-	$credit=DB::result_first("SELECT price FROM ".DB::table('dsu_paulsignemot')." WHERE qdxq='$_GET[qdxq]' and god_id=1");
+	$credit=DB::result_first("SELECT price FROM ".DB::table('wishing_hallemot')." WHERE qdxq='$_GET[qdxq]' and god_id=1");
 /*************1 E******************/	
 $godword=mt_rand(0,count($fastreplytexts)-1);
 /*************************
 	if(($tdtime - $qiandaodb['time']) < 86400 && $var['lastedop']){
-		DB::query("UPDATE ".DB::table('dsu_paulsign')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',reward=reward+{$credit},lastreward='$credit',lasted=lasted+1 WHERE uid='$_G[uid]'");
+		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',reward=reward+{$credit},lastreward='$credit',lasted=lasted+1 WHERE uid='$_G[uid]'");
 	} else {
 *************************/		
-		DB::query("UPDATE ".DB::table('dsu_paulsign')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
+		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
 //	}
 /*************2 S******************/
-DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysay,godsay) VALUES ('$_G[uid]',$_G[timestamp],'$_GET[qdxq]','$todaysay','$fastreplytexts[$godword]')");
+DB::query("INSERT INTO ".DB::table('wishing_hall_wish')." (uid,time,qdxq,todaysay,godsay) VALUES ('$_G[uid]',$_G[timestamp],'$_GET[qdxq]','$todaysay','$fastreplytexts[$godword]')");
 	$credit=-$credit;
 	updatemembercount($_G['uid'], array($var['nrcredit'] => $credit));
 
@@ -416,7 +416,7 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 				}
 				DB::query("INSERT INTO ".DB::table('forum_thread')." (fid, posttableid, readperm, price, typeid, sortid, author, authorid, subject, dateline, lastpost, lastposter, displayorder, digest, special, attachment, moderated, highlight, closed, status, isgroup) VALUES ('$var[fidnumber]', '0', '0', '0', '$var[qdtypeid]', '0', '$_G[username]', '$_G[uid]', '$subject', '$_G[timestamp]', '$_G[timestamp]', '$_G[username]', '0', '0', '0', '0', '1', '1', '1', '0', '0')");
 				$tid = DB::insert_id();
-				DB::query("UPDATE ".DB::table('dsu_paulsignset')." SET qdtidnumber = '$tid' WHERE id='1'");
+				DB::query("UPDATE ".DB::table('wishing_hallset')." SET qdtidnumber = '$tid' WHERE id='1'");
 				$pid = insertpost(array('fid' => $var['fidnumber'],'tid' => $tid,'first' => '1','author' => $_G['username'],'authorid' => $_G['uid'],'subject' => $subject,'dateline' => $_G['timestamp'],'message' => $message,'useip' => $_G['clientip'],'invisible' => '0','anonymous' => '0','usesig' => '0','htmlon' => '0','bbcodeoff' => '0','smileyoff' => '0','parseurloff' => '0','attachment' => '0',));
 				$expiration = $_G['timestamp'] + 86400;
 				DB::query("INSERT INTO ".DB::table('forum_thread')."mod (tid, uid, username, dateline, action, expiration, status) VALUES ('$tid', '$_G[uid]', '$_G[username]', '$_G[timestamp]', 'EHL', '$expiration', '1')");
@@ -443,14 +443,14 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 		}
 	if(memory('check')) memory('set', 'dsu_pualsign_'.$_G['uid'], $_G['timestamp'], 86400);
 	if($num ==0) {
-		if($stats['todayq'] > $stats['highestq']) DB::query("UPDATE ".DB::table('dsu_paulsignset')." SET highestq='$stats[todayq]' WHERE id='1'");
-		DB::query("UPDATE ".DB::table('dsu_paulsignset')." SET yesterdayq='$stats[todayq]',todayq=1 WHERE id='1'");
-		DB::query("UPDATE ".DB::table('dsu_paulsignemot')." SET count=0");
-		DB::query("DELETE from ".DB::table('dsu_paulsign_wish')." where time<{$tdtime}-3600*24");//删除前天及以前的记录
+		if($stats['todayq'] > $stats['highestq']) DB::query("UPDATE ".DB::table('wishing_hallset')." SET highestq='$stats[todayq]' WHERE id='1'");
+		DB::query("UPDATE ".DB::table('wishing_hallset')." SET yesterdayq='$stats[todayq]',todayq=1 WHERE id='1'");
+		DB::query("UPDATE ".DB::table('wishing_hallemot')." SET count=0");
+		DB::query("DELETE from ".DB::table('wishing_hall_wish')." where time<{$tdtime}-3600*24");//删除前天及以前的记录
 	} else {
-		DB::query("UPDATE ".DB::table('dsu_paulsignset')." SET todayq=todayq+1 WHERE id='1'");
+		DB::query("UPDATE ".DB::table('wishing_hallset')." SET todayq=todayq+1 WHERE id='1'");
 	}
-	DB::query("UPDATE ".DB::table('dsu_paulsignemot')." SET count=count+1 WHERE qdxq='$_GET[qdxq]'");
+	DB::query("UPDATE ".DB::table('wishing_hallemot')." SET count=count+1 WHERE qdxq='$_GET[qdxq]'");
 	if($var['lockopen']) discuz_process::unlock('wishing_hall');
 /************************	
 	if($var['tzopen']) {
@@ -497,7 +497,7 @@ if ($qiandaodb['days'] >= '15000') {
 } elseif ($qiandaodb['days'] >= '30') {
 	$q['lvqd'] = 70 - $qiandaodb['days'];
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.2]{$lv2name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.3]{$lv3name}</b></font> .";
-} elseif ($qiandaodb['days'] >= '10') {
+} elseif ($qiandaodb['days'] >= '1') {
 	$q['lvqd'] = 30 - $qiandaodb['days'];
 	$q['level'] = "{$lang['level']}<font color=green><b>[LV.1]{$lv1name}</b></font>{$lang['level2']} <font color=#FF0000><b>{$q['lvqd']}</b></font> {$lang['level3']} <font color=#FF0000><b>[LV.2]{$lv2name}</b></font> .";
 }

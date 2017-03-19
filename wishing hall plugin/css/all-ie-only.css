@@ -1,0 +1,7 @@
+header { width:100%; margin:0; padding:15px 0; z-index: 100; background: white; border-bottom: 1px solid #F2F2F2; left: 0; right: 0; height: 45px; position:fixed !important; position: absolute; /*ie6 and above*/ top: 0;}
+header nav { width:450px; display: inline-block; *display: inline; zoom: 1; float:right; margin: 10px 0 0 0; padding-right: 20px; height: 35px;}
+header nav li { display: inline-block; *display: inline; zoom: 1; padding:5px 0 5px 80px; color: #565656; font-size: 20px; line-height: 20px; letter-spacing:normal; font-weight: 600; font-family: "proxima-nova",sans-serif; text-align:right; list-style:none; list-style-position:inside; }
+.flex-direction-nav  { display:none; }
+.social .twitter { background: url('../img/god_list/icon_twitter_new.png'); width:22px; height:18px; padding:0; margin:0; }
+section#banner h4 { width:680px; height:145px; text-indent:-999999px; margin:0 auto; background: url('../img/god_list/ie-h4.png'); }
+section#services .service span { display:none; }
