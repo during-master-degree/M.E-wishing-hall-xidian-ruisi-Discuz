@@ -2,10 +2,11 @@
 /*
 	wishing_hall ajax with redis By bikai[RS Team] 2013-02-15
 */
+require_once('rsmysqlDB.php');
 header("Content-Type:text/xml;charset=utf-8");
 header("Cache-Control:no-cache");
 
-if($_SERVER['REQUEST_METHOD']=='GET'){exit("Access Denied!");}
+//if($_SERVER['REQUEST_METHOD']=='GET'){exit("Access Denied!");}
 
 // if($_GET['action'] == 'checkusername') {
 $redis = new redis();
@@ -35,12 +36,12 @@ $result.="<wishing>
 	 		
 	}else{//use mysql
 	$result=''; 
-	$conn=mysql_connect("localhost","root","");
+	$conn=mysql_connect("localhost",$username,$password);
      if(!$conn){   
          die('Could not connect: '.mysql_error());
      }//else{echo "连接数据库成功!"; }   
 	 
-     mysql_select_db("ruisi",$conn);   
+     mysql_select_db($dbname,$conn);   
      mysql_query("set names utf8");    
  //查询
      $res = mysql_query("SELECT q.uid,q.time,q.qdxq,q.todaysay,q.godsay,m.username FROM wishing_hall_wish_kao q,common_member m where q.uid=m.uid order by q.time desc limit 0,10");  

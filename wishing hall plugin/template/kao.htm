@@ -182,7 +182,7 @@ function levelts(msg, script) {
 	showDialog(c, 'info', t);
 }
 function Icon_selected(sId) {
-    var oImg = document.getElementsByTagName('li');
+    var oImg = document.getElementById('gongpin').getElementsByTagName('li');
     for (var i = 0; i < oImg.length; i++) {
       if (oImg[i].id == sId) {
 		var selectname = document.getElementById(oImg[i].id + "_s");
@@ -191,7 +191,7 @@ function Icon_selected(sId) {
 		oImg[i].style. border = '2px dashed #D1D8D8';
       } else {
         oImg[i].style. background = '';
-		oImg[i].style. border = '';
+		oImg[i].style. border = '2px dashed #FFF';
       }
     }
 }
@@ -338,14 +338,17 @@ function updatePage() {
 //		 }else alert("Not num.");
 		 var item_num=xmlDoc.getElementsByTagName("item")[0].childNodes[0].nodeValue;
 		 for(var i=1;i<=item_num;i++){
-			 	document.getElementById("xy_id"+i).innerHTML="<a href='home.php?mod=space&uid="+xmlDoc.getElementsByTagName("uid")[i-1].childNodes[0].nodeValue+"' target='_blank' style='color:#ff7600;'>"+xmlDoc.getElementsByTagName("username")[i-1].childNodes[0].nodeValue+"("+xmlDoc.getElementsByTagName("time")[i-1].childNodes[0].nodeValue+") "+"</a>";
-			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue;
-				document.getElementById("xy_id"+i).innerHTML+=":";
-			 	document.getElementById("xy_id"+i).innerHTML+=xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
+				document.getElementById("xy_id"+i).innerHTML="<a href='home.php?mod=space&uid="+xmlDoc.getElementsByTagName("uid")[i-1].childNodes[0].nodeValue+"' target='_blank' style='color:#ff7600;'>"+xmlDoc.getElementsByTagName("username")[i-1].childNodes[0].nodeValue+"("+xmlDoc.getElementsByTagName("time")[i-1].childNodes[0].nodeValue+") "+"</a>"+xmlDoc.getElementsByTagName("qdxq")[i-1].childNodes[0].nodeValue+":"+xmlDoc.getElementsByTagName("todaysay")[i-1].childNodes[0].nodeValue;
 				
 				document.getElementById("god_id"+i).innerHTML=xmlDoc.getElementsByTagName("godsay")[i-1].childNodes[0].nodeValue;
-			 }
-		 
+				
+				document.getElementById("xy_id"+i+"_tr").style.display="";//visibility="visible";
+				document.getElementById("god_id"+i+"_tr").style.display="";//visibility="visible";
+			 } 
+		 for(var j=parseInt(item_num)+1;j<=10;j++){
+			 	document.getElementById("xy_id"+j+"_tr").style.display="none";//visibility="hidden";
+				document.getElementById("god_id"+j+"_tr").style.display="none";//visibility="hidden";
+			 }	 
 //  	 document.getElementById("xy_id1").innerHTML =xmlDoc.getElementsByTagName("todaysay")[2].childNodes[0].nodeValue;
 //      document.getElementById("todaysay").value = response[0];
 
@@ -391,7 +394,7 @@ setInterval("getCustomerInfo()",2000);
 				<table width="100%" cellpadding="0" cellspacing="0" align="center">
 					<tr>
 						<td class="tr3 tac">
-							<ul class="qdsmile" >
+							<ul class="qdsmile" id="gongpin">
 							<!--{loop $emots $key $value}-->
 								<input id="{$key}_s" type="radio" name="qdxq" value="{$key}" style="display:none"><li id="{$key}" onclick="Icon_selected(this.id)" onmouseover="showMenu({'ctrlid':this.id, 'pos':'21'});"><center><img src="source/plugin/wishing_hall/img/emot/{$key}.gif" /><br /></center></li>
 							<!--{/loop}-->
@@ -458,8 +461,8 @@ setInterval("getCustomerInfo()",2000);
 			<div class="datalist">
 				<table cellspacing="0" cellpadding="0" summary="phb" class="datatable">
 					<!--{if $mrcs}-->
-						<!--{loop $mrcs $mrc}-->
-							<tr>
+						<!--{loop $mrcs $mrc}-->                       
+							<tr id="{$mrc['xy_id']}_tr" <!--{if $mrc[username]==''}-->style=" display:none;"<!--{/if}-->>
 								<td></td>
 								<td><span id="{$mrc['xy_id']}"><a href="home.php?mod=space&uid=$mrc[uid]" target="_blank" style="color:#ff7600;">$mrc[username]($mrc[time])</a>
 
@@ -467,16 +470,14 @@ $mrc[qdxq]:$mrc[todaysay]</span>
 <!--{if $_G['uid'] && $_G['adminid'] == 1}--><a href="plugin.php?id=wishing_hall:kao&operation=ban&banuid=$mrc[uid]&formhash={FORMHASH}"  title="{lang wishing_hall:ban_04}"><font color=red>[{lang wishing_hall:ban_05}]</font></a><!--{/if}--></td>
 							</tr>
 
-							<tr class="colplural">
+							<tr class="colplural" id="{$mrc['god_id']}_tr" <!--{if $mrc[username]==''}-->style=" display:none;"<!--{/if}-->>
 								<td align="left" colspan="9">
                                 	<span id="{$mrc['god_id']}">$mrc[godsay]</span>
 								</td>
 							</tr>
-
-						<!--{/loop}-->
+<!--{/loop}-->
 						<!--{if !empty($multipage)}--><tr><td colspan="8"><div class="pages_btns">$multipage</div></td></tr><!--{/if}-->
-					<!--{else}-->
-						<tr><td colspan="9">{lang wishing_hall:mb_wrq}</td></tr>
+					<!--{if !$has_items}--><tr><td colspan="9">{lang wishing_hall:mb_wrq}</td></tr><!--{/if}-->
 					<!--{/if}-->
 				</table>
 			</div>	

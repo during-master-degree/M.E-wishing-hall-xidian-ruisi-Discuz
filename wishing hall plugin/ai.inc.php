@@ -165,14 +165,13 @@ $query = DB::query($sql_rank);
 	$query = DB::query($sql);
 	$mrcs = array();
 	$xy_id_num=1;
-	$god_id_num=1;
+	$has_items=0;
 	while($mrc = DB::fetch($query)) {
 		$mrc['if']= $mrc['time']<$tdtime ? "<span class=gray>".$lang['tdno']."</span>" : "<font color=green>".$lang['tdyq']."</font>";
 		$mrc['time'] = dgmdate($mrc['time'], 'Y-m-d H:i');
 		$mrc['xy_id']="xy_id".$xy_id_num;
+		$mrc['god_id']="god_id".$xy_id_num;
 		$xy_id_num++;
-		$mrc['god_id']="god_id".$god_id_num;
-		$god_id_num++;
 		!$qd['qdxq'] && $qd['qdxq']=end(array_keys($emots));
 		
 		if($mrc['qdxq']=="kx_ai"){$mrc['qdxq']="虔诚的想要听取神的教诲，并说";
@@ -184,30 +183,12 @@ $query = DB::query($sql_rank);
 		}elseif($mrc['qdxq']=="yl_ai"){$mrc['qdxq']="给神献上巧克力，并说";
 		}elseif($mrc['qdxq']=="shuai_ai"){$mrc['qdxq']="要给爱神修庙建祠堂，并说";
 		}
-		
-		if ($mrc['days'] >= '15000') {
-			$mrc['level'] = "[LV.Master]{$lvmastername}";
-		} elseif ($mrc['days'] >= '7500') {
-			$mrc['level'] = "[LV.10]{$lv10name}";
-		} elseif ($mrc['days'] >= '3650') {
-			$mrc['level'] = "[LV.9]{$lv9name}";
-		} elseif ($mrc['days'] >= '2000') {
-			$mrc['level'] = "[LV.8]{$lv10name}";
-		} elseif ($mrc['days'] >= '1000') {
-			$mrc['level'] = "[LV.7]{$lv7name}";
-		} elseif ($mrc['days'] >= '600') {
-			$mrc['level'] = "[LV.6]{$lv6name}";
-		} elseif ($mrc['days'] >= '300') {
-			$mrc['level'] = "[LV.5]{$lv5name}";
-		} elseif ($mrc['days'] >= '150') {
-			$mrc['level'] = "[LV.4]{$lv4name}";
-		} elseif ($mrc['days'] >= '70') {
-			$mrc['level'] = "[LV.3]{$lv3name}";
-		} elseif ($mrc['days'] >= '30') {
-			$mrc['level'] = "[LV.2]{$lv2name}";
-		} elseif ($mrc['days'] >= '1') {
-			$mrc['level'] = "[LV.1]{$lv1name}";
-		}
+		$mrcs[] = $mrc;
+		$has_items=1;
+	}
+	for($j=$xy_id_num;$j<=10;$j++){/*1*/
+		$mrc['xy_id']="xy_id".$j;			
+		$mrc['god_id']="god_id".$j;
 		$mrcs[] = $mrc;
 	}
 	$emotquery = DB::query("SELECT count,name FROM ".DB::table('wishing_hallemot')." WHERE god_id='2' ORDER BY count desc LIMIT 0, 5");
