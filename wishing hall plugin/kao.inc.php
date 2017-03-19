@@ -85,7 +85,7 @@ $firstvister = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB:
 	 	$firstvister="<li><span class='xi2 xg1'>今天还没有人许愿</li>";	
 	}	
 
-$goodpeople = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('wishing_hall_wish_kao')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and qdxq = 'shuai' ORDER BY q.time desc");
+$goodpeople = DB::fetch_first("SELECT m.username,q.todaysay,q.godsay FROM ".DB::table('wishing_hall_wish_kao')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid and qdxq = 'shuai_kao' ORDER BY q.time desc");
 	if($goodpeople){
 		$goodpeople="<li><span class='xi2 xg1'>".$goodpeople['username']."</li><li style=' text-align:left;'><span style='color:#F00;'>心愿：</span>".$goodpeople['todaysay']."</li><li style=' text-align:left;'><span style='color:#F00;'>佛曰：</span>".$goodpeople['godsay']."</li>";	
 	}else{
@@ -210,6 +210,12 @@ $query = DB::query($sql_rank);
 		}
 		$mrcs[] = $mrc;
 	}
+	for($j=$xy_id_num;$j<=10;$j++){/*1*/
+		$mrc['xy_id']="xy_id".$xy_id_num;			
+		$mrc['god_id']="god_id".$xy_id_num;
+		$xy_id_num++;
+		$mrcs[] = $mrc;
+	}
 	$emotquery = DB::query("SELECT count,name FROM ".DB::table('wishing_hallemot')."  WHERE god_id='3' ORDER BY count desc LIMIT 0, 5");
 	$emottops = array();
 	while($emottop = DB::fetch($emotquery)) {
@@ -292,7 +298,7 @@ if($jinbi<$credit){
 		DB::query("INSERT INTO ".DB::table('wishing_hall')." (uid,time) VALUES ('$_G[uid]',$_G[timestamp])");
 		DB::query("INSERT INTO ".DB::table('wishing_hall_kao')." uid VALUES '$_G[uid]'");
 	}elseif(!$qiandaodb_in_kao['uid']){
-		DB::query("INSERT INTO ".DB::table('wishing_hall_kao')." uid VALUES '$_G[uid]'");
+		DB::query("INSERT INTO ".DB::table('wishing_hall_kao')." (uid,reward) VALUES ('$_G[uid]','0')");
 		}
 /************1 S*******************	
 		if($_GET[qdxq]=='kx'){
@@ -517,6 +523,6 @@ $signBuild = 'Ver 1.0 For X2.5!<br>&copy; <a href="http://scl.xidian.edu.cn/" ta
 if($_G['inajax']){
 	include template('wishing_hall:ajaxsign');
 }else{
-	include template('wishing_hall:fo');
+	include template('wishing_hall:kao');
 }
 ?>

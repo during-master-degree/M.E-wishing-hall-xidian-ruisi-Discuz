@@ -2,6 +2,7 @@
 /*
 	wishing_hall ajax with redis By bikai[RS Team] 2013-02-15
 */
+require_once('rsmysqlDB.php');
 header("Content-Type:text/xml;charset=utf-8");
 header("Cache-Control:no-cache");
 
@@ -12,7 +13,7 @@ $redis = new redis();
 $redis->connect('127.0.0.1',6379);
 
 //read redis
-$wishing_items=(int)$redis->get('items');
+$wishing_items=(int)$redis->get('items_ai');
 	if($wishing_items){
 		$result='';
 echo '<?xml version="1.0" encoding="utf-8"?>
@@ -35,22 +36,22 @@ $result.="<wishing>
 	 		
 	}else{//use mysql
 	$result=''; 
-	$conn=mysql_connect("localhost","root","");
+	$conn=mysql_connect("localhost",$username,$password);
      if(!$conn){   
          die('Could not connect: '.mysql_error());
      }//else{echo "连接数据库成功!"; }   
 	 
-     mysql_select_db("ruisi",$conn);   
+     mysql_select_db($dbname,$conn);   
      mysql_query("set names utf8");    
  //查询
      $res = mysql_query("SELECT q.uid,q.time,q.qdxq,q.todaysay,q.godsay,m.username FROM wishing_hall_wish_ai q,common_member m where q.uid=m.uid order by q.time desc limit 0,10");  
-$redis->set('items',mysql_num_rows($res));
+$redis->set('items_ai',mysql_num_rows($res));
 echo '<?xml version="1.0" encoding="utf-8"?>
 <root>
 <item>'.mysql_num_rows($res).'</item>
 ';
 	
-	$redis->setTimeout('items', 3);	
+	$redis->setTimeout('items_ai', 3);	
 	$index=1;	
 //	print_r(mysql_fetch_array($res));
  	while($row=mysql_fetch_array($res)){

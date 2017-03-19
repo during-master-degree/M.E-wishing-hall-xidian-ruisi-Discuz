@@ -210,6 +210,12 @@ $query = DB::query($sql_rank);
 		}
 		$mrcs[] = $mrc;
 	}
+	for($j=$xy_id_num;$j<=10;$j++){/*1*/
+		$mrc['xy_id']="xy_id".$xy_id_num;			
+		$mrc['god_id']="god_id".$xy_id_num;
+		$xy_id_num++;
+		$mrcs[] = $mrc;
+	}
 	$emotquery = DB::query("SELECT count,name FROM ".DB::table('wishing_hallemot')." WHERE god_id='1' ORDER BY count desc LIMIT 0, 5");
 	$emottops = array();
 	while($emottop = DB::fetch($emotquery)) {
@@ -292,7 +298,7 @@ if($jinbi<$credit){
 		DB::query("INSERT INTO ".DB::table('wishing_hall')." (uid,time) VALUES ('$_G[uid]',$_G[timestamp])");
 		DB::query("INSERT INTO ".DB::table('wishing_hall_fo')." uid VALUES '$_G[uid]'");
 	}elseif(!$qiandaodb_in_fo['uid']){
-		DB::query("INSERT INTO ".DB::table('wishing_hall_fo')." uid VALUES '$_G[uid]'");
+		DB::query("INSERT INTO ".DB::table('wishing_hall_fo')." (uid,reward) VALUES ('$_G[uid]','0')");
 		}
 /************1 S*******************	
 		if($_GET[qdxq]=='kx'){

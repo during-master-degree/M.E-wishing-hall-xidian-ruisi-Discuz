@@ -7,10 +7,14 @@ for($i=1;$i<=$wishing_items;$i++){
 var_dump($redis->lgetrange('wishes'.$i,0,-1));
 }
 
+$wishing_items=(int)$redis->get('items_ai');
+var_dump($wishing_items);
 for($i=1;$i<=$wishing_items;$i++){
 var_dump($redis->lgetrange('wishes_ai'.$i,0,-1));
 }
 
+$wishing_items=(int)$redis->get('items_kao');
+var_dump($wishing_items);
 for($i=1;$i<=$wishing_items;$i++){
 var_dump($redis->lgetrange('wishes_kao'.$i,0,-1));
 }

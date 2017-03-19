@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `cdb_wishing_hall` (
   `mdays` int(5) NOT NULL DEFAULT '0',
   `reward` int(12) NOT NULL DEFAULT '0',
   `lastreward` int(12) NOT NULL DEFAULT '0',
-  `qdxq` varchar(5) NOT NULL,
+  `qdxq` varchar(10) NOT NULL,
   `todaysay` varchar(1000) NOT NULL,
   `godsay` varchar(1000) NOT NULL,
   PRIMARY KEY (`uid`),
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `cdb_wishing_hall_wish` (
   `id` int(15) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL,
   `time` int(10) NOT NULL,
-  `qdxq` varchar(5) NOT NULL,
+  `qdxq` varchar(10) NOT NULL,
   `todaysay` varchar(1000) NOT NULL,
   `godsay` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `cdb_wishing_hall_wish_ai` (
   `id` int(15) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL,
   `time` int(10) NOT NULL,
-  `qdxq` varchar(5) NOT NULL,
+  `qdxq` varchar(10) NOT NULL,
   `todaysay` varchar(1000) NOT NULL,
   `godsay` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `cdb_wishing_hall_wish_kao` (
   `id` int(15) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL,
   `time` int(10) NOT NULL,
-  `qdxq` varchar(5) NOT NULL,
+  `qdxq` varchar(10) NOT NULL,
   `todaysay` varchar(1000) NOT NULL,
   `godsay` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
@@ -138,24 +138,26 @@ while($cacheecho = DB::fetch($queryc)) {
 
 }
 C::t('common_setting')->update('paulsign_emot_fo', $cacheechos);
-updatecache('setting');
 
+$cacheechosai = array();
+$cacheechoaikeys = array();
 $queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." WHERE god_id='2' ORDER BY displayorder");
-while($cacheecho = DB::fetch($queryc)) {
-	$cacheechos[$cacheecho['qdxq']] = $cacheecho;
-	$cacheechokeys[] = $cacheecho['qdxq'];
+while($cacheechoai = DB::fetch($queryc)) {
+	$cacheechosai[$cacheechoai['qdxq']] = $cacheechoai;
+	$cacheechoaikeys[] = $cacheechoai['qdxq'];
 
 }
-C::t('common_setting')->update('paulsign_emot_ai', $cacheechos);
-updatecache('setting');
+C::t('common_setting')->update('paulsign_emot_ai', $cacheechosai);
 
+$cacheechoskao = array();
+$cacheechokaokeys = array();
 $queryc = DB::query("SELECT * FROM ".DB::table('wishing_hallemot')." WHERE god_id='3' ORDER BY displayorder");
-while($cacheecho = DB::fetch($queryc)) {
-	$cacheechos[$cacheecho['qdxq']] = $cacheecho;
-	$cacheechokeys[] = $cacheecho['qdxq'];
+while($cacheechokao = DB::fetch($queryc)) {
+	$cacheechoskao[$cacheechokao['qdxq']] = $cacheechokao;
+	$cacheechokaokeys[] = $cacheechokao['qdxq'];
 
 }
-C::t('common_setting')->update('paulsign_emot_kao', $cacheechos);
+C::t('common_setting')->update('paulsign_emot_kao', $cacheechoskao);
 updatecache('setting');
 $finish = TRUE;
 ?>
