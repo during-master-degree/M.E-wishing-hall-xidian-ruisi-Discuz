@@ -266,7 +266,13 @@ setInterval("getCustomerInfo()",2000);
 				<p><font color="#FF0000"><b>$_G['username']</b></font> {lang wishing_hall:mb_fwt1} <b>$qiandaodb['days']</b> {lang wishing_hall:mb_fwt2}</p>
 				<p>{lang wishing_hall:mb_fwt3}<b>$qiandaodb['mdays']</b> {lang wishing_hall:mb_fwt2}</p>
 				<p>{lang wishing_hall:mb_fwt6}<font color="#ff00cc">$qtime</font> </p>
-				<p>{lang wishing_hall:mb_fwt8} <font color="#ff00cc"><b>$qiandaodb['reward']</b></font>.</p>
+				<table border="2" width="90%">
+				<tr><th>您的许愿账单</th><th>进贡</th><th>奖励</th></tr>
+  				<tr><td>金钱</td><td>$qiandaodb['reward']</td><td>$qiandaodb['coin_award']</td></tr>
+  				<tr><td>上传量</td><td>$qiandaodb['flow_up']<font color="#ff0000">GB</font></td><td>$qiandaodb['flow_award']<font color="#ff0000">GB</font></td></tr>
+  				<tr><td>筹码</td><td>$qiandaodb['chip_up']</td><td>$qiandaodb['chip_award']</td></tr>
+  				<tr><td>人品</td><td></td><td>$qiandaodb['character_award']</td></tr>
+				</table>
 				<p>{$q['level']}</p>
                 <a href="#" onclick="levelts('{lang wishing_hall:lvmsg1}', this.href);return false;"><span style="color:#0c0; font-weight:bold;">{lang wishing_hall:lvmsg}</span></a>
 			<!--{else}-->
@@ -307,7 +313,7 @@ setInterval("getCustomerInfo()",2000);
 							</div>
 							<div id="mode1" style="display:;">
 								<p><label for="todaysay"></label></p>
-								<div><textarea cols="52" style="resize:vertical;" name="todaysay" id="todaysay" rows="3" onChange="getCustomerInfo();"></textarea></div>								
+								<div><textarea cols="45" style="resize:vertical;" name="todaysay" id="todaysay" rows="3" onChange="getCustomerInfo();"></textarea></div>								
                                 <p>{lang wishing_hall:mb_xzzs}</p> 
 							</div>
 						</div>
@@ -337,7 +343,13 @@ setInterval("getCustomerInfo()",2000);
 				<p><font color="#FF0000"><b>$_G['username']</b></font> {lang wishing_hall:mb_fwt1} <b>$qiandaodb['days']</b> {lang wishing_hall:mb_fwt2}</p>
 				<p>{lang wishing_hall:mb_fwt3}<b>$qiandaodb['mdays']</b> {lang wishing_hall:mb_fwt2}</p>
 				<p>{lang wishing_hall:mb_fwt6}<font color="#ff00cc">$qtime</font> </p>
-				<p>{lang wishing_hall:mb_fwt8}{$_G[setting][extcredits][$var[nrcredit]][title]} <font color="#ff00cc"><b>$qiandaodb['reward']</b></font> {$_G['setting']['extcredits'][$var[nrcredit]]['unit']}{lang wishing_hall:mb_fwt9}{$_G[setting][extcredits][$var[nrcredit]][title]} <font color="#ff00cc"><b>$qiandaodb['lastreward']</b></font> {$_G['setting']['extcredits'][$var[nrcredit]]['unit']}.</p>
+				<table border="2" width="90%">
+				<tr><th>您的许愿账单</th><th>进贡</th><th>奖励</th></tr>
+  				<tr><td>金钱</td><td>$qiandaodb['reward']</td><td>$qiandaodb['coin_award']</td></tr>
+  				<tr><td>上传量</td><td>$qiandaodb['flow_up']<font color="#ff0000">GB</font></td><td>$qiandaodb['flow_award']<font color="#ff0000">GB</font></td></tr>
+  				<tr><td>筹码</td><td>$qiandaodb['chip_up']</td><td>$qiandaodb['chip_award']</td></tr>
+  				<tr><td>人品</td><td></td><td>$qiandaodb['character_award']</td></tr>
+				</table>
 				<p>{$q['level']}</p>
 			<!--{else}-->
 				<p>{lang wishing_hall:mb_fwt7}</p>

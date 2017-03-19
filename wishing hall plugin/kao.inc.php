@@ -309,14 +309,17 @@ $godword=mt_rand(0,count($fastreplytexts)-1);
 	if(($tdtime - $qiandaodb['time']) < 86400 && $var['lastedop']){
 		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',reward=reward+{$credit},lastreward='$credit',lasted=lasted+1 WHERE uid='$_G[uid]'");
 	} else {
-*************************/		
-		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
+*************************/	
+	$random_rewards=ceil(($credit/200)*mt_rand(0,100)/100+mt_rand(0,100)/100);
+	updatemembercount($_G['uid'], array( "extcredits8"=> $random_rewards));
+		
+		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit},character_award=character_award+{$random_rewards},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
 DB::query("UPDATE ".DB::table('wishing_hall_kao')." SET todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit} WHERE uid='$_G[uid]'");		
 //	}
 /*************2 S******************/
 DB::query("INSERT INTO ".DB::table('wishing_hall_wish_kao')." (uid,time,qdxq,todaysay,godsay) VALUES ('$_G[uid]',$_G[timestamp],'$_GET[qdxq]','$todaysay','$fastreplytexts[$godword]')");
-	$credit=-$credit;
-	updatemembercount($_G['uid'], array($var['nrcredit'] => $credit));
+	$credit_munt=-$credit;
+	updatemembercount($_G['uid'], array("extcredits1" => $credit_munt));
 
 
 /*************2 E******************/	
@@ -458,9 +461,9 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish_kao')." (uid,time,qdxq,tod
 	} else {
 *************************/		
 		if($exacr && $exacz) {
-			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:kao");
+			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} 金币 {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} 人品 {$random_rewards} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:kao");
 		} else {
-			sign_msg("{$lang[tsn_18]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:kao");
+			sign_msg("{$lang[tsn_18]} 人品 {$random_rewards} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:kao");
 		}
 //	}
 }

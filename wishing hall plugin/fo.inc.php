@@ -302,7 +302,7 @@ $query = DB::query($sql_rank);
 	}
 *********************************/	
 	$credit=DB::result_first("SELECT price FROM ".DB::table('wishing_hallemot')." WHERE qdxq='$_GET[qdxq]' and god_id=1");	
-	$jinbi=getuserprofile('extcredits1');	
+	$jinbi=getuserprofile('extcredits5');	
 	if($jinbi<$credit){
 		sign_msg($lang['ts_yq']);
 	}
@@ -312,14 +312,20 @@ $godword=mt_rand(0,count($fastreplytexts)-1);
 	if(($tdtime - $qiandaodb['time']) < 86400 && $var['lastedop']){
 		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',reward=reward+{$credit},lastreward='$credit',lasted=lasted+1 WHERE uid='$_G[uid]'");
 	} else {
-*************************/		
-		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
+*************************/	
+	$random_rewards=(($credit/100)*mt_rand(0,100)/100+mt_rand(0,100)/100);
+	$random_rewards_buf=$random_rewards*1024*1024*1024;
+	updatemembercount($_G['uid'], array( "extcredits2"=> $random_rewards_buf));
+	
+		DB::query("UPDATE ".DB::table('wishing_hall')." SET days=days+1,mdays=mdays+1,time='$_G[timestamp]',qdxq='$_GET[qdxq]',todaysay='$todaysay',godsay='$fastreplytexts[$godword]',flow_award=flow_award+{$random_rewards},chip_up=chip_up+{$credit},lastreward='$credit',lasted='1' WHERE uid='$_G[uid]'");
 DB::query("UPDATE ".DB::table('wishing_hall_fo')." SET todaysay='$todaysay',godsay='$fastreplytexts[$godword]',reward=reward+{$credit} WHERE uid='$_G[uid]'");
 //	}
 /*************2 S******************/
 DB::query("INSERT INTO ".DB::table('wishing_hall_wish')." (uid,time,qdxq,todaysay,godsay) VALUES ('$_G[uid]',$_G[timestamp],'$_GET[qdxq]','$todaysay','$fastreplytexts[$godword]')");
-	$credit=-$credit;
-	updatemembercount($_G['uid'], array($var['nrcredit'] => $credit));
+
+	$credit_munt=-$credit;
+	updatemembercount($_G['uid'], array( "extcredits5"=> $credit_munt));//$var['nrcredit']
+	
 
 
 /*************2 E******************/	
@@ -461,9 +467,9 @@ DB::query("INSERT INTO ".DB::table('wishing_hall_wish')." (uid,time,qdxq,todaysa
 	} else {
 *************************/		
 		if($exacr && $exacz) {
-			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:fo");
+			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} 筹码 {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} 上传量 {$random_rewards} GB {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:fo");
 		} else {
-			sign_msg("{$lang[tsn_18]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:fo");
+			sign_msg("{$lang[tsn_18]} 上传量 {$random_rewards} GB {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:fo");
 		}
 //	}
 }
