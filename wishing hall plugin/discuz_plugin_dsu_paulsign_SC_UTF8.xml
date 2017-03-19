@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+﻿<?xml version="1.0" encoding="ISO-8859-1"?>
 <root>
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
 	<item id="Version"><![CDATA[X2.5]]></item>
@@ -138,11 +138,11 @@
 偶尔拜拜II
 初级小沙弥I
 初级小沙弥II
-初级小沙弥III
 虔诚信徒I
 虔诚信徒II
 虔诚信徒III
-庙堂长老]]></item>
+庙堂长老
+与神同在]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="2">
@@ -239,7 +239,7 @@
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[notice]]></item>
 				<item id="type"><![CDATA[textarea]]></item>
-				<item id="value"><![CDATA[欢迎使用许愿堂，如果使用webkit或mozilla内核浏览器显示效果会更好！]]></item>
+				<item id="value"><![CDATA[欢迎使用许愿堂，如果使用webkit或mozilla内核浏览器显示效果会更好！<a target="_blank" style="color:#ff7600;" href="source/plugin/dsu_paulsign/browser/ie.htm">希望更换请点这里</a>]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="12">
@@ -518,11 +518,15 @@
 				<item id="value"><![CDATA[大神怒睁双目，大吼，“老子冰雪聪明，不食人间烟火！”1
 大神撇了撇嘴，说，“生男生女一样好。”2
 大神微微睁开双目瞅了瞅，道：“爱卿平身。”3
-天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，春哥之风，山高水长4
-春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳5
-天边飘来一句悠远雄浑的话，哥生一，一生二，二生三，三生万物6
-天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球7
-天边飘来一句悠远雄浑的话，傻子加入了我变成了神，是一条最容易突出的游鱼；因为他凭恃才高学广，看不见自己的缺点。8]]></item>
+天边飘来一句悠远雄浑的话，云山苍苍，江水泱泱，大哥之风，山高水长。4
+春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳。5
+天边飘来一句悠远雄浑的话，哥生一，一生二，二生三，三生万物。6
+天边飘来一句悠远雄浑的话，即使不给哥支点，照样可以撬起地球。7
+天边飘来一句悠远雄浑的话，傻子加入了我变成了神，是一条最容易突出的游鱼；因为他凭恃才高学广，看不见自己的缺点。8
+天边飘来一句悠远雄浑的话，春哥讨厌脑残，任何一个脑残，都会被春哥的爷们之光刺瞎双眼双耳。9
+天边飘来一句悠远雄浑的话，你迷惘吗？你无助吗？对了，那是因为你不信春哥。10
+天边飘来一句悠远雄浑的话，信耶稣者、死后成神；信如来者、死后成佛；信春哥者，死后满状态原地复活。11
+大神微微笑道，“酒后乱性～。”12]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="38">
@@ -669,7 +673,7 @@
 				<item id="ts_timeov"><![CDATA[已经过了许愿时间段，明天请早点来。]]></item>
 				<item id="ts_timeearly1"><![CDATA[许愿时间还没有到，请在今天]]></item>
 				<item id="ts_timeearly2"><![CDATA[:00后重新进行许愿]]></item>
-				<item id="wttodaysay"><![CDATA[该会员暗暗向神明许下了心愿.]]></item>
+				<item id="wttodaysay"><![CDATA[并暗暗向神明许下了心愿.]]></item>
 				<item id="ts_suc1"><![CDATA[恭喜你许愿成功！随机奖励]]></item>
 				<item id="ts_suc2"><![CDATA[个]]></item>
 				<item id="ts_suc3"><![CDATA[ , 另外由于您是今天第一个许愿的会员，将获得额外奖励]]></item>
@@ -756,29 +760,34 @@
 				<item id="custom_09"><![CDATA[亲,许愿贡品代号有重复哦]]></item>
 				<item id="custom_10"><![CDATA[亲,贡品名称不要留空哦]]></item>
 				<item id="custom_11"><![CDATA[自定义贡品修改成功]]></item>
+				<item id="custom_12"><![CDATA[神的编号要为小于3位的数字]]></item>
+				<item id="custom_13"><![CDATA[贡品价格要为大于或等于1位的数字]]></item>
+				<item id="custom_14"><![CDATA[神的编号]]></item>
+				<item id="custom_15"><![CDATA[贡品价格]]></item>
+				<item id="custom_16"><![CDATA[神的编号不能为空]]></item>
 				<item id="ts_illegaltext"><![CDATA[您的心愿中包含敏感词,请修改后重新提交]]></item>
 				<item id="fromsign"><![CDATA[<span class="xg1"><font size="1px"><a href="plugin.php?id=dsu_paulsign:sign"><img src="source/plugin/dsu_paulsign/img/paulsign.png" alt="(来自许愿堂)"></a></font></span>]]></item>
 				<item id="another_vip"><![CDATA[外加额外的 {rewarddays} 天VIP体验权和 {growupnum} 点成长值!]]></item>
-				<item id="mb_qb1"><![CDATA[跪拜 ￥20]]></item>
-				<item id="mb_qb2"><![CDATA[上香 ￥40]]></item>
-				<item id="mb_qb3"><![CDATA[献花 ￥50]]></item>
-				<item id="mb_qb4"><![CDATA[玉饼 ￥60]]></item>
-				<item id="mb_qb5"><![CDATA[暂无 ￥80]]></item>
-				<item id="mb_qb6"><![CDATA[暂无 ￥100]]></item>
-				<item id="mb_qb7"><![CDATA[堂主 ￥500]]></item>
-				<item id="mb_qb8"><![CDATA[修庙 ￥800]]></item>
-				<item id="mb_qb9"><![CDATA[暂无 ￥1000]]></item>
+				<item id="mb_qb1"><![CDATA[聆听教诲 ￥0]]></item>
+				<item id="mb_qb2"><![CDATA[跪拜 ￥20]]></item>
+				<item id="mb_qb3"><![CDATA[上香 ￥40]]></item>
+				<item id="mb_qb4"><![CDATA[献花 ￥50]]></item>
+				<item id="mb_qb5"><![CDATA[玉饼 ￥60]]></item>
+				<item id="mb_qb6"><![CDATA[敬酒 ￥80]]></item>				
+				<item id="mb_qb7"><![CDATA[暂无 ￥200]]></item>
+				<item id="mb_qb8"><![CDATA[暂无 ￥800]]></item>
+				<item id="mb_qb9"><![CDATA[修庙 ￥1000]]></item>
 			</item>
 			<item id="installlang">
-				<item id="mb_qb1"><![CDATA[跪拜 ￥20]]></item>
-				<item id="mb_qb2"><![CDATA[上香 ￥40]]></item>
-				<item id="mb_qb3"><![CDATA[献花 ￥50]]></item>
-				<item id="mb_qb4"><![CDATA[玉饼 ￥60]]></item>
-				<item id="mb_qb5"><![CDATA[暂无 ￥80]]></item>
-				<item id="mb_qb6"><![CDATA[暂无 ￥100]]></item>
-				<item id="mb_qb7"><![CDATA[堂主 ￥500]]></item>
-				<item id="mb_qb8"><![CDATA[修庙 ￥800]]></item>
-				<item id="mb_qb9"><![CDATA[暂无 ￥1000]]></item>
+				<item id="mb_qb1"><![CDATA[聆听教诲 ￥0]]></item>
+				<item id="mb_qb2"><![CDATA[跪拜 ￥20]]></item>
+				<item id="mb_qb3"><![CDATA[上香 ￥40]]></item>
+				<item id="mb_qb4"><![CDATA[献花 ￥50]]></item>
+				<item id="mb_qb5"><![CDATA[玉饼 ￥60]]></item>
+				<item id="mb_qb6"><![CDATA[敬酒 ￥80]]></item>
+				<item id="mb_qb7"><![CDATA[暂无 ￥200]]></item>
+				<item id="mb_qb8"><![CDATA[暂无 ￥800]]></item>
+				<item id="mb_qb9"><![CDATA[修庙 ￥1000]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="name"><![CDATA[许愿堂]]></item>
@@ -789,15 +798,15 @@
 				<item id="mb_fastreply"><![CDATA[快速语句选择]]></item>
 				<item id="mb_xz"><![CDATA[今天许愿了吗？请选择<font color=red>一种贡品</font>并写下<font color=blue>您的心愿</font>！]]></item>
 				<item id="mb_xz1"><![CDATA[温馨提示:今日未许愿会员将自动跳转到此处,请许愿后再返回论坛进行各项操作.]]></item>
-				<item id="mb_qb1"><![CDATA[跪拜 ￥20]]></item>
-				<item id="mb_qb2"><![CDATA[上香 ￥40]]></item>
-				<item id="mb_qb3"><![CDATA[献花 ￥50]]></item>
-				<item id="mb_qb4"><![CDATA[玉饼 ￥60]]></item>
-				<item id="mb_qb5"><![CDATA[暂无 ￥80]]></item>
-				<item id="mb_qb6"><![CDATA[暂无 ￥100]]></item>
-				<item id="mb_qb7"><![CDATA[堂主 ￥500]]></item>
-				<item id="mb_qb8"><![CDATA[修庙 ￥800]]></item>
-				<item id="mb_qb9"><![CDATA[暂无 ￥1000]]></item>
+				<item id="mb_qb1"><![CDATA[聆听教诲 ￥0]]></item>
+				<item id="mb_qb2"><![CDATA[跪拜 ￥20]]></item>
+				<item id="mb_qb3"><![CDATA[上香 ￥40]]></item>
+				<item id="mb_qb4"><![CDATA[献花 ￥50]]></item>
+				<item id="mb_qb5"><![CDATA[玉饼 ￥60]]></item>
+				<item id="mb_qb6"><![CDATA[敬酒 ￥80]]></item>
+				<item id="mb_qb7"><![CDATA[暂无 ￥200]]></item>
+				<item id="mb_qb8"><![CDATA[暂无 ￥800]]></item>
+				<item id="mb_qb9"><![CDATA[修庙 ￥1000]]></item>
 				<item id="mb_startqd"><![CDATA[开始许愿]]></item>
 				<item id="mb_zxs"><![CDATA[我希望]]></item>
 				<item id="mb_xzzs"><![CDATA[限制最少3个,最多500个中文字数]]></item>
@@ -844,7 +853,7 @@
 				<item id="ban_04"><![CDATA[点击将屏蔽该今日最想说内容]]></item>
 				<item id="ban_05"><![CDATA[屏蔽]]></item>
 				<item id="lvmsg"><![CDATA[许愿等级说明]]></item>
-				<item id="lvmsg1"><![CDATA[<table class=list cellspacing=0 cellpadding=0><thead><tr width=50%><td>许愿等级</td><td class=time width=50%>许愿次数要求</td></tr></thead><tr><td>[LV.1]{$lv1name}</td><td class=time>≥1 次</td></tr><tr><td>[LV.2]{$lv2name}</td><td class=time>≥3 次</td></tr><tr><td>[LV.3]{$lv3name}</td><td class=time>≥7 次</td></tr><tr><td>[LV.4]{$lv4name}</td><td class=time>≥15 次</td></tr><tr><td>[LV.5]{$lv5name}</td><td class=time>≥30 次</td></tr><tr><td>[LV.6]{$lv6name}</td><td class=time>≥60 次</td></tr><tr><td>[LV.7]{$lv7name}</td><td class=time>≥120 次</td></tr><tr><td>[LV.8]{$lv8name}</td><td class=time>≥240 次</td></tr><tr><td>[LV.9]{$lv9name}</td><td class=time>≥365 次</td></tr><tr><td>[LV.10]{$lv10name}</td><td class=time>≥750 次</td></tr><tr><td>[LV.Master]{$lvmastername}</td><td class=time>≥1500 次</td></tr></table>]]></item>
+				<item id="lvmsg1"><![CDATA[<table class=list cellspacing=0 cellpadding=0><thead><tr width=50%><td>许愿等级</td><td class=time width=50%>许愿次数要求</td></tr></thead><tr><td>[LV.1]{$lv1name}</td><td class=time>≥10 次</td></tr><tr><td>[LV.2]{$lv2name}</td><td class=time>≥30 次</td></tr><tr><td>[LV.3]{$lv3name}</td><td class=time>≥70 次</td></tr><tr><td>[LV.4]{$lv4name}</td><td class=time>≥150 次</td></tr><tr><td>[LV.5]{$lv5name}</td><td class=time>≥300 次</td></tr><tr><td>[LV.6]{$lv6name}</td><td class=time>≥600 次</td></tr><tr><td>[LV.7]{$lv7name}</td><td class=time>≥1000 次</td></tr><tr><td>[LV.8]{$lv8name}</td><td class=time>≥2000 次</td></tr><tr><td>[LV.9]{$lv9name}</td><td class=time>≥3650 次</td></tr><tr><td>[LV.10]{$lv10name}</td><td class=time>≥7500 次</td></tr><tr><td>[LV.Master]{$lvmastername}</td><td class=time>≥15000 次</td></tr></table>]]></item>
 				<item id="tj_01"><![CDATA[许愿统计]]></item>
 				<item id="tj_02"><![CDATA[历史最高数]]></item>
 				<item id="tj_03"><![CDATA[次]]></item>

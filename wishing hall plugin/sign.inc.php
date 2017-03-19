@@ -88,7 +88,7 @@ $query = DB::query($sql_rank);
 /*************7 E first vister & master & rank*****/
 
 	if($_GET['operation'] == 'month'){
-		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." WHERE mdays != 0");
+		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign_wish')." WHERE time >= {$tdtime}");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
 		$multipage = multi($num, 10, $page, "plugin.php?id=dsu_paulsign:sign&operation={$_GET[operation]}");
@@ -151,15 +151,15 @@ $query = DB::query($sql_rank);
 		$god_id_num++;
 		!$qd['qdxq'] && $qd['qdxq']=end(array_keys($emots));
 		
-		if($mrc['qdxq']=="kx"){$mrc['qdxq']="给神磕了个大大的响头";
-		}elseif($mrc['qdxq']=="ng"){$mrc['qdxq']="给神上了一炷香";
-		}elseif($mrc['qdxq']=="ym"){$mrc['qdxq']="给神献上鲜花";
-		}elseif($mrc['qdxq']=="wl"){$mrc['qdxq']="给神敬上玉饼";
-		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="暂无";
-		}elseif($mrc['qdxq']=="ch"){$mrc['qdxq']="暂无";
-		}elseif($mrc['qdxq']=="fd"){$mrc['qdxq']="暂无";
-		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="要给神修庙建祠堂";
-		}elseif($mrc['qdxq']=="shuai"){$mrc['qdxq']="暂无";
+		if($mrc['qdxq']=="kx"){$mrc['qdxq']="给神磕了个大大的响头，并说";
+		}elseif($mrc['qdxq']=="ng"){$mrc['qdxq']="给神上了一炷香，并说";
+		}elseif($mrc['qdxq']=="ym"){$mrc['qdxq']="给神献上鲜花，并说";
+		}elseif($mrc['qdxq']=="wl"){$mrc['qdxq']="给神敬上玉饼，并说";
+		}elseif($mrc['qdxq']=="nu"){$mrc['qdxq']="暂无，并说";
+		}elseif($mrc['qdxq']=="ch"){$mrc['qdxq']="暂无，并说";
+		}elseif($mrc['qdxq']=="fd"){$mrc['qdxq']="暂无，并说";
+		}elseif($mrc['qdxq']=="yl"){$mrc['qdxq']="要给神修庙建祠堂，并说";
+		}elseif($mrc['qdxq']=="shuai"){$mrc['qdxq']="暂无，并说";
 		}
 		
 		if ($mrc['days'] >= '15000') {
@@ -229,8 +229,7 @@ if($jinbi<$credit){
 	if(!array_key_exists($_GET['qdxq'],$emots)) sign_msg($lang['ts_xqnr']);
 	if(!$var['sayclose']){
 		if($_GET['qdmode']=='1'){
-			$todaysay='并说';
-			$todaysay.= dhtmlspecialchars($_GET['todaysay']);
+			$todaysay= dhtmlspecialchars($_GET['todaysay']);
 			if($todaysay=='') sign_msg($lang['ts_nots']);
 			if(strlen($todaysay) > 990) sign_msg($lang['ts_ovts']);
 			if(strlen($todaysay) < 10) sign_msg($lang['ts_syts']);
@@ -262,11 +261,11 @@ if($jinbi<$credit){
 		$randlastednum = $randlastednum * $qiandaodb['lasted'];
 		$credit = round($credit*(1+$randlastednum));
 	}
-	$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." WHERE time >= {$tdtime} ");
+	$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign_wish')." WHERE time >= {$tdtime}");
 	if(!$qiandaodb['uid']) {
 		DB::query("INSERT INTO ".DB::table('dsu_paulsign')." (uid,time) VALUES ('$_G[uid]',$_G[timestamp])");
 	}
-/************1 S********************/	
+/************1 S*******************	
 		if($_GET[qdxq]=='kx'){
 		$credit=0;
 	}else if($_GET[qdxq]=='ng'){
@@ -286,6 +285,8 @@ if($jinbi<$credit){
 	}else if($_GET[qdxq]=='shuai'){
 		$credit=1000;
 	}
+*********************************/	
+	$credit=DB::result_first("SELECT price FROM ".DB::table('dsu_paulsignemot')." WHERE qdxq='$_GET[qdxq]' and god_id=1");
 /*************1 E******************/	
 $godword=mt_rand(0,count($fastreplytexts)-1);
 
