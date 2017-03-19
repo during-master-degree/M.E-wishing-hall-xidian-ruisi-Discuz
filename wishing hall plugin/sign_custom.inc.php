@@ -1,11 +1,11 @@
 <?php
 /*
-	dsu_paulsign Import By shy9000[DSU Team] 2011-06-19
+	wishing_hall Import By bikai[RS Team] 2013-02-10
 */
 !defined('IN_DISCUZ') && exit('Access Denied');
 !defined('IN_ADMINCP') && exit('Access Denied');
 loadcache('pluginlanguage_script');
-$lang = $_G['cache']['pluginlanguage_script']['dsu_paulsign'];
+$lang = $_G['cache']['pluginlanguage_script']['wishing_hall'];
 	if(!submitcheck('emotsubmit')) {
 
 			$emotechos = '';
@@ -17,7 +17,7 @@ $lang = $_G['cache']['pluginlanguage_script']['dsu_paulsign'];
 					"<input type=\"text\" class=\"txt\" size=\"5\" name=\"god_id[$emot[id]]\" value=\"$emot[god_id]\">",
 					"<input type=\"text\" class=\"txt\" size=\"5\" name=\"price[$emot[id]]\" value=\"$emot[price]\">",
 					"<input type=\"text\" class=\"txt\" size=\"5\" name=\"qdxq[$emot[id]]\" value=\"$emot[qdxq]\">",
-					"<input type=\"text\" class=\"txt\" size=\"10\" name=\"name[$emot[id]]\" value=\"$emot[name]\"><img src=\"source/plugin/dsu_paulsign/img/emot/$emot[qdxq].gif\" />"
+					"<input type=\"text\" class=\"txt\" size=\"10\" name=\"name[$emot[id]]\" value=\"$emot[name]\"><img src=\"source/plugin/wishing_hall/img/emot/$emot[qdxq].gif\" />"
 				), TRUE);
 			}
 
@@ -36,7 +36,7 @@ $lang = $_G['cache']['pluginlanguage_script']['dsu_paulsign'];
 </script>
 EOT;
 
-		showformheader("plugins&operation=config&identifier=dsu_paulsign&pmod=sign_custom&submit=1");
+		showformheader("plugins&operation=config&identifier=wishing_hall&pmod=sign_custom&submit=1");
 		showtableheader('Tribute Custom By [Wishing hall]bikai');
 		showsubtitle(array('', $lang['custom_01'], $lang['custom_14'], $lang['custom_15'], $lang['custom_02'], $lang['custom_03']));
 		echo $emotechos;

@@ -2,7 +2,7 @@
 <!--{if !defined('IN_MOBILE')}-->
 	<!--{if !empty($_GET['infloat'])}-->
 		<!--{if !empty($treferer)}-->
-			<!--{if $treferer == "plugin.php?id=dsu_paulsign:sign" && $_GET['sign_as']}-->
+			<!--{if $treferer == "plugin.php?id=wishing_hall:sign" && $_GET['sign_as']}-->
 				<script type="text/javascript" reload="1">
 					setTimeout("window.location.reload()", 3000);
 				</script>
@@ -23,7 +23,7 @@
 		</script>
 		<!--{else}-->
 		<script type="text/javascript" reload="1">
-			setTimeout("window.location.href='{$_G[siteurl]}plugin.php?id=dsu_paulsign:sign'", 3000);
+			setTimeout("window.location.href='{$_G[siteurl]}plugin.php?id=wishing_hall:sign'", 3000);
 		</script>
 		<!--{/if}-->
 	<!--{/if}-->
@@ -35,13 +35,13 @@
 <!--{/if}-->
 <div class="f_c">
 	<h3 class="flb">
-		<em id="return_win">{lang dsu_paulsign:ajax_02}</em>
+		<em id="return_win">{lang wishing_hall:ajax_02}</em>
 		<span>
-			<!--{if !empty($_GET['infloat'])}--><a href="javascript:;" class="flbc" onclick="hideWindow('qwindow')" title="{lang dsu_paulsign:ajax_03}">{lang dsu_paulsign:ajax_03}</a><!--{/if}-->
+			<!--{if !empty($_GET['infloat'])}--><a href="javascript:;" class="flbc" onclick="hideWindow('qwindow')" title="{lang wishing_hall:ajax_03}">{lang wishing_hall:ajax_03}</a><!--{/if}-->
 		</span>
 	</h3>
 	<div class="c">
-		$msg <!--{if empty($_GET['infloat'])}--><a href="plugin.php?id=dsu_paulsign:sign" title="{lang dsu_paulsign:encore_03}">[{lang dsu_paulsign:encore_03}]</a><!--{/if}-->
+		$msg <!--{if empty($_GET['infloat'])}--><a href="plugin.php?id=wishing_hall:sign" title="{lang wishing_hall:encore_03}">[{lang wishing_hall:encore_03}]</a><!--{/if}-->
 	</div>
 </div>
 <!--{if empty($_GET['infloat'])}-->

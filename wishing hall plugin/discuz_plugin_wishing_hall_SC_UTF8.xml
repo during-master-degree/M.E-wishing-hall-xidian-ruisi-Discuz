@@ -3,16 +3,16 @@
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
 	<item id="Version"><![CDATA[X2.5]]></item>
 	<item id="Time"><![CDATA[2013-02-25 09:36]]></item>
-	<item id="From"><![CDATA[Discuz! Board (http://localhost/2.0/)]]></item>
+	<item id="From"><![CDATA[Discuz! Board (http://localhost/2.5/)]]></item>
 	<item id="Data">
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[1]]></item>
 			<item id="name"><![CDATA[【RS】许愿堂]]></item>
-			<item id="identifier"><![CDATA[dsu_paulsign]]></item>
+			<item id="identifier"><![CDATA[wishing_hall]]></item>
 			<item id="description"><![CDATA[本插件将在前台添加一个许愿页面，在这里你可以选择其中一位神并向其许愿，还可以查看其他人许的心愿，每日的心愿独立开贴。]]></item>
 			<item id="datatables"><![CDATA[]]></item>
-			<item id="directory"><![CDATA[dsu_paulsign/]]></item>
+			<item id="directory"><![CDATA[wishing_hall/]]></item>
 			<item id="copyright"><![CDATA[bikai @ RS Team]]></item>
 			<item id="version"><![CDATA[1.0]]></item>
 			<item id="__modules">
@@ -41,54 +41,6 @@
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
 				<item id="2">
-					<item id="name"><![CDATA[sign_import]]></item>
-					<item id="menu"><![CDATA[许愿旧数据导入]]></item>
-					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[3]]></item>
-					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[1]]></item>
-					<item id="navtitle"><![CDATA[]]></item>
-					<item id="navicon"><![CDATA[]]></item>
-					<item id="navsubname"><![CDATA[]]></item>
-					<item id="navsuburl"><![CDATA[]]></item>
-				</item>
-				<item id="3">
-					<item id="name"><![CDATA[sign_helper]]></item>
-					<item id="menu"><![CDATA[帮助手册]]></item>
-					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[3]]></item>
-					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[2]]></item>
-					<item id="navtitle"><![CDATA[]]></item>
-					<item id="navicon"><![CDATA[]]></item>
-					<item id="navsubname"><![CDATA[]]></item>
-					<item id="navsuburl"><![CDATA[]]></item>
-				</item>
-				<item id="4">
-					<item id="name"><![CDATA[sign_troubleshooting]]></item>
-					<item id="menu"><![CDATA[数据表自动修复]]></item>
-					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[3]]></item>
-					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[3]]></item>
-					<item id="navtitle"><![CDATA[]]></item>
-					<item id="navicon"><![CDATA[]]></item>
-					<item id="navsubname"><![CDATA[]]></item>
-					<item id="navsuburl"><![CDATA[]]></item>
-				</item>
-				<item id="5">
-					<item id="name"><![CDATA[sign_mobile]]></item>
-					<item id="menu"><![CDATA[]]></item>
-					<item id="url"><![CDATA[]]></item>
-					<item id="type"><![CDATA[28]]></item>
-					<item id="adminid"><![CDATA[0]]></item>
-					<item id="displayorder"><![CDATA[0]]></item>
-					<item id="navtitle"><![CDATA[]]></item>
-					<item id="navicon"><![CDATA[]]></item>
-					<item id="navsubname"><![CDATA[]]></item>
-					<item id="navsuburl"><![CDATA[]]></item>
-				</item>
-				<item id="6">
 					<item id="name"><![CDATA[sign_crash]]></item>
 					<item id="menu"><![CDATA[冗余数据清理]]></item>
 					<item id="url"><![CDATA[]]></item>
@@ -100,7 +52,7 @@
 					<item id="navsubname"><![CDATA[]]></item>
 					<item id="navsuburl"><![CDATA[]]></item>
 				</item>
-				<item id="7">
+				<item id="3">
 					<item id="name"><![CDATA[sign_custom]]></item>
 					<item id="menu"><![CDATA[自定义贡品]]></item>
 					<item id="url"><![CDATA[]]></item>
@@ -239,7 +191,7 @@
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[notice]]></item>
 				<item id="type"><![CDATA[textarea]]></item>
-				<item id="value"><![CDATA[欢迎使用许愿堂，如果使用webkit或mozilla内核浏览器显示效果会更好！<a target="_blank" style="color:#ff7600;" href="source/plugin/dsu_paulsign/browser/ie.htm">希望更换请点这里</a>]]></item>
+				<item id="value"><![CDATA[欢迎使用许愿堂，如果使用webkit或mozilla内核浏览器显示效果会更好！<a target="_blank" style="color:#ff7600;" href="source/plugin/wishing_hall/browser/ie.htm">希望更换请点这里</a>]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 			<item id="12">
@@ -720,7 +672,7 @@
 				<item id="tsn_03"><![CDATA[今天]]></item>
 				<item id="tsn_04"><![CDATA[第]]></item>
 				<item id="tsn_05"><![CDATA[个许愿的用户]]></item>
-				<item id="tsn_06"><![CDATA[,获得随机奖励]]></item>
+				<item id="tsn_06"><![CDATA[,进贡]]></item>
 				<item id="tsn_07"><![CDATA[我希望:“]]></item>
 				<item id="tsn_08"><![CDATA[”.]]></item>
 				<item id="tsn_09"><![CDATA[完成许愿]]></item>
@@ -748,7 +700,7 @@
 				<item id="import_13"><![CDATA[旧数据表缺失,无法导入]]></item>
 				<item id="import_14"><![CDATA[未输入旧数据表名称,无法导入]]></item>
 				<item id="import_15"><![CDATA[表单提交错误,请重新提交]]></item>
-				<item id="import_16"><![CDATA[已经导入过一次,切勿重复导入,如果您想重新导入,请删除data/dsu_paulsign_import.lock]]></item>
+				<item id="import_16"><![CDATA[已经导入过一次,切勿重复导入,如果您想重新导入,请删除data/wishing_hall_import.lock]]></item>
 				<item id="custom_01"><![CDATA[排序]]></item>
 				<item id="custom_02"><![CDATA[贡品代号]]></item>
 				<item id="custom_03"><![CDATA[贡品名称]]></item>
@@ -760,13 +712,13 @@
 				<item id="custom_09"><![CDATA[亲,许愿贡品代号有重复哦]]></item>
 				<item id="custom_10"><![CDATA[亲,贡品名称不要留空哦]]></item>
 				<item id="custom_11"><![CDATA[自定义贡品修改成功]]></item>
-				<item id="custom_12"><![CDATA[神的编号要为小于3位的数字]]></item>
-				<item id="custom_13"><![CDATA[贡品价格要为大于或等于1位的数字]]></item>
+				<item id="custom_12"><![CDATA[神的编号要为大于0的数字]]></item>
+				<item id="custom_13"><![CDATA[贡品价格要为大于0的数字]]></item>
 				<item id="custom_14"><![CDATA[神的编号]]></item>
 				<item id="custom_15"><![CDATA[贡品价格]]></item>
 				<item id="custom_16"><![CDATA[神的编号不能为空]]></item>
 				<item id="ts_illegaltext"><![CDATA[您的心愿中包含敏感词,请修改后重新提交]]></item>
-				<item id="fromsign"><![CDATA[<span class="xg1"><font size="1px"><a href="plugin.php?id=dsu_paulsign:sign"><img src="source/plugin/dsu_paulsign/img/paulsign.png" alt="(来自许愿堂)"></a></font></span>]]></item>
+				<item id="fromsign"><![CDATA[<span class="xg1"><font size="1px"><a href="plugin.php?id=wishing_hall:sign"><img src="source/plugin/wishing_hall/img/paulsign.png" alt="(来自许愿堂)"></a></font></span>]]></item>
 				<item id="another_vip"><![CDATA[外加额外的 {rewarddays} 天VIP体验权和 {growupnum} 点成长值!]]></item>
 				<item id="mb_qb1"><![CDATA[聆听教诲 ￥0]]></item>
 				<item id="mb_qb2"><![CDATA[跪拜 ￥20]]></item>

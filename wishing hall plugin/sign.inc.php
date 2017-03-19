@@ -1,6 +1,6 @@
 <?php
 /*
-	wishing_hall By bikai[RS Team] 2013-02-10
+	wishing_hall By bikai[RS] 2013-02-10
 */
 /*
 注释用到6
@@ -10,12 +10,12 @@ qddesc
 
 */
 !defined('IN_DISCUZ') && exit('Access Denied');
-define('IN_dsu_paulsign', '1');
-$var = $_G['cache']['plugin']['dsu_paulsign'];
+define('IN_wishing_hall', '1');
+$var = $_G['cache']['plugin']['wishing_hall'];
 $tdtime = gmmktime(0,0,0,dgmdate($_G['timestamp'], 'n',$var['tos']),dgmdate($_G['timestamp'], 'j',$var['tos']),dgmdate($_G['timestamp'], 'Y',$var['tos'])) - $var['tos']*3600;
 $htime = dgmdate($_G['timestamp'], 'H',$var['tos']);
 loadcache('pluginlanguage_script');
-$lang = $_G['cache']['pluginlanguage_script']['dsu_paulsign'];
+$lang = $_G['cache']['pluginlanguage_script']['wishing_hall'];
 $nlvtext =str_replace(array("\r\n", "\n", "\r"), '/hhf/', $var['lvtext']);
 $nfastreplytext =str_replace(array("\r\n", "\n", "\r"), '/hhf/', $var['fastreplytext']);
 $njlmain =str_replace(array("\r\n", "\n", "\r"), '/hhf/', $var['jlmain']);
@@ -44,10 +44,10 @@ if($nowmonth!=$lastmonth){
 function sign_msg($msg, $treferer = '') {
 	global $_G;
 	if(defined('IN_MOBILE')) {
-		include template('dsu_paulsign:float');
+		include template('wishing_hall:float');
 		dexit();
 	}else{
-		include template('dsu_paulsign:float');
+		include template('wishing_hall:float');
 		dexit();
 	}
 }
@@ -91,7 +91,7 @@ $query = DB::query($sql_rank);
 		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign_wish')." WHERE time >= {$tdtime}");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
-		$multipage = multi($num, 10, $page, "plugin.php?id=dsu_paulsign:sign&operation={$_GET[operation]}");
+		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
 	} elseif($_GET['operation'] == 'zdyhz' || $_GET['operation'] == 'rewardlist'){
 	} 
 /**********6 S***********
@@ -99,14 +99,14 @@ $query = DB::query($sql_rank);
 		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." WHERE time >= {$tdtime}");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
-		$multipage = multi($num, 10, $page, "plugin.php?id=dsu_paulsign:sign&operation={$_GET[operation]}");
+		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
 	} 
 ***********6 E*********/
 	else {
 		$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')."");
 		$page = max(1, intval($_GET['page']));
 		$start_limit = ($page - 1) * 10;
-		$multipage = multi($num, 10, $page, "plugin.php?id=dsu_paulsign:sign&operation={$_GET[operation]}");
+		$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}");
 	}
 	if($_GET['operation'] == 'zong'){
 		$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid ORDER BY q.days desc LIMIT $start_limit, 10";
@@ -117,13 +117,13 @@ $query = DB::query($sql_rank);
 			$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($_GET[qdgroupid])");
 			$page = max(1, intval($_GET['page']));
 			$start_limit = ($page - 1) * 10;
-			$multipage = multi($num, 10, $page, "plugin.php?id=dsu_paulsign:sign&operation={$_GET[operation]}", 0);
+			$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}", 0);
 			$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($_GET[qdgroupid]) ORDER BY q.time desc LIMIT $start_limit, 10";
 		} else {
 			$num = DB::result_first("SELECT COUNT(*) FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($plgroups)");
 			$page = max(1, intval($_GET['page']));
 			$start_limit = ($page - 1) * 10;
-			$multipage = multi($num, 10, $page, "plugin.php?id=dsu_paulsign:sign&operation={$_GET[operation]}", 0);
+			$multipage = multi($num, 10, $page, "plugin.php?id=wishing_hall:sign&operation={$_GET[operation]}", 0);
 			$sql = "SELECT q.days,q.mdays,q.time,q.qdxq,q.uid,q.todaysay,q.lastreward,m.username FROM ".DB::table('dsu_paulsign')." q, ".DB::table('common_member')." m WHERE q.uid=m.uid AND m.groupid IN($plgroups) ORDER BY q.time desc LIMIT $start_limit, 10";
 		}
 	} elseif ($var['rewardlistopen'] && $_GET['operation'] == 'rewardlist') {
@@ -247,7 +247,7 @@ if($jinbi<$credit){
 		$todaysay = "{$lang['wttodaysay']}";
 	}
 	if($var['lockopen']){
-		while(discuz_process::islocked('dsu_paulsign', 5)){
+		while(discuz_process::islocked('wishing_hall', 5)){
 			usleep(100000);
 		}
 	}
@@ -307,7 +307,7 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 	if(@include_once DISCUZ_ROOT.'./source/plugin/dsu_kkvip/extend/sign.api.php'){
 		$rewarddays = intval($rewarddays);
 		$growupnum = intval($growupnum);
-		if($rewarddays || $growupnum) $another_vip=lang('plugin/dsu_paulsign', 'another_vip', array('rewarddays' => $rewarddays, 'growupnum' => $growupnum));
+		if($rewarddays || $growupnum) $another_vip=lang('plugin/wishing_hall', 'another_vip', array('rewarddays' => $rewarddays, 'growupnum' => $growupnum));
 	}
 	require_once libfile('function/post');
 	require_once libfile('function/forum');
@@ -387,9 +387,9 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 				$subject=str_replace(array('{m}','{d}','{y}','{bbname}','{author}'),array(dgmdate($_G['timestamp'], 'n',$var['tos']),dgmdate($_G['timestamp'], 'j',$var['tos']),dgmdate($_G['timestamp'], 'Y',$var['tos']),$_G['setting']['bbname'],$_G['username']),$var['title_thread']);
 				$hft = dgmdate($_G['timestamp'], 'Y-m-d H:i',$var['tos']);
 				if($exacr && $exacz) {
-					$message = "[quote][size=2][color=dimgray]{$lang[tsn_10]}[/color][url={$_G[siteurl]}plugin.php?id=dsu_paulsign:sign][color=darkorange]{$lang[tsn_11]}[/color][/url][color=dimgray]{$lang[tsn_12]}[/color][/size][/quote][quote][size=2][color=gray][color=teal] [/color][color=gray]{$lang[tsn_01]}[/color] [color=darkorange]{$hft}[/color] {$lang[tsn_02]}[color=red]{$lang[tsn_03]}[/color][color=darkorange]{$lang[tsn_04]}{$lang[tsn_13]}{$lang[tsn_05]}[/color]{$lang[tsn_06]} [/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][title]} [/color][color=darkorange]{$credit}[/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][unit]}[/color][color=gray]{$lang[tsn_17]}[/color] [color=gray]{$_G[setting][extcredits][$exacr][title]} [/color][color=darkorange]{$exacz}[/color][color=gray]{$_G[setting][extcredits][$exacr][unit]}.{$another_vip}[/color][/color][/size][/quote][size=3][color=dimgray]{$lang[tsn_07]}[color=red]{$todaysay}[/color]{$lang[tsn_08]}[/color][/size]";
+					$message = "[quote][size=2][color=dimgray]{$lang[tsn_10]}[/color][url={$_G[siteurl]}plugin.php?id=wishing_hall:sign][color=darkorange]{$lang[tsn_11]}[/color][/url][color=dimgray]{$lang[tsn_12]}[/color][/size][/quote][quote][size=2][color=gray][color=teal] [/color][color=gray]{$lang[tsn_01]}[/color] [color=darkorange]{$hft}[/color] {$lang[tsn_02]}[color=red]{$lang[tsn_03]}[/color][color=darkorange]{$lang[tsn_04]}{$lang[tsn_13]}{$lang[tsn_05]}[/color]{$lang[tsn_06]} [/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][title]} [/color][color=darkorange]{$credit}[/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][unit]}[/color][color=gray]{$lang[tsn_17]}[/color] [color=gray]{$_G[setting][extcredits][$exacr][title]} [/color][color=darkorange]{$exacz}[/color][color=gray]{$_G[setting][extcredits][$exacr][unit]}.{$another_vip}[/color][/color][/size][/quote][size=3][color=dimgray]{$lang[tsn_07]}[color=red]{$todaysay}[/color]{$lang[tsn_08]}[/color][/size]";
 				} else {
-					$message = "[quote][size=2][color=dimgray]{$lang[tsn_10]}[/color][url={$_G[siteurl]}plugin.php?id=dsu_paulsign:sign][color=darkorange]{$lang[tsn_11]}[/color][/url][color=dimgray]{$lang[tsn_12]}[/color][/size][/quote][quote][size=2][color=gray][color=teal] [/color][color=gray]{$lang[tsn_01]}[/color] [color=darkorange]{$hft}[/color] {$lang[tsn_02]}[color=red]{$lang[tsn_03]}[/color][color=darkorange]{$lang[tsn_04]}{$lang[tsn_13]}{$lang[tsn_05]}[/color]{$lang[tsn_06]} [/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][title]} [/color][color=darkorange]{$credit}[/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][unit]}.{$another_vip}[/color][/color][/size][/quote][size=3][color=dimgray]{$lang[tsn_07]}[color=red]{$todaysay}[/color]{$lang[tsn_08]}[/color][/size]";
+					$message = "[quote][size=2][color=dimgray]{$lang[tsn_10]}[/color][url={$_G[siteurl]}plugin.php?id=wishing_hall:sign][color=darkorange]{$lang[tsn_11]}[/color][/url][color=dimgray]{$lang[tsn_12]}[/color][/size][/quote][quote][size=2][color=gray][color=teal] [/color][color=gray]{$lang[tsn_01]}[/color] [color=darkorange]{$hft}[/color] {$lang[tsn_02]}[color=red]{$lang[tsn_03]}[/color][color=darkorange]{$lang[tsn_04]}{$lang[tsn_13]}{$lang[tsn_05]}[/color]{$lang[tsn_06]} [/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][title]} [/color][color=darkorange]{$credit}[/color][color=gray]{$_G[setting][extcredits][$var[nrcredit]][unit]}.{$another_vip}[/color][/color][/size][/quote][size=3][color=dimgray]{$lang[tsn_07]}[color=red]{$todaysay}[/color]{$lang[tsn_08]}[/color][/size]";
 				}
 				DB::query("INSERT INTO ".DB::table('forum_thread')." (fid, posttableid, readperm, price, typeid, sortid, author, authorid, subject, dateline, lastpost, lastposter, displayorder, digest, special, attachment, moderated, highlight, closed, status, isgroup) VALUES ('$var[fidnumber]', '0', '0', '0', '$var[qdtypeid]', '0', '$_G[username]', '$_G[uid]', '$subject', '$_G[timestamp]', '$_G[timestamp]', '$_G[username]', '0', '0', '0', '0', '1', '1', '1', '0', '0')");
 				$tid = DB::insert_id();
@@ -428,7 +428,7 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 		DB::query("UPDATE ".DB::table('dsu_paulsignset')." SET todayq=todayq+1 WHERE id='1'");
 	}
 	DB::query("UPDATE ".DB::table('dsu_paulsignemot')." SET count=count+1 WHERE qdxq='$_GET[qdxq]'");
-	if($var['lockopen']) discuz_process::unlock('dsu_paulsign');
+	if($var['lockopen']) discuz_process::unlock('wishing_hall');
 	if($var['tzopen']) {
 		if($exacr && $exacz) {
 			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"forum.php?mod=redirect&tid={$tidnumber}&goto=lastpost#lastpost");
@@ -437,9 +437,9 @@ DB::query("INSERT INTO ".DB::table('dsu_paulsign_wish')." (uid,time,qdxq,todaysa
 		}
 	} else {
 		if($exacr && $exacz) {
-			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=dsu_paulsign:sign");
+			sign_msg("{$lang[tsn_14]}{$lang[tsn_03]}{$lang[tsn_04]}{$psc}{$lang[tsn_15]}{$lang[tsn_06]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]} {$lang[tsn_16]} {$_G[setting][extcredits][$exacr][title]} {$exacz} {$_G[setting][extcredits][$exacr][unit]}.".$another_vip,"plugin.php?id=wishing_hall:sign");
 		} else {
-			sign_msg("{$lang[tsn_18]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=dsu_paulsign:sign");
+			sign_msg("{$lang[tsn_18]} {$_G[setting][extcredits][$var[nrcredit]][title]} {$credit} {$_G[setting][extcredits][$var[nrcredit]][unit]}.".$another_vip,"plugin.php?id=wishing_hall:sign");
 		}
 	}
 }
@@ -480,11 +480,11 @@ $q['if']= $qiandaodb['time']<$tdtime ? "<span class=gray>".$lang['tdno']."</span
 $qtime = dgmdate($qiandaodb['time'], 'Y-m-d H:i');
 $navigation = $lang['name'];
 $navtitle = "$navigation";
-$signBuild = 'Ver 1.0 For X2.5!<br>&copy; <a href="http://rs.xidian.edu.cn/">毕凯</a><br>';
+$signBuild = 'Ver 1.0 For X2.5!<br>&copy; <a href="http://scl.xidian.edu.cn/">毕凯</a><br>';
 $signadd = 'http://rs.xidian.edu.cn/';
 if($_G['inajax']){
-	include template('dsu_paulsign:ajaxsign');
+	include template('wishing_hall:ajaxsign');
 }else{
-	include template('dsu_paulsign:sign');
+	include template('wishing_hall:sign');
 }
 ?>

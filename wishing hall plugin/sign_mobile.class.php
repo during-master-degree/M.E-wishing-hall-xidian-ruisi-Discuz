@@ -1,13 +1,13 @@
 <?php
 if(!defined('IN_DISCUZ')) exit('Access Denied');
-class mobileplugin_dsu_paulsign {
+class mobileplugin_wishing_hall {
         function global_header_mobile(){
 			global $_G,$show_message;
 			function dsu_signtz() {
-				dheader('Location: plugin.php?id=dsu_paulsign:sign&mobile=yes');
+				dheader('Location: plugin.php?id=wishing_hall:sign&mobile=yes');
 			}
-			$var = $_G['cache']['plugin']['dsu_paulsign'];
-			if(defined('IN_dsu_paulsign') || $show_message || defined('IN_dsu_paulsc') || !$_G['uid'] || !$var['ifopen'] || !$var['wap_sign']) return '';
+			$var = $_G['cache']['plugin']['wishing_hall'];
+			if(defined('IN_wishing_hall') || $show_message || defined('IN_dsu_paulsc') || !$_G['uid'] || !$var['ifopen'] || !$var['wap_sign']) return '';
 			$tdtime = gmmktime(0,0,0,dgmdate($_G['timestamp'], 'n',$var['tos']),dgmdate($_G['timestamp'], 'j',$var['tos']),dgmdate($_G['timestamp'], 'Y',$var['tos'])) - $var['tos']*3600;
 			$allowmem = memory('check');
 			if($var['ftopen']  && in_array($_G['groupid'], unserialize($var['tzgroupid'])) && !in_array($_G['uid'],explode(",",$var['ban'])) && in_array($_G['groupid'], unserialize($var['groups']))) {
@@ -45,7 +45,7 @@ class mobileplugin_dsu_paulsign {
 					}
 				}
 			}
-			return '<a href="plugin.php?id=dsu_paulsign:sign">'.lang('plugin/dsu_paulsign', 'name').'</a>';
+			return '<a href="plugin.php?id=wishing_hall:sign">'.lang('plugin/wishing_hall', 'name').'</a>';
         }
 }
 ?>

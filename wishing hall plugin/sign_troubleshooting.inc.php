@@ -1,11 +1,11 @@
 <?php
 /*
-	dsu_paulsign Helper By shy9000[DSU Team] 2011-06-19
+	wishing_hall Helper By bikai[RS Team] 2013-02-10
 */
 !defined('IN_DISCUZ') && exit('Access Denied');
 !defined('IN_ADMINCP') && exit('Access Denied');
 if($_G['adminid']!=='1') exit('Access Denied');
-$lang = $_G['cache']['pluginlanguage_script']['dsu_paulsign'];
+$lang = $_G['cache']['pluginlanguage_script']['wishing_hall'];
 $query1 = DB::query("SHOW TABLES LIKE '".DB::table('dsu_paulsign')."'");
 $query2 = DB::query("SHOW TABLES LIKE '".DB::table('dsu_paulsignset')."'");
 $query3 = DB::query("SHOW TABLES LIKE '".DB::table('dsu_paulsignemot')."'");

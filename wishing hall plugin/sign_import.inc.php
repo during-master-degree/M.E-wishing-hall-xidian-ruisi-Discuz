@@ -1,15 +1,15 @@
 <?php
 /*
-	dsu_paulsign Import By shy9000[DSU Team] 2011-06-19
+	wishing_hall Import By bikai[RS Team] 2013-02-10
 */
 !defined('IN_DISCUZ') && exit('Access Denied');
 !defined('IN_ADMINCP') && exit('Access Denied');
 loadcache('pluginlanguage_script');
-$lang = $_G['cache']['pluginlanguage_script']['dsu_paulsign'];
-if(is_file(DISCUZ_ROOT.'./data/dsu_paulsign_import.lock'))cpmsg("{$lang[import_16]}", '');
+$lang = $_G['cache']['pluginlanguage_script']['wishing_hall'];
+if(is_file(DISCUZ_ROOT.'./data/wishing_hall_import.lock'))cpmsg("{$lang[import_16]}", '');
 if(!$_GET['submit']) {
 	showtableheader($lang['import_07'].' 20130219 By [Wishing hall]bikai');
-	showformheader("plugins&operation=config&identifier=dsu_paulsign&pmod=sign_import&submit=1", "");
+	showformheader("plugins&operation=config&identifier=wishing_hall&pmod=sign_import&submit=1", "");
 	echo '<tr><td colspan="2" class="td27" s="1">'.$lang['import_08'].':</td></tr>
 	<tr class="noborder""><td class="vtop rowform">
 	<ul class="nofloat" onmouseover="altStyle(this);"><li><input class="radio" type="radio" name="imchoice" value="1"  onclick="if(checked){document.getElementById(\'s1\').style.display=\'none\';document.getElementById(\'s2\').style.display=\'none\';document.getElementById(\'y1\').style.display=\'none\';document.getElementById(\'y2\').style.display=\'none\';}">&nbsp;[DSU]'.$lang['import_09'].' For X2.0</li><li class="checked"><input class="radio" type="radio" name="imchoice" value="2" onclick="if(checked){document.getElementById(\'s1\').style.display=\'\';document.getElementById(\'s2\').style.display=\'\';document.getElementById(\'y1\').style.display=\'\';document.getElementById(\'y2\').style.display=\'\';}" checked>&nbsp;[DPS]'.$lang['import_10'].' For 7.2</li><li><input class="radio" type="radio" name="imchoice" value="3" onclick="if(checked){document.getElementById(\'s1\').style.display=\'none\';document.getElementById(\'s2\').style.display=\'none\';document.getElementById(\'y1\').style.display=\'none\';document.getElementById(\'y2\').style.display=\'none\';}">&nbsp;'.$lang['import_11'].' 1.5 For X1.0</li></ul></td><td class="vtop tips2" s="1"></td></tr>
@@ -80,7 +80,7 @@ if(!$_GET['submit']) {
 				$mrcs[] = $mrc;
 			}
 	}
-	file_put_contents(DISCUZ_ROOT.'./data/dsu_paulsign_import.lock', '1');
+	file_put_contents(DISCUZ_ROOT.'./data/wishing_hall_import.lock', '1');
 	cpmsg("{$lang[import_06]}", '', 'succeed');
 }else{
 	cpmsg("{$lang[import_15]}", '');
